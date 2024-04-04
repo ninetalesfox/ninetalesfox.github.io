@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构） | HUA Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构） | HUA Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 (Not Found) - 该页面无法显示">
+<meta property="og:url" content="https://blog.kdyx.net/404.html">
+<meta property="og:site_name" content="HUA Blog">
+<meta property="og:description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T03:53:39.528Z">
+<meta property="article:author" content="HUA Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="HUA Blog" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>HUA Blog</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="email"
+               href="mailto:ti.studio@foxmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ninetalesfox"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(50)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发杂记">
+            <i class="fold iconfont icon-right"></i>
+            开发杂记
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发杂记&lt;---&gt;CV/CG">
+            
+            CV/CG
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具杂记">
+            
+            工具杂记
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="50">
+<input type="hidden" id="yelog_site_word_count" value="96.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.kindem.xyz/">Kindem</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索[快捷键(i)]"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图[快捷键(w)]"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hair</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TressFX</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>发丝</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>忘记密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数字人</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>毛发渲染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理模拟</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_3/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</span>
+            <span class="post-date" title="2022-06-22 23:33:58">2022/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_2/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</span>
+            <span class="post-date" title="2022-06-03 23:18:22">2022/06/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</span>
+            <span class="post-date" title="2022-05-29 21:40:12">2022/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/find_forget_sql_password/"
+           data-tag="MySQL,数据库,忘记密码"
+           data-author="kongdeyou" >
+            <span class="post-title" title="忘记MySQL数据库密码解决方案">忘记MySQL数据库密码解决方案</span>
+            <span class="post-date" title="2022-03-20 17:45:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/make_picture_bed_by_picgo_and_github/"
+           data-tag="图床,PicGo"
+           data-author="kongdeyou" >
+            <span class="post-title" title="超香之PicGo+Github搭建免费图床">超香之PicGo+Github搭建免费图床</span>
+            <span class="post-date" title="2022-03-20 16:12:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/3d_rendering_farplane_zfighting/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="3D渲染中远处物体Z-Fighting(闪烁)问题">3D渲染中远处物体Z-Fighting(闪烁)问题</span>
+            <span class="post-date" title="2021-11-28 22:39:00">2021/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/commandqueue_commandlist_commandallocator/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理">渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理</span>
+            <span class="post-date" title="2021-11-19 19:27:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_01/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程01-管理线程">C++并发编程01-管理线程</span>
+            <span class="post-date" title="2021-11-19 00:22:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_00/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程00-并发世界">C++并发编程00-并发世界</span>
+            <span class="post-date" title="2021-11-19 00:11:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%BD%AC%E6%88%98%E9%80%BC%E4%B9%8E%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="转战逼乎声明 :-)">转战逼乎声明 :-)</span>
+            <span class="post-date" title="2021-11-18 23:26:00">2021/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/why_lock_avoids_deadlock/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="为什么std::lock能避免死锁">为什么std::lock能避免死锁</span>
+            <span class="post-date" title="2021-09-15 22:35:00">2021/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/static_warning_in_cpp/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个C++的static_warning">实现一个C++的static_warning</span>
+            <span class="post-date" title="2021-09-01 23:35:00">2021/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/cross_compile_cunit_and_ctest_on_qnx/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="QNX交叉编译CUnit+CTest">QNX交叉编译CUnit+CTest</span>
+            <span class="post-date" title="2021-08-25 20:14:00">2021/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/auto_disk_copier/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="一个倾注灵魂的U盘小偷">一个倾注灵魂的U盘小偷</span>
+            <span class="post-date" title="2021-08-21 17:28:00">2021/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/speed_up_the_download_of_vscode_and_git/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="解决vscode和git国内下载速度太慢">解决vscode和git国内下载速度太慢</span>
+            <span class="post-date" title="2021-08-10 12:58:00">2021/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows_essentials_software_recommendations_for_developers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows开发机装机利器安利存档（持续更新）">Windows开发机装机利器安利存档（持续更新）</span>
+            <span class="post-date" title="2021-07-29 23:29:00">2021/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/action_executor/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="我撸了一个函数执行包装器后发现……">我撸了一个函数执行包装器后发现……</span>
+            <span class="post-date" title="2021-07-25 23:55:00">2021/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/head_only_singleton_implementation/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个head-only库中能用的singleton和静态成员变量模板">实现一个head-only库中能用的singleton和静态成员变量模板</span>
+            <span class="post-date" title="2021-07-23 21:57:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_relationship_of_cryengine_lumberyard_o3de/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="CryEngine、Lumberyard、O3DE的关系">CryEngine、Lumberyard、O3DE的关系</span>
+            <span class="post-date" title="2021-07-23 19:23:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_error_of_future_is_destructible/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录">未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录</span>
+            <span class="post-date" title="2021-07-21 23:04:00">2021/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/new_experience_of_drawing_with_drawio/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="drawio画图新体验">drawio画图新体验</span>
+            <span class="post-date" title="2021-07-19 11:30:00">2021/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/gitlab%E7%9A%84pipeline%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Gitlab的Pipeline执行机制">Gitlab的Pipeline执行机制</span>
+            <span class="post-date" title="2021-07-05 20:53:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Windows上安装使用repo">Windows上安装使用repo</span>
+            <span class="post-date" title="2021-07-05 19:18:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_framework_cpp_and_python/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器框架之C++使用Python脚本">游戏服务器框架之C++使用Python脚本</span>
+            <span class="post-date" title="2021-06-20 12:18:00">2021/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/database_of_kbe/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器数据库及kbEngine中的数据库">游戏服务器数据库及kbEngine中的数据库</span>
+            <span class="post-date" title="2021-06-10 22:10:00">2021/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/lumberyard_gridmate/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Lumberyard通讯组件GridMate浅析">Lumberyard通讯组件GridMate浅析</span>
+            <span class="post-date" title="2021-05-30 22:04:00">2021/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/vs_performance_profiler/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="使用Visual Studio性能探查器定位性能瓶颈">使用Visual Studio性能探查器定位性能瓶颈</span>
+            <span class="post-date" title="2021-05-23 22:25:00">2021/05/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/github_action/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="体验GitHub的CI构建工具Action">体验GitHub的CI构建工具Action</span>
+            <span class="post-date" title="2021-05-22 23:03:00">2021/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/format_msi/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="从msi安装包文件中获取属性数据实现安装包的重命名">从msi安装包文件中获取属性数据实现安装包的重命名</span>
+            <span class="post-date" title="2021-05-09 12:30:00">2021/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_history/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器发展历程">游戏服务器发展历程</span>
+            <span class="post-date" title="2021-04-25 23:51:00">2021/04/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/google_sitemap_cannot_fetch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Google站长平台设置Sitemap显示“无法获取”的问题">Google站长平台设置Sitemap显示“无法获取”的问题</span>
+            <span class="post-date" title="2021-04-10 00:39:00">2021/04/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/research_of_game_team/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="全功能游戏团队协作流程">全功能游戏团队协作流程</span>
+            <span class="post-date" title="2021-04-03 00:42:00">2021/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/about_my_drawing_in_the_blog/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="关于在博客中的画图">关于在博客中的画图</span>
+            <span class="post-date" title="2021-04-02 20:37:00">2021/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/smash/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</span>
+            <span class="post-date" title="2021-03-31 20:40:00">2021/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/technical_research_of_roblox/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Roblox技术调研总结">Roblox技术调研总结</span>
+            <span class="post-date" title="2021-03-28 22:48:00">2021/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/hlslcc_unreal_simple/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Unreal-HLSLCC概览">Unreal-HLSLCC概览</span>
+            <span class="post-date" title="2021-03-21 21:06:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/use_cmake_to_generate_constant_string/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="利用CMake生成代码中的常量字符串">利用CMake生成代码中的常量字符串</span>
+            <span class="post-date" title="2021-03-21 18:39:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9D%8E%E5%9D%B7%E7%9A%84%E7%BB%8F%E5%8E%86-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-net3-5/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="记录一次坎坷的经历——离线安装.net3.5">记录一次坎坷的经历——离线安装.net3.5</span>
+            <span class="post-date" title="2021-03-16 12:05:00">2021/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/comment_on_how_to_avoid_getting_into_involution_for_programmers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="评《程序员该怎么避免陷入内卷》">评《程序员该怎么避免陷入内卷》</span>
+            <span class="post-date" title="2021-03-08 22:19:00">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_mssc/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：MS-SC">Shader跨平台编译：MS-SC</span>
+            <span class="post-date" title="2021-02-17 22:40:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unity/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unity">Shader跨平台编译：Unity</span>
+            <span class="post-date" title="2021-02-17 20:59:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unreal/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unreal">Shader跨平台编译：Unreal</span>
+            <span class="post-date" title="2021-02-17 17:12:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译">Shader跨平台编译</span>
+            <span class="post-date" title="2021-02-16 18:58:00">2021/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/apache_server_donot_list_directories/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Apache服务器配置禁止列出目录">Apache服务器配置禁止列出目录</span>
+            <span class="post-date" title="2021-01-30 15:45:00">2021/01/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/imagewatch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="开发调试工具ImageWatch-查看内存中的图像">开发调试工具ImageWatch-查看内存中的图像</span>
+            <span class="post-date" title="2021-01-25 17:40:00">2021/01/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7%E6%A7%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E6%8E%A2%E8%AE%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="观察者模式与信号槽机制的探讨">观察者模式与信号槽机制的探讨</span>
+            <span class="post-date" title="2021-01-02 11:17:00">2021/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E7%9A%84settergetter_qt%E7%89%88/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现自动生成变量的Setter&amp;Getter(Qt版)">实现自动生成变量的Setter&amp;Getter(Qt版)</span>
+            <span class="post-date" title="2020-12-19 22:28:00">2020/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%9E%E5%BD%95/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows服务器博客搭建实录">Windows服务器博客搭建实录</span>
+            <span class="post-date" title="2020-12-13 14:30:00">2020/12/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/msvc%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%91%E5%B8%83%E5%8C%85%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="MSVC运行时发布包下载链接">MSVC运行时发布包下载链接</span>
+            <span class="post-date" title="2020-12-01 23:30:00">2020/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="动态链接库加载器">动态链接库加载器</span>
+            <span class="post-date" title="2020-11-28 17:00:00">2020/11/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏[快捷键(s)]">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-blog/kongdeyou/smash" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a>kongdeyou</a></span>
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 11:53:39'>2021-03-31 20:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:8.4k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">论文：Palazzi-engine-iscc16</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">SMASH：分布式游戏引擎体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">相关工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">游戏引擎的背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">当前游戏引擎的潜在缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">SMASH架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">SMASH实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">选取一种语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">运行时性能分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">原型的软件架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">示例程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">结论和接下来的工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">参考文献</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">协议</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近切了小组，其实老实讲，心中有点不舍，其实内心中还是更想研究具体的渲染效果的算法，原因嘛所见即所得，看着自己落地的算法（抄来的算法hhh），渲染出了想要的效果，那感觉多爽…另外还有对之前小组的Leader的一点愧疚，毕竟从她当上PL开始就一直跟随着，算是在这个组里最老的了，就这么离开了哎，奈何在大主管面前不敢表述自己的想法（不过这个问题也太难答了：“切到另一个小组，有没有什么抵触”，让我咋回答嘛），就这样到了一个新的组里。新的组也挺好，看着是在做“向上捅破天”的战略任务，但是技能点得洗干净了重新点。既来之则安之吧，把手头事情做好才是首要的。</p>
+<p>新的小组目标是做云游戏的框架，又是个从0到1的任务。近两天重点关注了这篇论文，一边看一边翻译翻译。</p>
+<p>开始之前：【】中的内容为作者的个人观点，与论文本身无关。</p>
+<h1>论文：Palazzi-engine-iscc16</h1>
+
+<p>论文地址：<a target="_blank" rel="noopener" href="https://www.math.unipd.it/~cpalazzi/papers/Palazzi-engine-iscc16.pdf">https://www.math.unipd.it/~cpalazzi&#x2F;papers&#x2F;Palazzi-engine-iscc16.pdf</a></p>
+<h2>SMASH：分布式游戏引擎体系结构</h2>
+
+<h3>摘要</h3>
+
+<p>在过去的几年里，我们目睹了视频游戏实现方式的变化。早期的时候往往由一个开发人员负责领导整个游戏的创作过程，现在我们已经逐渐演变为具有多层次组织的非常庞大的团队。团队组织的复杂性不断增加，加上项目规模的快速增长，在这样的背景下，要求我们要采用<strong>更具可扩展性</strong>的和<strong>分布式计算环境</strong>的开发方法。</p>
+<p>不幸的是，今天的游戏开发和运行环境（通常称为游戏引擎）正受到许多体系结构限制。因此，我们坚信，当前的引擎将无法提供下一代游戏开发者所需要的灵活性和可扩展性。</p>
+<p>为了克服上述限制，在本文中，我们提出了SMASH（用于共享环境的无堆栈微内核体系结构）：这是一种体系结构，其中<strong>游戏引擎被分解为几个动态和独立的软件模块，通过类似微内核的消息总线方式进行交互</strong>。<u>一旦游戏模块的内部消息传递协议被明确定义，独立的模块就可以从正在运行的引擎中动态地插入、调试和删除。此外，遵循这种方法，游戏模块可以在多台计算机上动态地移位，以获得一个真正分布式、可扩展和具有故障恢复能力的系统，在这种系统中，适配工作基本上可以在不停机的情况下实现。</u></p>
+<h3>简介</h3>
+
+<p>在过去的几年里，开发者实现视频游戏的方式正在经历巨大的变化。在视频游戏刚兴起的时候，通常一个非常小的群体，甚至是一个人，就能够负责游戏软件生产的各个方面。事实上，我们可以看到许多80年代的家庭娱乐大片游戏，比如陷阱、俄罗斯方块、波斯王子等都有一个开发商的名字。如今，随着娱乐市场的演变和预算高达七或八位数的项目的兴起，这种情况正在改变。</p>
+<p>视频游戏的创作现在是数十名甚至数千名程序员协作努力的结果。他们分组组织，并被分配到特定的任务中。当然，团队组织复杂性的不断增加和项目规模的巨大增长迫使游戏公司寻求利用可扩展性和分布式计算环境的开发方法。</p>
+<p>为了更好地分配能力和精力，并加强代码和资源的可重用性，视频游戏目前通过称为游戏引擎的软件环境来实现。正如《J. Gregory, Game Engine Architecture, 2nd ed. A K Peters&#x2F;CRC Press, 2014.》中主要讨论的那样，<strong>游戏引擎通常被设计架构为基于操作系统的软件库，抽象程度逐层不断提高，直到达到能够描述游戏机制的程度。</strong></p>
+<p>采用这种体系结构作为大型游戏的开发和执行环境可能会导致许多限制，如《D. Maggiorini, L. A. Ripamonti, and G. Cappellini, “About Game Engines and Their Future,” in Proceedings of EAI International Conference on Smart Objects and Technologies for Social Good (GOODTECHS 2015), Oct 2015, pp. 1–6.》中已经介绍的那样。总之，视频游戏可能会受到以下限制：它可能是整体的，它可能是集中的，很难向上扩展，它可能依赖于平台。尽管有上述所有限制，现代游戏引擎仍然是非常好的工具。</p>
+<p>然而，我们有理由质疑当前的引擎是否还能支撑次时代游戏开发者对灵活性和功能性的需求。我们坚信，为了适应未来的演变，游戏引擎不仅应该瞄准更好的性能和更先进的功能，而且还应该提供更具适应性和可服务性的内部结构。因此，我们在这里提出了一个分布式游戏引擎：SMASH（用于共享环境的无堆栈微内核体系结构）。</p>
+<p>使用SMASH，游戏引擎被分解为几个动态和独立的软件模块，通过类似微内核的消息总线相互交互。这样，一旦游戏模块的内部消息传递协议被明确定义，游戏模块就可以从正在运行的引擎中插入、调试和删除。此外，模块还可以在多台计算机上动态地移位，以实现真正分布式、可扩展和具有故障恢复能力的系统。在这种系统中，适配工作基本上可以在不停机的情况下实现。通过遵循SMASH方法，开发工作从协调编码转向协调功能，这里的协调任务，我们指的是属于主机游戏引擎的游戏模块和功能的全球组织。</p>
+<p>本文的剩余部分如下：第二部分将介绍我们讨论的这一主题的相关工作。第三部分提供了游戏引擎的背景信息。第四部分提供了有关SMASH内部体系结构的所有详细信息。第五部分将讨论它的实现和演示应用程序。第六部分是结语，并提出之后的工作。</p>
+<h3>相关工作</h3>
+
+<p>在过去，相当多的科学贡献被用于实现游戏引擎的内部数据结构。然而，在撰写本文时，就我们所知，只有非常有限的论文专门讨论引擎体系结构。</p>
+<p>大多数文献似乎集中在优化特定方面或服务上，如3D图形（例如，《T. C. S. Cheah and K. W. Ng, “A practical implementation of a 3D game engine,” in Computer Graphics, Imaging and Vision: New Trends, 2005. International Conference on, Jul 2005, pp. 351–358.》）或物理（例如，《G. Mulley, “The Construction of a Predictive Collision 2D Game Engine,” in Modelling and Simulation (EUROSIM), 2013 8th EUROSIM Congress on, Sep 2013, pp. 68–72.》，《D. Maggiorini, L. A. Ripamonti, and F. Sauro, “Unifying Rigid and Soft Bodies Representation: The Sulfur Physics Engine,” International Journal of Computer Games Technology, pp. 1–12, May 2014.》）。除此之外，《R. Darken, P. McDowell, and E. Johnson, “Projects in VR: the Delta3D open source game engine,” IEEE Computer Graphics and Applications, vol. 25, no. 3, pp. 10–12, May 2005.》(#9)、《V. Guana, E. Stroulia, and V. Nguyen, “Building a Game Engine: A Tale of Modern Model-Driven Engineering,” in Games and Software Engineering (GAS), 2015. IEEE&#x2F;ACM 4th International Workshop on, 2015, pp. 15–21.》(#10)和《J. Munro, C. Boldyreff, and A. Capiluppi, “Architectural studies of games engines: The quake series,” in Games Innovations Conference, 2009. ICE-GIC 2009. International IEEE Consumer Electronics Society’s, Aug 2009, pp. 246–255.》(#11)处理了与可移植性和发展有关的问题。</p>
+<p>其中(#9)的作者建议通过在其他现有引擎之上提供统一层来提高可移植性。事实上，他们用额外的平台无关层扩展了每个体系结构。<br>在(#10)中的作者重点关注了开发复杂性，并提出了一个基于现代模型驱动工程的解决方案。<br>而在(#11)中，对Quake引擎的开源版本进行了分析，但是目的是帮助独立开发人员为项目做出贡献。其他的一些文献中试图通过创建现有引擎的分布式实现（[12]~[14]）来提高性能。</p>
+<p>不幸的是，所有这些方法都旨在通过将分布式系统方法应用于特定的内部服务，如模拟管道或共享内存，仅提高特定案例研究的性能。可以观察到，上面引用的论文都没有指向一个全新的体系结构。</p>
+<p>无论如何，我们还必须提到，并不是所有现有的游戏引擎都被设计为一个库的形式。为此，我们可以提到Z-Machine [16]的Inform解释器[15]。使用Inform，文本算法描述被编译为二进制包。这个二进制包反过来由Z-Machine执行，Z-Machine是一个可用于许多平台的软件。不幸的是，Inform仅限于基于文本的游戏（如Zork [17]），而且从未向现代界面技术发展。然而，我们认为现代游戏引擎应该重新考虑Inform和Z-Machine作为一种可行的方法。【我理解是作者想让我们参考它的架构实现模式】</p>
+<h3>游戏引擎的背景</h3>
+
+<p>尽管游戏引擎自80年代中期以来就已经被研究和完善，但到目前为止我们还没有为它们找到一个正式的和全球公认的定义。尽管缺乏定义，但游戏引擎的功能相当明确：它的存在是为了抽象执行常见游戏相关任务（有时依赖于平台）的细节，如渲染、物理和输入管理等，以便开发人员可以专注于实现游戏特定的功能。</p>
+<img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/wp-content/uploads/2021/03/article_SMASH_FIG1.png" alt="Fig. 1. Summary of a general game engine architecture." />
+
+<p>现代游戏引擎的标准体系结构的总结如上图（图1）所示。从图片中我们很容易看到，游戏引擎所采用的体系结构与需要分层抽象的非游戏环境中所采用的其他解决方案并没有真正的区别。<br>最底层是直接怼到硬件的接口。<br>往上走一层首先提供第三方库的包装函数和不对外公开的API供内部使用，然后在往上提供一定程度的平台无关性（统一平台抽象），最后提供与游戏相关的服务。<br>在与游戏相关的服务中，我们可以找到核心服务，如内存管理和IPC，以及更高层次抽象级别的库，如图形界面、物理模拟或音频子系统等等。</p>
+<p>为了实现创作游戏的目标，游戏引擎通常分为两部分：工具套件和运行时组件。<br>运行时组件将硬件抽象所需的所有内部库组装在一起，并为游戏特定功能提供服务。运行时的一部分通常链接在游戏内部，或者与可执行文件一起分发。工具套件通常是外部程序的集合，可用于管理运行时的所有数据馈送并操纵运行时本身。</p>
+<h4>当前游戏引擎的潜在缺陷</h4>
+
+<p>正如前文中已经提到的。</p>
+<p>第一，现代游戏引擎所采用的体系结构模型可能有三个缺点。让我们简单总结一下。<br>首先，现代游戏通常是一个整体软件。整体式意味着开发人员必须在每次更改时重新构建和链接整个项目。对于大型存储库，全量重建可能会成为一个重要的瓶颈。无论如何，即使在小型项目中，全量重建也需要一个干净且同步良好的源树，以及开发人员之间的良好协调，以避免构建中断。<br>其次，游戏功能通常是集中的：所有执行计算活动的软件都位于同一台计算机上。特别是，在线游戏客户端连接并依赖于负责数据一致性和更新系统状态的集中式游戏服务器。考虑到在线游戏的最近趋势（例如，[18]），特别是MMO（大规模多人在线游戏）和MOBA（多人在线战场）开始统治了游戏市场，在多个节点上分发工作的负载均衡能力对于游戏网络基础设施的稳定性至关重要。集中式服务通常难以向上扩展，而且在高工作负载下性能较差。在当前的实现中，游戏本身必须知道服务的位置（在同一台机器上或其他地方），并实现分布式计算。<br>第三，每一个游戏都暴露了一定程度的平台依赖。即使引擎声称是跨平台的，并使用其下层来适应特定于供应商的硬件，跨多个平台无缝部署也不总是可能的【参考Android和iOS不同服的体现】。这种行为取决于许多因素：一些是平台相关的扩展API，这通常引发由于特定硬件优化而导致的性能损失。如今，开发人员需要在同一引擎内编写基于底层平台的不同行为的代码。因此，引擎在技术上可能是跨平台的，但开发人员的技能和一部分代码得具有跨平台的属性。</p>
+<h3>SMASH架构</h3>
+
+<p>在本节中，我们将详细介绍SMASH体系结构。为了设计我们的体系结构，我们从“引擎”这个词本身获得了灵感。</p>
+<p>正如Merriam- Webster所描述的那样，Engine是“将任何形式的能量转换为机械力和运动的机器”。那么，游戏引擎也应该只是启动游戏，而不是成为游戏的一部分。</p>
+<p>游戏开发者应该把能量（数据资产）放在引擎中，并描述机器应该移动的方式（游戏规则），而不是每次运行时组件与游戏规则重新组合（重新链接）以获得独立软件。这种方法认为游戏引擎更接近<strong>运行时环境</strong>（例如，参见Java[19]和CLI[20]），而不是库。【我理解为：类似于操作系统和应用之间的关系，操作系统是应用的容器环境，引擎应该是游戏的容器环境】</p>
+<p>SMASH引擎基本上是一个执行环境，提供三个基本功能：<br>（i）软实时调度器<br>（ii）动态游戏模块管理器<br>（iii）模块之间的消息传递系统</p>
+<img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/wp-content/uploads/2021/03/article_SMASH_FIG2.png" alt="Fig. 2. Diagram of the SMASH architecture." />
+
+<p>如上图（图2）展示了SMASH体系结构。该方案是从微内核体系结构（例如Amoeba[21]、QNX[22]）中汲取灵感而设计的，旨在解决前文中提到的当前游戏引擎的潜在缺陷。</p>
+<p><strong>软实时调度器</strong>负责及时调用调度函数，并确保系统以正确的速度发展。调度程序将只调用调度模块中的方法，不会参与演进。游戏模块是提供游戏功能的独立实体。模块不需要是特定于游戏的，但可以实现通用引擎服务（如图形渲染或物理模拟）。在运行时交换模块的可能性将允许开发人员使用插件方法修改和扩展游戏，直到非常细的粒度。</p>
+<p>由此产生的游戏将不是单一的，而是由独立和可替换的模块所一同组成。新的和更改的功能可以编译为独立的实体，然后加载以在运行环境中进行测试和调试。单一模块中的编译错误不会产生整个大构建系统的中断，也因此不会阻塞非相关的开发人员的工作。</p>
+<p>程序在运行时按需加载二进制代码的技术已经可用。所有现代语言都具有动态类加载功能；此外，动态库管理设施已经包含在主流操作系统中。从技术上讲，可以仅编译游戏项目相关的目标代码，让引擎识别它，并使用类加载器将代码拉起，以便在游戏中立即可用。</p>
+<p><strong>消息总线</strong>实际上是我们体系结构的核心，因为它负责实现模块之间的通信。模块之间的通信通过函数调用实现。这种方法是可行的，因为所有模块都将共享相同的执行环境，并允许实现良好的性能，因为<u>不需要参数编组</u>【parameters marshalling，计算机数据通讯的概念，编组与解组：把可执行的对象表示变换为适合于存储或传输的对象的表示称为编组，把已经变换为适合于存储或传输的对象的表示变换为可执行的对象表示的过程称为解组。类比于序列化和反序列化的过程】。<u>每个软件模块将使用消息总线调用其他模块中的服务函数。</u></p>
+<p>有一个事实问题是，这些函数调用将不是直接的：通用代理函数将在属于消息总线库的共享对象上调用。</p>
+<p>调用代理函数时，调用者将指定目标模块、目标函数名称和所有参数。然后，代理将从其参数开始构建特定的函数调用。在现代语言中，反射可以轻松地以独立于体系结构的方式实现这一目标。使用代理还允许执行额外的健全性检查，并验证目标模块和函数的存在。如果没有可用的目标，代理可以安全地放弃调用。</p>
+<p>当然，消息总线还可能不限于本地计算机。事实上，消息总线可以打开网络连接，并链接到属于远程游戏引擎的其他总线。这样，构建一个真正的分布式系统就很容易了。</p>
+<p>为了在网络上实际分发我们的引擎，我们所要做的就是扩展消息总线的代理功能。在此扩展代理函数中，调用的目标将是目标模块和目标引擎。如果目标模块未连接到本地总线，则将执行参数编组，并将调用转换为通过网络发送的消息（一个MessagePack[23]数组）。网络消息的目标将是负责解码请求、执行（现在是本地）调用并使用应答消息将结果返回给调用者的远程消息总线。</p>
+<p>我们体系结构的一个有趣的特点是，我们可以在不同的引擎上启动模块的多个实例。通过在网络周围复制相同的模块，我们可以通过容错实现高可用性。如果托管模块的节点出现故障，其他副本仍然是可用状态。每个消息总线都可以保留远程可用模块的列表，并在目标无响应或往返时间增加过多时切换到另一个副本模块。</p>
+<p>到目前为止，我们描述的体系结构是非常动态的。只需调整消息总线的配置，就可以更改覆盖拓扑。每当系统过载且需要更多的可扩展性时，我们可以在新计算机上启动另一个引擎，重新定位（或复制）一些游戏模块，并将新引擎链接到现有基础架构，这些事情在这个体系结构下是很容易达成的。这样，计算负载将迁移到另一个节点上。特别的是，这样的迁移操作可以实时执行，而不会有任何停机时间。</p>
+<p>最后，我们还必须指出与基础设施管理相关的几个问题。要实现最佳的负载平衡和对故障的反应性，非常重要的一点是要在每个节点上都有正确的拓扑信息（包括游戏模块）。为了保持寻址系统的同步，每个消息总线应立即将其可用模块中的每一个更改广播给所有连接的对等体。发送定期刷新消息也是合理的，这也可以作为托管节点的保活消息。关于对等发现，节点的地址可以在配置中硬编码（适用于互联网上的隧道），也可以使用SSDP（简单服务发现协议）[24]进行无辅助编码（尤其是在本地网络上）。</p>
+<h3>SMASH实现</h3>
+
+<p>在定义了体系结构之后，我们需要开始决定应该采用哪些技术和方法来实现SMASH。</p>
+<h4>选取一种语言</h4>
+
+<p>第一件事是选择我们的实现语言。这是一个重要的步骤，因为语言可能会决定游戏引擎的实现形式【原文中是“the level of adoption”，直译是采用水平，结合上下文我觉得应该翻译成“实现形式”】。</p>
+<p>先如今，游戏引擎中采用最多的面向对象语言是C++，其次是Java，然后才是C#。我们的最终决定是选择C#，原因有很多。对于多平台来说，Java是一个很好的选择，但它被抛弃的主要原因是它的低性能，特别是在处理垃圾收集时。C++绝对是游戏行业中使用最多的语言，因为它的性能非常好，而且它能够访问低级硬件。UE4[25]时至今日已经被认为是游戏引擎界使用C++最重要的商业产品。但不幸的是，C++不提供反射机制，这可能会使得在消息总线中提供高效的代理功能变得困难。反射可以在用户级别添加，但性能会显著下降。此外，C++也不提供运行时类加载器。有第三方的中间件实现可以在运行时加载类，就像DCOM[26]提供的那样。但不幸的是，DCOM是微软的专有技术，对跨平台实现来说并不是个好兆头。而C#有原生的语言层面的反射和动态类加载。此外，Unity[27]引擎也采用了C#，它是目前游戏市场上的大触之一，也已经把C#运用得相当好。但是，C#也有一个渐进的学习曲线。通过CLI[20]中间语言，C#还可以与许多其他面向对象编程语言互操作。</p>
+<h4>运行时性能分析</h4>
+
+<p>一旦我们选好了语言，第二步是确保底层执行环境能够提供足够的性能来满足游戏应用程序的要求，即使调用是由消息总线代理中介的。使用代理函数将在本地和远程调用上引入开销。为了估计代理开销，我们通过定义一个测试函数接受两个浮点值作为参数并返回它们的总和来进行测试。该函数将被调用1000万次，最后计算平均执行时间。</p>
+<p>主机是一台PC，配备英特尔i5-2410处理器，运行频率为2.3GHz，内存为8GB的DDR2双通道RAM，运行频率为667MHz。主机操作系统是安装了.NET 4.5.1版的64位Windows 7 SP1。测试期间没有其他应用程序运行。我们测试的基准（benchmark）是不用代理函数的直接调用。在基准下平均执行时间为7.8纳秒。</p>
+<p>如果我们把代理添加进来，情况就变得复杂了。代理所产生的开销不仅只有执行额外调用的增加时间，还有引入执行环境的管理时间。</p>
+<p>当软件模块在运行时加载时，执行环境将其放置在共享地址空间但具有专用访问权限的独立容器（称为域）中。跨域调用需要在操作系统和.NET中间件上进行额外的管理。因此，平均执行时间上升到211.4纳秒（是基准的27倍）。尽管事实证明开销相当大，但该系统仍然能够提供良好的用户交互。</p>
+<p>当访问远程引擎上的游戏模块时，执行时间显然会进一步上升。为了将网络添加进来，我们使用TCP和UDP在同一主机上的两个模块之间执行调用。这样，我们就可以估计执行中间件和操作系统产生的开销。在评估中排除传输延迟是合理的，因为网络行为将不取决于软件实现。基于此，使用TCP观察到的执行时间为63.1微秒，使用UDP观察到的执行时间为56.4微秒。可以观察到，性能约为基准的10,000倍，跨域调用的370倍。就是这样，我们仍然还可以以每秒15,000次同步交互的速度运行我们的系统。</p>
+<p>因此，性能损失是可接受的【原文为“sustainable”，直译是“可持续的”，感觉怪怪的，根据上下文我理解为应该是“可接受的”】，我们的体系结构似乎完全能够胜任任务。如前所述，只要我们使用操作系统中实现好的协议，网络引入的延迟就不取决于软件基础架构。在连接良好的数据中心中，我们可能会期望每个遍历的链路额外增加一个毫秒。当然，这将对整体表现产生明显的影响。无论如何，在数据中心中，这种传输延迟预计是相当恒定的，并限制在部分链路上。此外，我们希望从体系结构的角度来解决这个问题：识别受类似时间限制的游戏服务集，并相应地分发它们。【原文“Moreover, we are expected to address this from an architectural standpoint: identifying sets of game services distringuished by similar time constraints and distributing them accordingly.”，没有很明白这个识别的过程是什么，以及如何分发？】</p>
+<h4>原型的软件架构</h4>
+
+<img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/wp-content/uploads/2021/03/article_SMASH_FIG3.png" alt="Fig. 3. SMASH prototype class diagram." />
+
+<p>最后一步，如上图（图3）中所示实现了一个SMASH原型。</p>
+<p>正如我们在图片中看到的，有一个数字或服务类：引擎中的每个基本功能都有一个。【原文为“As we can see in the picture, there are a number or service classes: one for every basic function in the engine.”，我没有看到所谓的数字或服务类，而classes是复数，我理解是原作者打错了，应该是“ there are a number of service classes”，是of而不是or，这样理解感觉就通了，整张图中的所有类就是这些服务类】</p>
+<p>两个主要的类是Node和Module。<br>Node类负责管理引擎，它实例化所有其他类并负责配置设置。鉴于其功能，Node被实现为单例类。<br>另外Module类是一个抽象类，开发人员必须扩展它才能创建游戏自定义模块。在这个抽象类中，已经提供了所有从引擎注册和注销的功能。<br>继承自Module的许多类实例可以与Node单例关联。关联通过ModulesManager类执行。ModulesManager负责加载和卸载引擎中的模块。模块的加载和卸载已使用文件系统实现。ModulesManager监视特定目录，当新包（“.dll”或“.exe”文件）添加到目录时ModulesManager将检查文件内容并加载专用域中继承Module的所有类。反之亦然，当包文件移出目录时，与其域关联的所有模块都将卸载。</p>
+<p>连接到Node类后，我们还拥有管理其他两个基本功能的类：调度器（SchedulingManager）和消息总线（MessageBusManager）。<br>调度管理器类保留高分辨率计时器，并接受来自模块的调度请求。当调度到期时，调度管理器将通知将执行调用的节点单例。如前所述，模块之间的调用将通过MessageBusManager类管理的消息总线进行。当继承Module的类需要调用另一个模块中的函数时，它将使用ModuleProxy类作为代理，ModuleProxy类将请求中继到MessageBusManager，以确定被调用者是在本地还是远程模块中。根据ModuleProxy的指示，MessageBusManager将在本地或通过网络执行调用。</p>
+<p>所有网络操作都必须经过NodeNetwork类。NodeNetwork负责管理到其他引擎的链接，发送和接收调用消息，以及接收来自其他引擎的模块更改的通知。<br>尤其是，输入进来的调用消息被转发到MessageBusManager进行本地传递，同时远程模块更新被中继到Node单例，以更新其数据结构。MessageBusManager将使用这些数据结构来构建远程模块的地址。另一方面，当本地模块列表发生变化时，ModulesManager将通过Node单例通知NodeNetwork，并将更新发送到所有链接的引擎。</p>
+<h4>示例程序</h4>
+
+<p>为了测试我们的SMASH原型，我们实现了一个益智游戏的分布式版本：魔方模拟器。</p>
+<p>在这个游戏中，我们使用了三台PC，每一台PC都运行SMASH原型的独立副本。这三个引擎在一个网状链路中相互连接。</p>
+<p>在第一台PC上有一个主引擎，它负责使用专用模块（RCSimulator）模拟魔方数据。</p>
+<img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/wp-content/uploads/2021/03/article_SMASH_FIG4.png" alt="Fig. 4. Rubik’s cube demo: 2D renderer using ASCII art." />
+
+<p>在第二台PC上，引擎包含三个模块：一个用于管理来自用户的命令的InputManager模块，一个使用ASCII来显示当前魔方状态的RCConsoleRenderer模块（见上图，图4），以及一个用于调试的RCLogger模块。</p>
+<img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/wp-content/uploads/2021/03/article_SMASH_FIG5.png" alt="Fig. 5. Rubik’s cube demo: 3D renderer." />
+
+<p>在第三台PC上，有与第二台类似的配置，但RCConsoleRenderer被RC3DRenderer取代，RC3DRenderer将用3D形式来绘制魔方（见上图，图5）。</p>
+<p>在第二和第三台PC上【原文为“On each satellite PC”，卫星PC是个啥，根据下文理解，这些PC上要有InputManager模块，那么可以理解为是第二和第三台PC，即玩魔方的用户可以操作的PC】，InputManager模块要求引擎以固定速率调度，并轮询键盘以获取用户输入。当输入有效时，按键消息将被发送到第一台PC上的RCSimulator模块。如果请求正确，RCSimulator模块将更改表示魔方状态的数据，并将新的魔方小方块的颜色通知所有已知的渲染器。所以，第二和第三台PC上的玩家实际在玩同一个魔方。</p>
+<p>此外，在第二台PC上，只需加载RC3DRenderer的另一个实例，就可以很容易地将视觉效果从ASCII升级到3D。这个新实例在本地引擎中注册，消息总线将把新模块的加入广播给体系结构的其余部分。从此时起，第二台PC上的新的3D渲染器也将能从主引擎中获得更新。</p>
+<h3>结论和接下来的工作</h3>
+
+<p>在本文中，我们对现代游戏引擎的内部结构提出了质疑，因为我们认为它不太可能提供下一代游戏开发者所需要的灵活性和功能。</p>
+<p>作为一种可能的解决方案，我们提出了SMASH：用于共享环境的无堆栈微内核体系结构。SMASH具有完全分布式架构，灵感来自微内核操作系统。在SMASH中，游戏模块可以在引擎运行时动态添加和删除。</p>
+<p>我们还提出了一个在windows环境下使用C#实现的原型。性能测试表明，该系统适合托管软实时应用程序，如视频游戏。</p>
+<p>最后，我们还展示了一个演示应用程序：魔方分布式多人游戏示例。此应用程序运行良好，可以在运行时应用和更改多个渲染模块。</p>
+<p>未来，我们计划扩展我们的原型，并在更复杂的环境中测试它，以便了解它在大规模网络上的行为。这对于实际部署广泛分布的游戏非常有用，如[28]和[29]中设想的游戏。</p>
+<h3>参考文献</h3>
+
+<p>这还翻？直接看原文呗。</p>
+<p>PS: 文中的[]标识其实就是参考文献，一开始想把它直接替换到文中的（确实文章的前面也这么干了，后来发现文献都一页了，整文章里面影响美观，决定还是保留文献索引号，有需要再跳过来看，前面已经替换的就继续保留吧）。</p>
+<h2>协议</h2>
+
+<p>本文以上内容遵循CC BY-ND 4.0协议，署名-禁止演绎。</p>
+<p>转载请注明出处：<a target="_blank" rel="noopener" href="https://tis.ac.cn/blog/kongdeyou/smash/">https://tis.ac.cn/blog/kongdeyou/smash/</a><br>并署名：<a target="_blank" rel="noopener" href="https://tis.ac.cn/blog/author/kongdeyou/">kongdeyou(https://tis.ac.cn/blog/author/kongdeyou/)</a></p>
+
+      
+       
+    </div>
+</article>
+
+
+<div class="article_copyright">
+    <!-- 
+    <p><span class="copy-title">文章标题:</span>论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">8.4k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="HUA Blog">HUA Blog</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-03-31, 20:40:00</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-04, 11:53:39</p>
+    -->
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/blog/kongdeyou/smash/" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">https://blog.kdyx.net/blog/kongdeyou/smash/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="CC BY-NC-ND 4.0 International" target = "_blank">&#34;CC BY-NC-ND 4.0&#34; 署名-不可商用-禁止演绎</a> 转载请注明原文链接及作者信息，侵权必究。
+    </p>
+</div>
+
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+    <div id="comments">
+<script>
+{
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', "ninetalesfox/ninetalesfox.github.io");
+    script.setAttribute('issue-term', "title");
+    script.setAttribute('theme', "github-light");
+    script.setAttribute('label', "utteranc");
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    comments.appendChild(script)
+}
+</script>
+</div>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2020069368号-1</a>
+        </span>
+    
+    ©2020-2024 HUA Blog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏[快捷键(s)]"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢或有帮助？赞赏下作者呗！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>

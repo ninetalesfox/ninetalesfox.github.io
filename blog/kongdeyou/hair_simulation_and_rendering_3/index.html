@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>保姆级毛发算法调研分析，十万长文带你深入TressFX（三） | HUA Blog</title>
+  <meta name="keywords" content=" Hair , 毛发渲染 , 物理模拟 , 数字人 , 发丝 , TressFX ">
+  <meta name="description" content="保姆级毛发算法调研分析，十万长文带你深入TressFX（三） | HUA Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 (Not Found) - 该页面无法显示">
+<meta property="og:url" content="https://blog.kdyx.net/404.html">
+<meta property="og:site_name" content="HUA Blog">
+<meta property="og:description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T03:53:39.528Z">
+<meta property="article:author" content="HUA Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="HUA Blog" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>HUA Blog</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="email"
+               href="mailto:ti.studio@foxmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ninetalesfox"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(50)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发杂记">
+            <i class="fold iconfont icon-right"></i>
+            开发杂记
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发杂记&lt;---&gt;CV/CG">
+            
+            CV/CG
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具杂记">
+            
+            工具杂记
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="50">
+<input type="hidden" id="yelog_site_word_count" value="96.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.kindem.xyz/">Kindem</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索[快捷键(i)]"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图[快捷键(w)]"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hair</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TressFX</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>发丝</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>忘记密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数字人</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>毛发渲染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理模拟</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_3/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</span>
+            <span class="post-date" title="2022-06-22 23:33:58">2022/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_2/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</span>
+            <span class="post-date" title="2022-06-03 23:18:22">2022/06/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</span>
+            <span class="post-date" title="2022-05-29 21:40:12">2022/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/find_forget_sql_password/"
+           data-tag="MySQL,数据库,忘记密码"
+           data-author="kongdeyou" >
+            <span class="post-title" title="忘记MySQL数据库密码解决方案">忘记MySQL数据库密码解决方案</span>
+            <span class="post-date" title="2022-03-20 17:45:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/make_picture_bed_by_picgo_and_github/"
+           data-tag="图床,PicGo"
+           data-author="kongdeyou" >
+            <span class="post-title" title="超香之PicGo+Github搭建免费图床">超香之PicGo+Github搭建免费图床</span>
+            <span class="post-date" title="2022-03-20 16:12:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/3d_rendering_farplane_zfighting/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="3D渲染中远处物体Z-Fighting(闪烁)问题">3D渲染中远处物体Z-Fighting(闪烁)问题</span>
+            <span class="post-date" title="2021-11-28 22:39:00">2021/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/commandqueue_commandlist_commandallocator/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理">渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理</span>
+            <span class="post-date" title="2021-11-19 19:27:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_01/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程01-管理线程">C++并发编程01-管理线程</span>
+            <span class="post-date" title="2021-11-19 00:22:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_00/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程00-并发世界">C++并发编程00-并发世界</span>
+            <span class="post-date" title="2021-11-19 00:11:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%BD%AC%E6%88%98%E9%80%BC%E4%B9%8E%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="转战逼乎声明 :-)">转战逼乎声明 :-)</span>
+            <span class="post-date" title="2021-11-18 23:26:00">2021/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/why_lock_avoids_deadlock/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="为什么std::lock能避免死锁">为什么std::lock能避免死锁</span>
+            <span class="post-date" title="2021-09-15 22:35:00">2021/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/static_warning_in_cpp/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个C++的static_warning">实现一个C++的static_warning</span>
+            <span class="post-date" title="2021-09-01 23:35:00">2021/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/cross_compile_cunit_and_ctest_on_qnx/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="QNX交叉编译CUnit+CTest">QNX交叉编译CUnit+CTest</span>
+            <span class="post-date" title="2021-08-25 20:14:00">2021/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/auto_disk_copier/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="一个倾注灵魂的U盘小偷">一个倾注灵魂的U盘小偷</span>
+            <span class="post-date" title="2021-08-21 17:28:00">2021/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/speed_up_the_download_of_vscode_and_git/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="解决vscode和git国内下载速度太慢">解决vscode和git国内下载速度太慢</span>
+            <span class="post-date" title="2021-08-10 12:58:00">2021/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows_essentials_software_recommendations_for_developers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows开发机装机利器安利存档（持续更新）">Windows开发机装机利器安利存档（持续更新）</span>
+            <span class="post-date" title="2021-07-29 23:29:00">2021/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/action_executor/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="我撸了一个函数执行包装器后发现……">我撸了一个函数执行包装器后发现……</span>
+            <span class="post-date" title="2021-07-25 23:55:00">2021/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/head_only_singleton_implementation/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个head-only库中能用的singleton和静态成员变量模板">实现一个head-only库中能用的singleton和静态成员变量模板</span>
+            <span class="post-date" title="2021-07-23 21:57:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_relationship_of_cryengine_lumberyard_o3de/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="CryEngine、Lumberyard、O3DE的关系">CryEngine、Lumberyard、O3DE的关系</span>
+            <span class="post-date" title="2021-07-23 19:23:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_error_of_future_is_destructible/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录">未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录</span>
+            <span class="post-date" title="2021-07-21 23:04:00">2021/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/new_experience_of_drawing_with_drawio/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="drawio画图新体验">drawio画图新体验</span>
+            <span class="post-date" title="2021-07-19 11:30:00">2021/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/gitlab%E7%9A%84pipeline%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Gitlab的Pipeline执行机制">Gitlab的Pipeline执行机制</span>
+            <span class="post-date" title="2021-07-05 20:53:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Windows上安装使用repo">Windows上安装使用repo</span>
+            <span class="post-date" title="2021-07-05 19:18:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_framework_cpp_and_python/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器框架之C++使用Python脚本">游戏服务器框架之C++使用Python脚本</span>
+            <span class="post-date" title="2021-06-20 12:18:00">2021/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/database_of_kbe/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器数据库及kbEngine中的数据库">游戏服务器数据库及kbEngine中的数据库</span>
+            <span class="post-date" title="2021-06-10 22:10:00">2021/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/lumberyard_gridmate/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Lumberyard通讯组件GridMate浅析">Lumberyard通讯组件GridMate浅析</span>
+            <span class="post-date" title="2021-05-30 22:04:00">2021/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/vs_performance_profiler/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="使用Visual Studio性能探查器定位性能瓶颈">使用Visual Studio性能探查器定位性能瓶颈</span>
+            <span class="post-date" title="2021-05-23 22:25:00">2021/05/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/github_action/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="体验GitHub的CI构建工具Action">体验GitHub的CI构建工具Action</span>
+            <span class="post-date" title="2021-05-22 23:03:00">2021/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/format_msi/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="从msi安装包文件中获取属性数据实现安装包的重命名">从msi安装包文件中获取属性数据实现安装包的重命名</span>
+            <span class="post-date" title="2021-05-09 12:30:00">2021/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_history/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器发展历程">游戏服务器发展历程</span>
+            <span class="post-date" title="2021-04-25 23:51:00">2021/04/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/google_sitemap_cannot_fetch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Google站长平台设置Sitemap显示“无法获取”的问题">Google站长平台设置Sitemap显示“无法获取”的问题</span>
+            <span class="post-date" title="2021-04-10 00:39:00">2021/04/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/research_of_game_team/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="全功能游戏团队协作流程">全功能游戏团队协作流程</span>
+            <span class="post-date" title="2021-04-03 00:42:00">2021/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/about_my_drawing_in_the_blog/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="关于在博客中的画图">关于在博客中的画图</span>
+            <span class="post-date" title="2021-04-02 20:37:00">2021/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/smash/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</span>
+            <span class="post-date" title="2021-03-31 20:40:00">2021/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/technical_research_of_roblox/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Roblox技术调研总结">Roblox技术调研总结</span>
+            <span class="post-date" title="2021-03-28 22:48:00">2021/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/hlslcc_unreal_simple/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Unreal-HLSLCC概览">Unreal-HLSLCC概览</span>
+            <span class="post-date" title="2021-03-21 21:06:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/use_cmake_to_generate_constant_string/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="利用CMake生成代码中的常量字符串">利用CMake生成代码中的常量字符串</span>
+            <span class="post-date" title="2021-03-21 18:39:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9D%8E%E5%9D%B7%E7%9A%84%E7%BB%8F%E5%8E%86-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-net3-5/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="记录一次坎坷的经历——离线安装.net3.5">记录一次坎坷的经历——离线安装.net3.5</span>
+            <span class="post-date" title="2021-03-16 12:05:00">2021/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/comment_on_how_to_avoid_getting_into_involution_for_programmers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="评《程序员该怎么避免陷入内卷》">评《程序员该怎么避免陷入内卷》</span>
+            <span class="post-date" title="2021-03-08 22:19:00">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_mssc/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：MS-SC">Shader跨平台编译：MS-SC</span>
+            <span class="post-date" title="2021-02-17 22:40:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unity/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unity">Shader跨平台编译：Unity</span>
+            <span class="post-date" title="2021-02-17 20:59:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unreal/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unreal">Shader跨平台编译：Unreal</span>
+            <span class="post-date" title="2021-02-17 17:12:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译">Shader跨平台编译</span>
+            <span class="post-date" title="2021-02-16 18:58:00">2021/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/apache_server_donot_list_directories/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Apache服务器配置禁止列出目录">Apache服务器配置禁止列出目录</span>
+            <span class="post-date" title="2021-01-30 15:45:00">2021/01/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/imagewatch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="开发调试工具ImageWatch-查看内存中的图像">开发调试工具ImageWatch-查看内存中的图像</span>
+            <span class="post-date" title="2021-01-25 17:40:00">2021/01/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7%E6%A7%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E6%8E%A2%E8%AE%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="观察者模式与信号槽机制的探讨">观察者模式与信号槽机制的探讨</span>
+            <span class="post-date" title="2021-01-02 11:17:00">2021/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E7%9A%84settergetter_qt%E7%89%88/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现自动生成变量的Setter&amp;Getter(Qt版)">实现自动生成变量的Setter&amp;Getter(Qt版)</span>
+            <span class="post-date" title="2020-12-19 22:28:00">2020/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%9E%E5%BD%95/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows服务器博客搭建实录">Windows服务器博客搭建实录</span>
+            <span class="post-date" title="2020-12-13 14:30:00">2020/12/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/msvc%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%91%E5%B8%83%E5%8C%85%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="MSVC运行时发布包下载链接">MSVC运行时发布包下载链接</span>
+            <span class="post-date" title="2020-12-01 23:30:00">2020/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="动态链接库加载器">动态链接库加载器</span>
+            <span class="post-date" title="2020-11-28 17:00:00">2020/11/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏[快捷键(s)]">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-blog/kongdeyou/hair_simulation_and_rendering_3" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a>kongdeyou</a></span>
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="开发杂记">开发杂记</a> > 
+            
+            <a  data-rel="开发杂记&lt;---&gt;CV/CG">CV/CG</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Hair</a>
+            
+            <a class="color5">毛发渲染</a>
+            
+            <a class="color5">物理模拟</a>
+            
+            <a class="color4">数字人</a>
+            
+            <a class="color3">发丝</a>
+            
+            <a class="color3">TressFX</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 11:53:39'>2022-06-22 23:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.5k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E5%8F%91%E4%B8%9D%E7%9A%84%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">毛发发丝的碰撞矫正</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">碰撞矫正</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%89%E5%90%91%E8%B7%9D%E7%A6%BB%E5%9C%BA"><span class="toc-text">碰撞检测使用的有向距离场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%89%E5%90%91%E8%B7%9D%E7%A6%BB%E5%9C%BA%E7%9A%84%E5%8F%91%E4%B8%9D%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">基于有向距离场的发丝碰撞矫正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="毛发发丝的碰撞矫正"><a href="#毛发发丝的碰撞矫正" class="headerlink" title="毛发发丝的碰撞矫正"></a>毛发发丝的碰撞矫正</h1><p>本文仅在个人博客及个人知乎上采用”CC BY-NC-ND 4.0”(署名-不可商用-禁止演绎)协议发布，转载请注明个人博客的原文链接及作者信息，侵权必究。</p>
+<p>博客链接：<a target="_blank" rel="noopener" href="https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering_3/">https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering_3/</a></p>
+<p>知乎链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/534732852/">https://zhuanlan.zhihu.com/p/534732852/</a></p>
+<p>本文将主要分析TressFX毛发系统中物理模拟的碰撞矫正，目录结构如下：</p>
+<p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E5%8F%91%E4%B8%9D%E7%9A%84%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">毛发发丝的碰撞矫正</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">碰撞矫正</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%89%E5%90%91%E8%B7%9D%E7%A6%BB%E5%9C%BA"><span class="toc-text">碰撞检测使用的有向距离场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%89%E5%90%91%E8%B7%9D%E7%A6%BB%E5%9C%BA%E7%9A%84%E5%8F%91%E4%B8%9D%E7%A2%B0%E6%92%9E%E7%9F%AB%E6%AD%A3"><span class="toc-text">基于有向距离场的发丝碰撞矫正</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li></ol></li></ol></div></p>
+<h2 id="碰撞矫正"><a href="#碰撞矫正" class="headerlink" title="碰撞矫正"></a>碰撞矫正</h2><p>碰撞矫正由两个部分组成：用与头发待碰撞的物体建立有向距离场，然后再用前面的发丝物理计算结果在这个有向距离场中做碰撞检测和矫正。</p>
+<h3 id="碰撞检测使用的有向距离场"><a href="#碰撞检测使用的有向距离场" class="headerlink" title="碰撞检测使用的有向距离场"></a>碰撞检测使用的有向距离场</h3><p>针对场景中每个需要与头发进行碰撞检测的物体（比如玩家角色的头颅模型），均需要2个passes，第一个pass用来处理该物体的骨骼动画，第二个pass用来建场，建场又由3个subpasses组成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_03.png" alt="BoneSkin与SDF的Pass图"></p>
+<p>处理骨骼动画的pass和一般骨骼动画的处理逻辑的思路是一样的，输入T-Pose下的vertex attributes和vertex bone indices and bone weights，通过constant buffer送下去所有bones的inverse bind matrices，然后算出受骨骼动画驱动后的vertex attributes。只不过，这里的骨骼计算和普通的骨骼计算流程不太相同，TressFX的maya导出工具会将用于碰撞检测的物体的数据存储到tfxmesh文件中，tfxmesh存储了vertex position&#x2F;normal和bone indices&#x2F;weights数据，此处会使用tfxmesh文件中记录的这些数据作为碰撞检测的mesh数据，因此我们的数据来源来自于tfxmesh文件（多了这个步骤后，我们就能够建一个很复杂的有很多面片数的人头模型，再做一个这个人头模型的低模，这样在渲染的时候使用高模，导给头发系统处理时使用低模，这样可以大大减少在做碰撞检测时的计算量，还能基本保证不穿模）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">骨骼计算，略，详见：https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXBoneSkinning.hlsl#L24-L94</span><br></pre></td></tr></table></figure>
+
+<p>建场过程由InitializeSignedDistanceField、ConstructSignedDistanceField、FinalizeSignedDistanceField三个subpass组成。</p>
+<p>SDF使用物体的扩展包围盒来建立一个正方体的晶胞盒。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_09.jpg" alt="正方体晶胞盒"></p>
+<p>然后将物体模型放在这个晶胞盒中，逐三角形遍历临近的晶胞，计算晶胞的中心点到三角形的最小距离，作为该晶胞的值。如果晶胞中心在物体模型内，即晶胞中心指向三角形的内侧，则距离符号为负；如果在物体模型外，则距离符号为正；如果超过一定距离（即非三角形临近的晶胞），将该晶胞的值记为同一个最大值（INITIAL_DISTANCE，值为1e10f）。</p>
+<p>InitializeSignedDistanceField做初始化这个晶胞盒的操作，会将所有的晶胞置为一个最大值，如下代码所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// One thread for each cell.</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void InitializeSignedDistanceField(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    int numSdfCells = g_NumCellsX * g_NumCellsY * g_NumCellsZ; // 总晶胞数</span><br><span class="line"></span><br><span class="line">    int sdfCellIndex = GId.x * THREAD_GROUP_SIZE + GIndex; // 当前的线程所负责的晶胞</span><br><span class="line">    if(sdfCellIndex &gt;= numSdfCells) return;</span><br><span class="line"></span><br><span class="line">    g_SignedDistanceField[sdfCellIndex] = FloatFlip3(INITIAL_DISTANCE); // 初始化当前线程所负责的晶胞记录的值为最大值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此处注意到，g_SignedDistanceField这个变量是个uint数组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[vk::binding(1, 0)]] RWStructuredBuffer&lt;uint&gt; g_SignedDistanceField : register(u1, space0);</span><br></pre></td></tr></table></figure>
+
+<p>这里TressFX没有直接使用float类型，因为为了节省计算量，TressFX采用的是逐三角形遍历<strong>临近的</strong>晶胞的方法，而不是逐晶胞遍历物体模型的逐三角形，这个过程在GPU中执行，那么就有可能发生两个三角形共同影响同一个晶胞，而两个三角形分别在两个线程中执行，于是在这个晶胞上就会出现读写冲突，为了使用GPU中的原子化比较写入函数InterlockedMin（该函数只能用在uint和int类型上），TressFX得把浮点转成整型，这个过程可以通过HLSL的asuint或asint函数实现。TressFX此处用了asuint，由于asuint之后，得到的是一个无符号的整数值，因此TressFX写了两个函数FloatFlip3和IFloatFlip3，计算得到SDF的晶胞值后用FloatFlip3存下来，此时会把符号位从最高位移动到最低位，避免符号位对值的大小产生影响，这样其他三角形计算出来的结果和该晶胞上的值比较时，不会因为uint导致负数变成大正数，无论正负都是同一种比较方法，在计算完所有三角形得出所有的晶胞值后，再逐晶胞调用IFloatFlip3把符号恢复回来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">uint FloatFlip3(float fl)</span><br><span class="line">&#123;</span><br><span class="line">    uint f = asuint(fl);</span><br><span class="line">    return (f &lt;&lt; 1) | (f &gt;&gt; 31); // Rotate sign bit to least significant</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">uint IFloatFlip3(uint f2)</span><br><span class="line">&#123;</span><br><span class="line">    return (f2 &gt;&gt; 1) | (f2 &lt;&lt; 31); // Restore the sign bit</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ConstructSignedDistanceField会逐三角形遍历临近的晶胞，构造出当前物体模型的有向距离场。</p>
+<p>collMeshVertexPositions由前面的处理骨骼的pass输出，作为当前pass的输入。g_TrimeshVertexIndices存储了当前物体模型的三角形索引数据，primitive topology是triangle list。这些在pass图中均有展示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//Triangle input to SDF builder</span><br><span class="line">[[vk::binding(0, 0)]] StructuredBuffer&lt;uint&gt; g_TrimeshVertexIndices : register(t0, space0);</span><br><span class="line">[[vk::binding(2, 0)]] RWStructuredBuffer&lt;StandardVertex&gt; collMeshVertexPositions : register(u2, space0);</span><br></pre></td></tr></table></figure>
+
+<p>在shader中，每一个三角形一个线程，先计算出三角形的AABB包围盒，然后根据AABB包围盒对应算出所占据的晶胞盒子集，计算出三角形到这个子集内的晶胞们的中心的距离，作为这些晶胞们的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">// One thread per each triangle</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void ConstructSignedDistanceField(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    int triangleIndex = GId.x * THREAD_GROUP_SIZE + GIndex;</span><br><span class="line"></span><br><span class="line">    uint numTriangleIndices, stride;</span><br><span class="line">    g_TrimeshVertexIndices.GetDimensions(numTriangleIndices, stride);</span><br><span class="line">    uint numTriangles = numTriangleIndices / 3;</span><br><span class="line"></span><br><span class="line">    if (triangleIndex &gt;= (int)numTriangles)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    // 取得当前待处理的三角形的索引</span><br><span class="line">    uint index0 = g_TrimeshVertexIndices[triangleIndex * 3 + 0];</span><br><span class="line">    uint index1 = g_TrimeshVertexIndices[triangleIndex * 3 + 1];</span><br><span class="line">    uint index2 = g_TrimeshVertexIndices[triangleIndex * 3 + 2];</span><br><span class="line"></span><br><span class="line">    // 取得当前待处理的三角形的顶点位置</span><br><span class="line">    float3 tri0 = collMeshVertexPositions[index0].position;</span><br><span class="line">    float3 tri1 = collMeshVertexPositions[index1].position;</span><br><span class="line">    float3 tri2 = collMeshVertexPositions[index2].position;</span><br><span class="line"></span><br><span class="line">    // 算出三角形的AABB包围盒</span><br><span class="line">    float3 aabbMin = min(tri0, min(tri1, tri2)) - float3(MARGIN, MARGIN, MARGIN); // #define MARGIN g_CellSize</span><br><span class="line">    float3 aabbMax = max(tri0, max(tri1, tri2)) + float3(MARGIN, MARGIN, MARGIN); // 包围盒扩展一个晶胞的长度大小</span><br><span class="line"></span><br><span class="line">    // 根据AABB包围盒得到晶胞盒子集，AABB包围盒是float位置数据，此处算出对应的对角轴晶胞的ID</span><br><span class="line">    int3 gridMin = GetSdfCoordinates(aabbMin) - GRID_MARGIN; // #define GRID_MARGIN int3(1, 1, 1)</span><br><span class="line">    int3 gridMax = GetSdfCoordinates(aabbMax) + GRID_MARGIN; // 晶胞盒子集向外扩展一个晶胞</span><br><span class="line"></span><br><span class="line">    // 经过上面将三角形包围盒所占据的晶胞向外延展之后，相当于我们找出了三角形临近的晶胞</span><br><span class="line">    // 然后我们将这些临近的晶胞限制在有效的范围内</span><br><span class="line">    gridMin.x = max(0, min(gridMin.x, g_NumCellsX - 1));</span><br><span class="line">    gridMin.y = max(0, min(gridMin.y, g_NumCellsY - 1));</span><br><span class="line">    gridMin.z = max(0, min(gridMin.z, g_NumCellsZ - 1));</span><br><span class="line">    gridMax.x = max(0, min(gridMax.x, g_NumCellsX - 1));</span><br><span class="line">    gridMax.y = max(0, min(gridMax.y, g_NumCellsY - 1));</span><br><span class="line">    gridMax.z = max(0, min(gridMax.z, g_NumCellsZ - 1));</span><br><span class="line"></span><br><span class="line">    // 针对每个临近的晶胞，计算其中心到三角形的距离，取绝对值的最小值存为该晶胞的值，即SDF中该小立方格子的值</span><br><span class="line">    for (int z = gridMin.z; z &lt;= gridMax.z; ++z)</span><br><span class="line">        for (int y = gridMin.y; y &lt;= gridMax.y; ++y)</span><br><span class="line">            for (int x = gridMin.x; x &lt;= gridMax.x; ++x)</span><br><span class="line">            &#123;</span><br><span class="line">                int3 gridCellCoordinate = int3(x, y, z);</span><br><span class="line">                int gridCellIndex = GetSdfCellIndex(gridCellCoordinate);</span><br><span class="line">                float3 cellPosition = GetSdfCellPosition(gridCellCoordinate);</span><br><span class="line"></span><br><span class="line">                float distance = SignedDistancePointToTriangle(cellPosition, tri0, tri1, tri2);</span><br><span class="line">                uint distanceAsUint = FloatFlip3(distance);</span><br><span class="line">                InterlockedMin(g_SignedDistanceField[gridCellIndex], distanceAsUint);</span><br><span class="line">            &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码中：GetSdfCoordinates根据场景中的点找到该位置所在的晶胞，晶胞相对于从g_Origin位置所在的坐标开始，有g_NumCellsX&#x2F;Y&#x2F;Z个，单个晶胞大小为g_CellSize，覆盖了场景中的g_Origin至(g_Origin+g_CellSize*vec3(g_NumCellsX,g_NumCellsY,g_NumCellsZ))的空间范围；GetSdfCellIndex和GetSdfCellPosition分别获取当前晶胞在g_SignedDistanceField数组中的索引和获取晶胞在场景中的中心位置，然后SignedDistancePointToTriangle计算出到三角形的距离，最后用InterlockedMin原子写入晶胞数组的指定位置中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">int3 GetSdfCoordinates(float3 positionInWorld)</span><br><span class="line">&#123;</span><br><span class="line">    // g_Origin是整个晶胞盒在场景的世界坐标系下的偏移，减去后是相对于以g_Origin为原点的坐标系的相对坐标</span><br><span class="line">    float3 sdfPosition = (positionInWorld - g_Origin.xyz) / g_CellSize;</span><br><span class="line"></span><br><span class="line">    int3 result;</span><br><span class="line">    result.x = (int)sdfPosition.x;</span><br><span class="line">    result.y = (int)sdfPosition.y;</span><br><span class="line">    result.z = (int)sdfPosition.z;</span><br><span class="line"></span><br><span class="line">    return result; // Get SDF cell index coordinates (x, y and z) from a point position in world space</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int GetSdfCellIndex(int3 gridPosition)</span><br><span class="line">&#123;</span><br><span class="line">    int cellsPerLine = g_NumCellsX;</span><br><span class="line">    int cellsPerPlane = g_NumCellsX * g_NumCellsY;</span><br><span class="line"></span><br><span class="line">    return cellsPerPlane*gridPosition.z + cellsPerLine*gridPosition.y + gridPosition.x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float3 GetSdfCellPosition(int3 gridPosition)</span><br><span class="line">&#123;</span><br><span class="line">    float3 cellCenter = float3(gridPosition.x, gridPosition.y, gridPosition.z) * g_CellSize; // 相对位置，晶胞盒内的局部坐标</span><br><span class="line">    cellCenter += g_Origin.xyz; // g_Origin是整个晶胞盒在场景的世界坐标系下的偏移，加上后取得世界坐标，三角形的三个顶点的坐标是在世界坐标系下的</span><br><span class="line"></span><br><span class="line">    return cellCenter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float SignedDistancePointToTriangle(float3 p, float3 x0, float3 x1, float3 x2) // 晶胞中心点到三角形的距离</span><br><span class="line">&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;   // 几何数学计算，略，详见：https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXSDFCollision.hlsl#L147-L215</span><br></pre></td></tr></table></figure>
+
+<p>最后FinalizeSignedDistanceField将晶胞盒的所有晶胞的正负符号恢复回来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// One thread per each cell.</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void FinalizeSignedDistanceField(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    int numSdfCells = g_NumCellsX * g_NumCellsY * g_NumCellsZ;</span><br><span class="line"></span><br><span class="line">    int sdfCellIndex = GId.x * THREAD_GROUP_SIZE + GIndex;</span><br><span class="line">    if (sdfCellIndex &gt;= numSdfCells) return;</span><br><span class="line"></span><br><span class="line">    uint distance = g_SignedDistanceField[sdfCellIndex];</span><br><span class="line">    g_SignedDistanceField[sdfCellIndex] = IFloatFlip3(distance); // IFloatFlip3将符号位恢复回来</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在以上的计算中，我们使用了g_Origin、g_CellSize、g_NumCellsX&#x2F;Y&#x2F;Z这些值，它们来自于Constant Buffer。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[[vk::binding(3, 0)]] cbuffer ConstBuffer_SDF : register(b3, space0)</span><br><span class="line">&#123;</span><br><span class="line">    float4 g_Origin;  // 晶胞盒局部坐标系的坐标轴在世界坐标系下的位置</span><br><span class="line">    float g_CellSize; // 一个晶胞的单位长度</span><br><span class="line">    int g_NumCellsX;  // X轴晶胞个数</span><br><span class="line">    int g_NumCellsY;  // Y轴晶胞个数</span><br><span class="line">    int g_NumCellsZ;  // Z轴晶胞个数</span><br><span class="line">    // 以下的参数目前均没有使用</span><br><span class="line">    int g_MaxMarchingCubesVertices; // 这个变量全局都没有使用的地方，是废弃的</span><br><span class="line">    float g_MarchingCubesIsolevel;  // 这个变量全局都没有使用的地方，也是废弃的</span><br><span class="line">    float g_CollisionMargin;</span><br><span class="line">    int g_NumHairVerticesPerStrand;</span><br><span class="line">    int g_NumTotalHairVertices;</span><br><span class="line">    float pad1;</span><br><span class="line">    float pad2;</span><br><span class="line">    float pad3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在C++代码中该结构体定义在TressFXConstantBuffers.h头文件中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXSDFCollisionParams</span></span><br><span class="line">&#123;</span><br><span class="line">    AMD::float4  m_Origin;</span><br><span class="line">    <span class="type">float</span>        m_CellSize;</span><br><span class="line">    <span class="type">int</span>          m_NumCellsX;</span><br><span class="line">    <span class="type">int</span>          m_NumCellsY;</span><br><span class="line">    <span class="type">int</span>          m_NumCellsZ;</span><br><span class="line">    <span class="type">int</span>          m_MaxMarchingCubesVertices;</span><br><span class="line">    <span class="type">float</span>        m_MarchingCubesIsolevel;</span><br><span class="line">    <span class="type">float</span>        m_CollisionMargin;</span><br><span class="line">    <span class="type">int</span>          m_NumHairVerticesPerStrand;</span><br><span class="line">    <span class="type">int</span>          m_NumTotalHairVertices;</span><br><span class="line">    <span class="type">float</span>        pad1;</span><br><span class="line">    <span class="type">float</span>        pad2;</span><br><span class="line">    <span class="type">float</span>        pad3;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>拿着TressFXSDFCollisionParams逐步反向查找，TressFXSDFCollision类中存在该结构体的实例变量m_ConstBuffer，该变量值在TressFXSDFCollision类函数Update或CollideWithHair中更改。</p>
+<blockquote>
+<p><strong>TressFX此处的实现有缺陷</strong>，已向开源仓反馈，缺陷详见：<a target="_blank" rel="noopener" href="https://github.com/GPUOpen-Effects/TressFX/issues/46">https://github.com/GPUOpen-Effects/TressFX/issues/46</a><br>在创建SDF的pass中，由于g_MaxMarchingCubesVertices、g_MarchingCubesIsolevel、g_CollisionMargin、g_NumHairVerticesPerStrand、g_NumTotalHairVertices变量没有使用，因此不会出现问题。但是在后面的发丝碰撞矫正的pass中，会使用到g_CollisionMargin、g_NumHairVerticesPerStrand、g_NumTotalHairVertices，而这些数据是头发相关的数据（非有向距离场信息数据），它们是同一块ConstBuffer，TressFXSDFCollision::CollideWithHair在下发这个ConstBuffer时一把下发下去了，导致最后一个头发模型的数据覆盖掉了前面其他头发模型的数据。</p>
+</blockquote>
+<blockquote>
+<p>此处应该分成两个结构体来实现：<code>TressFXSDFCollisionCollidee</code>和<code>TressFXSDFCollisionCollider</code>，即</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXSDFCollisionCollidee</span></span><br><span class="line">&#123;</span><br><span class="line">    AMD::float4 m_Origin;</span><br><span class="line">    <span class="type">float</span>       m_CellSize;</span><br><span class="line">    <span class="type">int</span>         m_NumCellsX;</span><br><span class="line">    <span class="type">int</span>         m_NumCellsY;</span><br><span class="line">    <span class="type">int</span>         m_NumCellsZ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXSDFCollisionCollider</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> m_CollisionMargin;</span><br><span class="line">    <span class="type">int</span>   m_NumHairVerticesPerStrand;</span><br><span class="line">    <span class="type">int</span>   m_NumTotalHairVertices;</span><br><span class="line">    <span class="comment">// padding...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>针对每一个SDF（头发模型要与之碰撞的物体模型）都下发各自的TressFXSDFCollisionCollidee，而针对每一个头发模型都下发各自的TressFXSDFCollisionCollider。这样就能解掉上面的bug，而且逻辑更清晰。</p>
+</blockquote>
+<p>在TressFXSDFCollision构造函数中初始化影响m_ConstBuffer值的相关量：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// initialize SDF grid using the associated model&#x27;s bounding box</span></span><br><span class="line">    Vector3 bmin, bmax;</span><br><span class="line">    m_pInputCollisionMesh-&gt;<span class="built_in">GetInitialBoundingBox</span>(bmin, bmax);</span><br><span class="line">    m_CellSize = (bmax.x - bmin.x) / m_NumCellsInXAxis;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> numExtraPaddingCells = (<span class="type">int</span>)(<span class="number">0.8f</span> * (<span class="type">float</span>)m_NumCellsInXAxis);</span><br><span class="line">    m_PaddingBoundary = numExtraPaddingCells * m_CellSize;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UpdateSDFGrid</span>(bmin, bmax); <span class="comment">// 该函数内会设置m_Origin为扩展后的包围盒：bmin-m_PaddingBoundary</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 扩展包围盒，(int)(float/int)的操作会去尾，扩展后变成进一</span></span><br><span class="line">    bmin -= m_PaddingBoundary;</span><br><span class="line">    bmax += m_PaddingBoundary;</span><br><span class="line">    m_NumCellsX = (<span class="type">int</span>)((bmax.x - bmin.x) / m_CellSize);</span><br><span class="line">    m_NumCellsY = (<span class="type">int</span>)((bmax.y - bmin.y) / m_CellSize);</span><br><span class="line">    m_NumCellsZ = (<span class="type">int</span>)((bmax.z - bmin.z) / m_CellSize);</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中m_NumCellsInXAxis从构造函数的入参中来，而构造TressFXSDFCollision在CollisionMesh的构造函数中，依次向上找，该值存在于TressFXCollisionMeshDescription结构体的numCellsInXAxis中。而该结构体数组又存在于TressFXSceneDescription的collisionMeshes中。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From TressFXSample.h</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXCollisionMeshDescription</span></span><br><span class="line">&#123;</span><br><span class="line">    std::string name;</span><br><span class="line">    std::string tfxMeshFilePath;</span><br><span class="line">    <span class="type">int</span>         numCellsInXAxis; <span class="comment">// 每个轴方向上的晶胞个数，该值会影响每个晶胞的大小，该值越大晶胞单位长度越小，计算量越多，碰撞矫正越精细</span></span><br><span class="line">    <span class="type">float</span>       collisionMargin; <span class="comment">// 碰撞余量，在创建SDF时没有使用，会在发丝碰撞矫正时使用</span></span><br><span class="line">    <span class="type">int</span>         mesh;</span><br><span class="line">    std::string followBone;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXSceneDescription</span></span><br><span class="line">&#123; <span class="comment">// TressFX中的Demo定义的该结构体存储了整个Sample场景中的所有素材数据，集成进引擎中时</span></span><br><span class="line">  <span class="comment">// 需要调整成我们自己的数据结构，用来存储头发和会和头发产生碰撞的物体模型的数据！！</span></span><br><span class="line">    std::vector&lt;TressFXObjectDescription&gt;        objects;</span><br><span class="line">    std::vector&lt;TressFXCollisionMeshDescription&gt; collisionMeshes;</span><br><span class="line"></span><br><span class="line">    std::string gltfFilePath;</span><br><span class="line">    std::string gltfFileName;</span><br><span class="line">    std::string gltfBonePrefix;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> startOffset;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再往上追溯，就到了<code>TressFXSample.cpp</code>中的<a target="_blank" rel="noopener" href="https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/TressFXSample.cpp#L499-L529">TressFXSample::LoadScene</a>函数实现中了。该参数的设置来源于sample中。即，该参数需要来源于外部配置。因此，我们集成进自己的引擎中时，需要在Editor的Inspector面板上暴露UI给技美，让技美选择头发需要做碰撞检测的物体模型(.tfxmesh)和生成SDF时所使用的相关的参数。</p>
+<h3 id="基于有向距离场的发丝碰撞矫正"><a href="#基于有向距离场的发丝碰撞矫正" class="headerlink" title="基于有向距离场的发丝碰撞矫正"></a>基于有向距离场的发丝碰撞矫正</h3><p>针对一个头发所关联的每个SDF，都需要一个Pass来做一次碰撞矫正，我们给这个Pass输入SDF和经过物理动力学和风场计算后的发丝位置，经过矫正后输出在碰撞体外的发丝顶点新位置，这个新位置将作为整个发丝物理计算后的最终位置，用于后续的渲染中，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_10.png" alt="碰撞矫正Pass图"></p>
+<p>矫正的算法并不复杂：在前一小节中，我们已经生成了待碰撞体的有向距离场，而发丝顶点会在这个距离场中，我们根据发丝顶点所处的晶胞位置，能够拿出当前发丝顶点是否在待碰撞体内还是体外的信息（由上节我们知道，内部为负，外部为正，绝对值越大，距离碰撞体边界越远），如果当前的发丝顶点在待碰撞体内，那么这个顶点就是需要纠正的顶点，然后我们根据这个顶点附近周围的晶胞值，计算出一个梯度方向，这个梯度方向就是将这个顶点移出待碰撞体内所需要移动的位移最小的方向（由于此时是反算，梯度计算出来的结果，得出的是一个局部最优解，会受“附近”这一范围选取的影响），而顶点所在位置的晶胞值的绝对值，即是移动到待碰撞体边界的位移量。</p>
+<p>我们看个TressFX提供的简单的例子：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_10.jpg" alt="有向距离场"></p>
+<p>上图中的有向距离场是我们在前一个Pass中建好的，图中的2D网格是在这个有向距离场中选取的其中一面的晶胞，假设网格中的三角形就是待碰撞的物体的triangle，那么我们能看到：当一个晶胞的中心在三角形内部时，晶胞值是负数；当一个晶胞的中心在三角形外时，晶胞值是正数（empty时是默认的INITIAL_DISTANCE，是最大值1e10f）。由于当晶胞是一个较小的正数时，仅表征了晶胞的中心在三角形外，但是待碰撞体的三角形有可能仍然占据了晶胞的部分（最多可能占据了二分之一），因此TressFX提供了一个裕量（即代码中的g_CollisionMargin）给技美设置，在矫正时发丝顶点的位移量会多加上这一个裕量，使得发丝尽可能保证矫正到碰撞体之外。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_11.jpg" alt="碰撞矫正算法"></p>
+<p>矫正过程如上图，这是当前Pass要做的事情。逐发丝顶点比较顶点所在位置的晶胞值，如果是一个小于裕量的值（晶胞值为负数、或为比裕量小的小值正数），就会计算出当前的顶点位置的晶胞值梯度方向作为矫正方向，矫正的位移量为裕量减去晶胞值（若晶胞值为负数，得到结果即晶胞值绝对值加上裕量，即SDF中记录当前晶胞中心到待碰撞体边界的最近的距离加上裕量；若晶胞值为正数，说明当前晶胞位置处在边界附近，计算出的结果只为裕量内的调整量）。</p>
+<p>通过研究它的矫正算法，结合我在实际落地时的场景，我们能发现这个矫正算法是有一定的固有缺陷的。</p>
+<p>首先是，我们的碰撞矫正是基于发丝的顶点做的，那么就有一种特殊的情况，待碰撞体有一个尖锐的突角，使得待碰撞体的Mesh网格中有三角形的一个点距离另外的两个点比较远，如下图所示，这种情况下发丝上的顶点所在位置的晶胞值都为正数，不会做矫正，但是发丝线却穿过了待碰撞体，产生了穿模。我们可以通过增多一根发丝上的顶点个数来缓解这一问题，但顶点数增多会导致计算量变大。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220627231603.jpg" alt="corner case 1"></p>
+<p>其次是，类似耳朵部位处的地方，当出现凹包时，即使将顶点矫正到了待碰撞体的外部（但在凹包范围内），仍有可能由于前面的缺陷，造成穿模的现象，如下图所示。我们可以通过生成tfxmesh时使用一个凸包代理模型来规避这个问题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220627231614.jpg" alt="corner case 2"></p>
+<p>最后是，由于在生成SDF时我们采用的是遍历逐三角形去写三角形临近晶胞的方法，这样会导致待碰撞体网格内部离边界较远一点的地方仍是初始值。如下图所示，当碰撞体为内部黑色的球，建的SDF晶胞盒子是大的立方体，那图中红色虚拟球内的区域在碰撞球内远离球的边界，这部分范围内的晶胞值仍然会是初始的1e10f值。这就会导致当有发丝顶点进入了待碰撞体的内部时，矫正算法就失效了，不会移动这些发丝顶点到体外。我们可以通过确保生成tfxmesh的模型是一个完整封闭的模型且发丝顶点的初始位置一定不在碰撞体模型内来规避这个问题。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220627231623.jpg" alt="corner case 3"></p>
+<p>碰撞矫正会对所有的发丝顶点执行计算，包括引导发丝和从属发丝，最后来看一下代码，实现其实不难理解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">//SDF-Hair collision using forward differences only</span><br><span class="line">// One thread per one hair vertex</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void CollideHairVerticesWithSdf_forward(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    int hairVertexGlobalIndex = GId.x * THREAD_GROUP_SIZE + GIndex;</span><br><span class="line"></span><br><span class="line">    if(hairVertexGlobalIndex &gt;= g_NumTotalHairVertices)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    int hairVertexLocalIndex = hairVertexGlobalIndex % g_NumHairVerticesPerStrand;</span><br><span class="line"></span><br><span class="line">    // We don&#x27;t run collision check on the first two vertices in the strand. They are fixed on the skin mesh.</span><br><span class="line">    if (hairVertexLocalIndex == 0 || hairVertexLocalIndex == 1)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    float4 hairVertex = g_HairVertices[hairVertexGlobalIndex];</span><br><span class="line">    float4 vertexInSdfLocalSpace = hairVertex;</span><br><span class="line"></span><br><span class="line">    // GetSignedDistance获取晶胞值的插值结果，数学计算过程，略，详见：</span><br><span class="line">    // https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXSDFCollision.hlsl#L414-L527</span><br><span class="line">    float distance = GetSignedDistance(vertexInSdfLocalSpace.xyz);</span><br><span class="line"></span><br><span class="line">    // early exit if the distance is larger than collision margin</span><br><span class="line">    if(distance &gt; g_CollisionMargin) // 前面算法描述中提及，当distance&lt;g_CollisionMargin时，发丝在待碰撞体边界加上一个裕量的范围之外</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    // small displacement. </span><br><span class="line">    float h = 0.1f * g_CellSize; // 用来计算梯度方向时的“附近”的量化范围</span><br><span class="line"></span><br><span class="line">    float3 sdfGradient;</span><br><span class="line">    &#123;</span><br><span class="line">        //Compute gradient using forward difference</span><br><span class="line">        float3 offset[3];</span><br><span class="line">        offset[0] = float3(1, 0, 0);</span><br><span class="line">        offset[1] = float3(0, 1, 0);</span><br><span class="line">        offset[2] = float3(0, 0, 1);</span><br><span class="line"></span><br><span class="line">        float3 neighborCellPositions[3];</span><br><span class="line"></span><br><span class="line">        for(int i = 0; i &lt; 3; ++i) </span><br><span class="line">            neighborCellPositions[i] = vertexInSdfLocalSpace.xyz + offset[i] * h;</span><br><span class="line"></span><br><span class="line">        //Use trilinear interpolation to get distances</span><br><span class="line">        float neighborCellDistances[3];</span><br><span class="line"></span><br><span class="line">        for(int j = 0; j &lt; 3; ++j) </span><br><span class="line">            neighborCellDistances[j] = GetSignedDistance(neighborCellPositions[j]);</span><br><span class="line"></span><br><span class="line">        float3 forwardDistances;</span><br><span class="line">        forwardDistances.x = neighborCellDistances[0];</span><br><span class="line">        forwardDistances.y = neighborCellDistances[1];</span><br><span class="line">        forwardDistances.z = neighborCellDistances[2];</span><br><span class="line"></span><br><span class="line">        sdfGradient = ( forwardDistances - float3(distance, distance, distance) ) / h; // 梯度方向</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //Project hair vertex out of SDF</span><br><span class="line">    float3 normal = normalize(sdfGradient);</span><br><span class="line">    </span><br><span class="line">    if(distance &lt; g_CollisionMargin)</span><br><span class="line">    &#123;</span><br><span class="line">        // normal * (g_CollisionMargin - distance) 算出在梯度方向上的矫正量，</span><br><span class="line">        // 当发丝顶点完全在碰撞体内时，distance为负数；当发丝顶点在碰撞体边界附近的裕量范围内时，distance为正数。</span><br><span class="line">        // (g_CollisionMargin-distance)得到的是矫正到碰撞体外再加上一个裕量的位置的位移量。</span><br><span class="line">        float3 projectedVertex = hairVertex.xyz + normal * (g_CollisionMargin - distance);</span><br><span class="line">        g_HairVertices[hairVertexGlobalIndex].xyz = projectedVertex;</span><br><span class="line">        g_PrevHairVertices[hairVertexGlobalIndex].xyz = projectedVertex;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Faster SDF-Hair collision mixing forward and backward differences</span><br><span class="line">// One thread per one hair vertex</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void CollideHairVerticesWithSdf(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    //When using forward differences to compute the SDF gradient,</span><br><span class="line">    //we need to use trilinear interpolation to look up 4 points in the SDF.</span><br><span class="line">    //In the worst case, this involves reading the distances in 4 different cubes (reading 32 floats from the SDF).</span><br><span class="line">    //In the ideal case, only 1 cube needs to be read (reading 8 floats from the SDF).</span><br><span class="line">    //The number of distance lookups varies depending on whether the 4 points cross cell boundaries.</span><br><span class="line">    //</span><br><span class="line">    //If we assume that (h &lt; g_CellSize), where h is the distance between the points used for finite difference,</span><br><span class="line">    //we can mix forwards and backwards differences to ensure that the points never cross cell boundaries (always read 8 floats).</span><br><span class="line">    //By default we use forward differences, and switch to backwards differences for each dimension that crosses a cell boundary.</span><br><span class="line">    //</span><br><span class="line">    //This is much faster than using forward differences only, but it could also be less stable.</span><br><span class="line">    //In particular, it has the effect of making the gradient less accurate. The amount of inaccuracy is </span><br><span class="line">    //proportional to the size of h, so it is recommended keep h as low as possible.</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    TressFX提供了另一套矫正算法，思路稍有改变，主要区别在计算梯度方向和矫正量上，略，感兴趣可以参考：</span><br><span class="line">    https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXSDFCollision.hlsl#L597-L715</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>毛发的物理部分到这里就结束啦，到此时，我们已经准备好了可以供后续渲染处理的发丝数据（还不是三角形网格数据，只是发丝曲线上的关键点），后续的文章将进入渲染部分。</p>
+
+      
+       
+    </div>
+</article>
+
+
+<div class="article_copyright">
+    <!-- 
+    <p><span class="copy-title">文章标题:</span>保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5.5k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="HUA Blog">HUA Blog</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-06-22, 23:33:58</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-04, 11:53:39</p>
+    -->
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/blog/kongdeyou/hair_simulation_and_rendering_3/" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">https://blog.kdyx.net/blog/kongdeyou/hair_simulation_and_rendering_3/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="CC BY-NC-ND 4.0 International" target = "_blank">&#34;CC BY-NC-ND 4.0&#34; 署名-不可商用-禁止演绎</a> 转载请注明原文链接及作者信息，侵权必究。
+    </p>
+</div>
+
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+    <div id="comments">
+<script>
+{
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', "ninetalesfox/ninetalesfox.github.io");
+    script.setAttribute('issue-term', "title");
+    script.setAttribute('theme', "github-light");
+    script.setAttribute('label', "utteranc");
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    comments.appendChild(script)
+}
+</script>
+</div>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2020069368号-1</a>
+        </span>
+    
+    ©2020-2024 HUA Blog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏[快捷键(s)]"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢或有帮助？赞赏下作者呗！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>

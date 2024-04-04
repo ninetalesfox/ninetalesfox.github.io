@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>保姆级毛发算法调研分析，十万长文带你深入TressFX（二） | HUA Blog</title>
+  <meta name="keywords" content=" Hair , 毛发渲染 , 物理模拟 , 数字人 , 发丝 , TressFX ">
+  <meta name="description" content="保姆级毛发算法调研分析，十万长文带你深入TressFX（二） | HUA Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 (Not Found) - 该页面无法显示">
+<meta property="og:url" content="https://blog.kdyx.net/404.html">
+<meta property="og:site_name" content="HUA Blog">
+<meta property="og:description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T03:53:39.528Z">
+<meta property="article:author" content="HUA Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="HUA Blog" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>HUA Blog</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="email"
+               href="mailto:ti.studio@foxmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ninetalesfox"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(50)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发杂记">
+            <i class="fold iconfont icon-right"></i>
+            开发杂记
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发杂记&lt;---&gt;CV/CG">
+            
+            CV/CG
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具杂记">
+            
+            工具杂记
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="50">
+<input type="hidden" id="yelog_site_word_count" value="96.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.kindem.xyz/">Kindem</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索[快捷键(i)]"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图[快捷键(w)]"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hair</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TressFX</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>发丝</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>忘记密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数字人</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>毛发渲染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理模拟</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_3/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</span>
+            <span class="post-date" title="2022-06-22 23:33:58">2022/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_2/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</span>
+            <span class="post-date" title="2022-06-03 23:18:22">2022/06/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</span>
+            <span class="post-date" title="2022-05-29 21:40:12">2022/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/find_forget_sql_password/"
+           data-tag="MySQL,数据库,忘记密码"
+           data-author="kongdeyou" >
+            <span class="post-title" title="忘记MySQL数据库密码解决方案">忘记MySQL数据库密码解决方案</span>
+            <span class="post-date" title="2022-03-20 17:45:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/make_picture_bed_by_picgo_and_github/"
+           data-tag="图床,PicGo"
+           data-author="kongdeyou" >
+            <span class="post-title" title="超香之PicGo+Github搭建免费图床">超香之PicGo+Github搭建免费图床</span>
+            <span class="post-date" title="2022-03-20 16:12:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/3d_rendering_farplane_zfighting/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="3D渲染中远处物体Z-Fighting(闪烁)问题">3D渲染中远处物体Z-Fighting(闪烁)问题</span>
+            <span class="post-date" title="2021-11-28 22:39:00">2021/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/commandqueue_commandlist_commandallocator/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理">渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理</span>
+            <span class="post-date" title="2021-11-19 19:27:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_01/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程01-管理线程">C++并发编程01-管理线程</span>
+            <span class="post-date" title="2021-11-19 00:22:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_00/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程00-并发世界">C++并发编程00-并发世界</span>
+            <span class="post-date" title="2021-11-19 00:11:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%BD%AC%E6%88%98%E9%80%BC%E4%B9%8E%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="转战逼乎声明 :-)">转战逼乎声明 :-)</span>
+            <span class="post-date" title="2021-11-18 23:26:00">2021/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/why_lock_avoids_deadlock/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="为什么std::lock能避免死锁">为什么std::lock能避免死锁</span>
+            <span class="post-date" title="2021-09-15 22:35:00">2021/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/static_warning_in_cpp/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个C++的static_warning">实现一个C++的static_warning</span>
+            <span class="post-date" title="2021-09-01 23:35:00">2021/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/cross_compile_cunit_and_ctest_on_qnx/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="QNX交叉编译CUnit+CTest">QNX交叉编译CUnit+CTest</span>
+            <span class="post-date" title="2021-08-25 20:14:00">2021/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/auto_disk_copier/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="一个倾注灵魂的U盘小偷">一个倾注灵魂的U盘小偷</span>
+            <span class="post-date" title="2021-08-21 17:28:00">2021/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/speed_up_the_download_of_vscode_and_git/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="解决vscode和git国内下载速度太慢">解决vscode和git国内下载速度太慢</span>
+            <span class="post-date" title="2021-08-10 12:58:00">2021/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows_essentials_software_recommendations_for_developers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows开发机装机利器安利存档（持续更新）">Windows开发机装机利器安利存档（持续更新）</span>
+            <span class="post-date" title="2021-07-29 23:29:00">2021/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/action_executor/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="我撸了一个函数执行包装器后发现……">我撸了一个函数执行包装器后发现……</span>
+            <span class="post-date" title="2021-07-25 23:55:00">2021/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/head_only_singleton_implementation/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个head-only库中能用的singleton和静态成员变量模板">实现一个head-only库中能用的singleton和静态成员变量模板</span>
+            <span class="post-date" title="2021-07-23 21:57:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_relationship_of_cryengine_lumberyard_o3de/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="CryEngine、Lumberyard、O3DE的关系">CryEngine、Lumberyard、O3DE的关系</span>
+            <span class="post-date" title="2021-07-23 19:23:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_error_of_future_is_destructible/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录">未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录</span>
+            <span class="post-date" title="2021-07-21 23:04:00">2021/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/new_experience_of_drawing_with_drawio/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="drawio画图新体验">drawio画图新体验</span>
+            <span class="post-date" title="2021-07-19 11:30:00">2021/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/gitlab%E7%9A%84pipeline%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Gitlab的Pipeline执行机制">Gitlab的Pipeline执行机制</span>
+            <span class="post-date" title="2021-07-05 20:53:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Windows上安装使用repo">Windows上安装使用repo</span>
+            <span class="post-date" title="2021-07-05 19:18:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_framework_cpp_and_python/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器框架之C++使用Python脚本">游戏服务器框架之C++使用Python脚本</span>
+            <span class="post-date" title="2021-06-20 12:18:00">2021/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/database_of_kbe/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器数据库及kbEngine中的数据库">游戏服务器数据库及kbEngine中的数据库</span>
+            <span class="post-date" title="2021-06-10 22:10:00">2021/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/lumberyard_gridmate/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Lumberyard通讯组件GridMate浅析">Lumberyard通讯组件GridMate浅析</span>
+            <span class="post-date" title="2021-05-30 22:04:00">2021/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/vs_performance_profiler/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="使用Visual Studio性能探查器定位性能瓶颈">使用Visual Studio性能探查器定位性能瓶颈</span>
+            <span class="post-date" title="2021-05-23 22:25:00">2021/05/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/github_action/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="体验GitHub的CI构建工具Action">体验GitHub的CI构建工具Action</span>
+            <span class="post-date" title="2021-05-22 23:03:00">2021/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/format_msi/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="从msi安装包文件中获取属性数据实现安装包的重命名">从msi安装包文件中获取属性数据实现安装包的重命名</span>
+            <span class="post-date" title="2021-05-09 12:30:00">2021/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_history/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器发展历程">游戏服务器发展历程</span>
+            <span class="post-date" title="2021-04-25 23:51:00">2021/04/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/google_sitemap_cannot_fetch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Google站长平台设置Sitemap显示“无法获取”的问题">Google站长平台设置Sitemap显示“无法获取”的问题</span>
+            <span class="post-date" title="2021-04-10 00:39:00">2021/04/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/research_of_game_team/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="全功能游戏团队协作流程">全功能游戏团队协作流程</span>
+            <span class="post-date" title="2021-04-03 00:42:00">2021/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/about_my_drawing_in_the_blog/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="关于在博客中的画图">关于在博客中的画图</span>
+            <span class="post-date" title="2021-04-02 20:37:00">2021/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/smash/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</span>
+            <span class="post-date" title="2021-03-31 20:40:00">2021/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/technical_research_of_roblox/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Roblox技术调研总结">Roblox技术调研总结</span>
+            <span class="post-date" title="2021-03-28 22:48:00">2021/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/hlslcc_unreal_simple/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Unreal-HLSLCC概览">Unreal-HLSLCC概览</span>
+            <span class="post-date" title="2021-03-21 21:06:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/use_cmake_to_generate_constant_string/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="利用CMake生成代码中的常量字符串">利用CMake生成代码中的常量字符串</span>
+            <span class="post-date" title="2021-03-21 18:39:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9D%8E%E5%9D%B7%E7%9A%84%E7%BB%8F%E5%8E%86-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-net3-5/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="记录一次坎坷的经历——离线安装.net3.5">记录一次坎坷的经历——离线安装.net3.5</span>
+            <span class="post-date" title="2021-03-16 12:05:00">2021/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/comment_on_how_to_avoid_getting_into_involution_for_programmers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="评《程序员该怎么避免陷入内卷》">评《程序员该怎么避免陷入内卷》</span>
+            <span class="post-date" title="2021-03-08 22:19:00">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_mssc/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：MS-SC">Shader跨平台编译：MS-SC</span>
+            <span class="post-date" title="2021-02-17 22:40:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unity/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unity">Shader跨平台编译：Unity</span>
+            <span class="post-date" title="2021-02-17 20:59:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unreal/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unreal">Shader跨平台编译：Unreal</span>
+            <span class="post-date" title="2021-02-17 17:12:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译">Shader跨平台编译</span>
+            <span class="post-date" title="2021-02-16 18:58:00">2021/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/apache_server_donot_list_directories/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Apache服务器配置禁止列出目录">Apache服务器配置禁止列出目录</span>
+            <span class="post-date" title="2021-01-30 15:45:00">2021/01/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/imagewatch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="开发调试工具ImageWatch-查看内存中的图像">开发调试工具ImageWatch-查看内存中的图像</span>
+            <span class="post-date" title="2021-01-25 17:40:00">2021/01/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7%E6%A7%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E6%8E%A2%E8%AE%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="观察者模式与信号槽机制的探讨">观察者模式与信号槽机制的探讨</span>
+            <span class="post-date" title="2021-01-02 11:17:00">2021/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E7%9A%84settergetter_qt%E7%89%88/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现自动生成变量的Setter&amp;Getter(Qt版)">实现自动生成变量的Setter&amp;Getter(Qt版)</span>
+            <span class="post-date" title="2020-12-19 22:28:00">2020/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%9E%E5%BD%95/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows服务器博客搭建实录">Windows服务器博客搭建实录</span>
+            <span class="post-date" title="2020-12-13 14:30:00">2020/12/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/msvc%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%91%E5%B8%83%E5%8C%85%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="MSVC运行时发布包下载链接">MSVC运行时发布包下载链接</span>
+            <span class="post-date" title="2020-12-01 23:30:00">2020/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="动态链接库加载器">动态链接库加载器</span>
+            <span class="post-date" title="2020-11-28 17:00:00">2020/11/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏[快捷键(s)]">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-blog/kongdeyou/hair_simulation_and_rendering_2" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a>kongdeyou</a></span>
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="开发杂记">开发杂记</a> > 
+            
+            <a  data-rel="开发杂记&lt;---&gt;CV/CG">CV/CG</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Hair</a>
+            
+            <a class="color5">毛发渲染</a>
+            
+            <a class="color5">物理模拟</a>
+            
+            <a class="color4">数字人</a>
+            
+            <a class="color3">发丝</a>
+            
+            <a class="color3">TressFX</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 11:53:39'>2022-06-03 23:18</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:12.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%89%A9%E7%90%86%E6%A8%A1%E6%8B%9F%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-text">毛发物理模拟算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E4%B8%9D%E5%BB%BA%E6%A8%A1"><span class="toc-text">发丝建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E5%8A%9B%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">动力学计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E4%B8%8E%E5%85%A8%E5%B1%80%E5%BD%A2%E7%8A%B6%E7%BA%A6%E6%9D%9F"><span class="toc-text">重力与全局形状约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E9%9C%87%E5%8A%A8%E4%BC%A0%E6%92%AD"><span class="toc-text">速度震动传播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%BD%A2%E7%8A%B6%E7%BA%A6%E6%9D%9F"><span class="toc-text">局部形状约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E7%BA%A6%E6%9D%9F%EF%BC%88%E5%92%8C%E9%A3%8E%E5%9C%BA%E8%AE%A1%E7%AE%97%EF%BC%89"><span class="toc-text">长度约束（和风场计算）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E5%9C%BA%E8%AE%A1%E7%AE%97"><span class="toc-text">风场计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E5%8F%91%E4%B8%9D%E7%94%9F%E6%88%90%E4%BB%8E%E5%B1%9E%E5%8F%91%E4%B8%9D"><span class="toc-text">引导发丝生成从属发丝</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="毛发物理模拟算法分析"><a href="#毛发物理模拟算法分析" class="headerlink" title="毛发物理模拟算法分析"></a>毛发物理模拟算法分析</h1><p>本文仅在个人博客及个人知乎上采用”CC BY-NC-ND 4.0”(署名-不可商用-禁止演绎)协议发布，转载请注明个人博客的原文链接及作者信息，侵权必究。</p>
+<p>博客链接：<a target="_blank" rel="noopener" href="https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering_2/">https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering_2/</a></p>
+<p>知乎链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/527086980/">https://zhuanlan.zhihu.com/p/527086980/</a></p>
+<p>本文将主要分析TressFX毛发系统中物理模拟的动力学计算和风场计算，目录结构如下：</p>
+<p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%89%A9%E7%90%86%E6%A8%A1%E6%8B%9F%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-text">毛发物理模拟算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E4%B8%9D%E5%BB%BA%E6%A8%A1"><span class="toc-text">发丝建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E5%8A%9B%E5%AD%A6%E8%AE%A1%E7%AE%97"><span class="toc-text">动力学计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E4%B8%8E%E5%85%A8%E5%B1%80%E5%BD%A2%E7%8A%B6%E7%BA%A6%E6%9D%9F"><span class="toc-text">重力与全局形状约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E5%BA%A6%E9%9C%87%E5%8A%A8%E4%BC%A0%E6%92%AD"><span class="toc-text">速度震动传播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%BD%A2%E7%8A%B6%E7%BA%A6%E6%9D%9F"><span class="toc-text">局部形状约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E7%BA%A6%E6%9D%9F%EF%BC%88%E5%92%8C%E9%A3%8E%E5%9C%BA%E8%AE%A1%E7%AE%97%EF%BC%89"><span class="toc-text">长度约束（和风场计算）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E5%9C%BA%E8%AE%A1%E7%AE%97"><span class="toc-text">风场计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E5%AF%BC%E5%8F%91%E4%B8%9D%E7%94%9F%E6%88%90%E4%BB%8E%E5%B1%9E%E5%8F%91%E4%B8%9D"><span class="toc-text">引导发丝生成从属发丝</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-text">后记</span></a></li></ol></div></p>
+<h2 id="发丝建模"><a href="#发丝建模" class="headerlink" title="发丝建模"></a>发丝建模</h2><p><strong>建模</strong>：TressFX将每一根头发(hair)等效为一根发丝(strand)，一根发丝由一系列连续的发丝线段(segment)组成，每段的端点作为一个质点。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_01.png" alt="头发物理建模"></p>
+<p>通过模拟这些质点的运动，再连接这些质点，近似实现头发的物理运动模拟。为了减少头发的物理计算量，将发丝分为引导发丝(guide strand)和从属发丝(follow strand)，发丝的动力学模拟和风场模拟仅采用引导发丝来计算，由引导发丝通过偏移产生从属发丝的结果，而碰撞检测与矫正将对所有发丝都进行处理。</p>
+<p><strong>约束</strong>：TressFX针对头发的物理真实现象，对发丝的物理运动进行了如下约束，用以进行发丝的物理计算：</p>
+<ol>
+<li>发丝根部的两个质点与角色(actor)或头发附着体(hair-attached object)保持相对固定，后续质点受重力的作用(gravitational force)而自由落体；</li>
+<li>发丝本身有一定的弯曲形状(global shape constraints)需要保持；</li>
+<li>发丝在跟随角色或附着体运动时需要实现相应的质点运动策略(velocity shock propagation)，即牵连加速度对头发位置会产生影响；</li>
+<li>发丝中每个质点的位置都会受前后质点的影响(local shape constraints)，遵循弹簧质点模型；</li>
+<li>发丝在风场中会受风力(wind influence)的影响；</li>
+<li>发丝每一段的长度(length constriants)需要保持不变；</li>
+<li>发丝碰撞检测系统基于有符号距离场(SDF)。</li>
+</ol>
+<h2 id="动力学计算"><a href="#动力学计算" class="headerlink" title="动力学计算"></a>动力学计算</h2><p>头发的物理模拟过程完全使用compute shader进行计算，开始前先简单复习一下一会儿会使用的计算管线的一些概念。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Others_ThreadGroupIds.png" alt="一图看懂计算管线系统参数"></p>
+<p>在TressFX中，仅会使用<code>Dispatch(N, 1, 1)</code>和<code>[numthreads(THREAD_GROUP_SIZE, 1, 1)]</code>，其中THREAD_GROUP_SIZE为固定值64（既符合NVIDIA显卡基于SIMD32要求的必须是32的倍数，又满足AMD显卡基于wavefront要求的必须是64的倍数）。</p>
+<p>即TressFX使用的配置为：每Dispatch一次，有<code>(N*1*1)</code>个线程组，每个线程组内有<code>(THREAD_GROUP_SIZE*1*1)</code>个线程。</p>
+<p>Shader代码中，仅使用<code>SV_GroupIndex</code>、<code>SV_GroupID</code>和<code>SV_DispatchThreadID</code>，类似如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void IntegrationAndGlobalShapeConstraints(</span><br><span class="line">    uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID,</span><br><span class="line">    uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>SV_GroupIndex：当前线程在线程组内的唯一索引值。</li>
+<li>SV_GroupThreadID：当前线程在线程组内的唯一ID，由于始终使用<code>[numthreads(THREAD_GROUP_SIZE, 1, 1)]</code>，因此只有x分量有效，yz分量值始终为0，而x分量的值又即为GIndex的值，因此在TressFX的shader代码中不传该值了。</li>
+<li>SV_GroupID：当前线程所在的线程组在整个分发的线程组中的ID，由于始终使用<code>Dispatch(N, 1, 1)</code>，GId仅使用x分量，yz分量值始终为0。</li>
+<li>SV_DispatchThreadID：当前线程在整个分发的所有线程组中的ID,在所有分发的线程中唯一，为<code>uint3(SV_GroupID * [numthreads] + SV_GroupThreadID)</code>，同样仅x分量有效，TressFX的shader代码中虽然入参有它但未使用过该值。</li>
+</ul>
+<h3 id="重力与全局形状约束"><a href="#重力与全局形状约束" class="headerlink" title="重力与全局形状约束"></a>重力与全局形状约束</h3><p>针对场景中的每个头发，均需要1个pass来计算头发的重力和全局形状约束。红色箭头线是当前pass的输入，绿色箭头线是当前pass的输出，后文的图片中相同的颜色箭头线所表示的意义是一样的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_04.png" alt="重力与全局形状约束的Pass图"></p>
+<p>将<em>头发发丝的初始顶点数据和发丝的骨骼数据（来自于.tfx文件，vertex position, bone indices and bone weight，每根发丝由多个顶点组成，而每根发丝上的顶点都共用一套bone indices and bone weight，因为只有发根会和头部模型固连，头部模型骨骼的影响作用于发根的顶点，进而传递到发丝上其他的顶点上）</em>、<em>上一帧处理输出的顶点数据结果</em>输入该pass，进行重力与全局形状约束的处理后，输出<em>当前帧的头发发丝的顶点位置</em>、更新<em>上上帧和上帧的头发发丝的顶点位置</em>。</p>
+<p>在看具体的重力与全局形状约束算法之前，我们先看看传递给这个pass的constant buffer。下面的这个tressfxSimParameters会在重力与全局形状约束、速度震动传播、局部形状约束、长度约束和风场模拟、引导发丝生成从属发丝的pass中都会被使用（有且仅有这一个constant buffer）。这几个pass用到的参数各不相同，我将在使用到的时候具体介绍参数的意义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">// constants that change frame to frame</span><br><span class="line">[[vk::binding(13, 0)]] cbuffer tressfxSimParameters : register(b13, space0)</span><br><span class="line">&#123;</span><br><span class="line">    float4 g_Wind;</span><br><span class="line">    float4 g_Wind1;</span><br><span class="line">    float4 g_Wind2;</span><br><span class="line">    float4 g_Wind3;</span><br><span class="line"></span><br><span class="line">    float4 g_Shape;       // damping, local stiffness, global stiffness, global range.</span><br><span class="line">    float4 g_GravTimeTip; // gravity maginitude (assumed to be in negative y direction.)</span><br><span class="line">    int4   g_SimInts;     // length iterations, local iterations, collision flag.</span><br><span class="line">    int4   g_Counts;      // num strands per thread group, num follow hairs per guid hair, num verts per strand.</span><br><span class="line">    float4 g_VSP;         // VSP parmeters</span><br><span class="line"></span><br><span class="line">    float g_ResetPositions;</span><br><span class="line">    float g_ClampPositionDelta;</span><br><span class="line">    float g_pad1;</span><br><span class="line">    float g_pad2;</span><br><span class="line"></span><br><span class="line">    row_major float4x4 g_BoneSkinningMatrix[AMD_TRESSFX_MAX_NUM_BONES]; // #define AMD_TRESSFX_MAX_NUM_BONES 512</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#define g_NumOfStrandsPerThreadGroup      g_Counts.x</span><br><span class="line">#define g_NumFollowHairsPerGuideHair      g_Counts.y</span><br><span class="line">#define g_NumVerticesPerStrand            g_Counts.z // Shader中从未使用的变量，因为THREAD_GROUP_SIZE的值固定，且有g_NumOfStrandsPerThreadGroup，</span><br><span class="line">                                                     // 用(THREAD_GROUP_SIZE / g_NumOfStrandsPerThreadGroup)就能计算出每根发丝上的顶点数</span><br><span class="line"></span><br><span class="line">#define g_NumLocalShapeMatchingIterations g_SimInts.y</span><br><span class="line"></span><br><span class="line">#define g_GravityMagnitude                g_GravTimeTip.x</span><br><span class="line">#define g_TimeStep                        g_GravTimeTip.y</span><br><span class="line">#define g_TipSeparationFactor             g_GravTimeTip.z</span><br></pre></td></tr></table></figure>
+
+<p>在C++中对应的结构体为TressFXSimulationParams：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">TressFXSimulationParams</span></span><br><span class="line">&#123;</span><br><span class="line">    AMD::float4 m_Wind;</span><br><span class="line">    AMD::float4 m_Wind1;</span><br><span class="line">    AMD::float4 m_Wind2;</span><br><span class="line">    AMD::float4 m_Wind3;</span><br><span class="line"></span><br><span class="line">    AMD::float4 m_Shape;</span><br><span class="line">    <span class="comment">// float m_Damping;                           // damping</span></span><br><span class="line">    <span class="comment">// float m_StiffnessForLocalShapeMatching;    // local stiffness</span></span><br><span class="line">    <span class="comment">// float m_StiffnessForGlobalShapeMatching;   // global stiffness</span></span><br><span class="line">    <span class="comment">// float m_GlobalShapeMatchingEffectiveRange; // global range</span></span><br><span class="line"></span><br><span class="line">    AMD::float4 m_GravTimeTip;</span><br><span class="line">    <span class="comment">// float m_GravityMagnitude; // gravity</span></span><br><span class="line">    <span class="comment">// float m_TimeStep;         // time step size</span></span><br><span class="line">    <span class="comment">// float m_TipSeparationFactor;</span></span><br><span class="line">    <span class="comment">// float m_velocityShockPropogation;</span></span><br><span class="line"></span><br><span class="line">    AMD::sint4 m_SimInts; <span class="comment">// 4th component unused.</span></span><br><span class="line">    <span class="comment">// int m_NumLengthConstraintIterations;</span></span><br><span class="line">    <span class="comment">// int m_NumLocalShapeMatchingIterations;</span></span><br><span class="line">    <span class="comment">// int m_bCollision;</span></span><br><span class="line">    <span class="comment">// int m_CPULocalIterations;</span></span><br><span class="line"></span><br><span class="line">    AMD::sint4 m_Counts; <span class="comment">// 4th component unused.</span></span><br><span class="line">    <span class="comment">// int m_NumOfStrandsPerThreadGroup;</span></span><br><span class="line">    <span class="comment">// int m_NumFollowHairsPerGuideHair;</span></span><br><span class="line">    <span class="comment">// int m_NumVerticesPerStrand; // should be 2^n (n is integer and greater than 2) and less than</span></span><br><span class="line">                                   <span class="comment">// or equal to TRESSFX_SIM_THREAD_GROUP_SIZE. i.e. 8, 16, 32 or 64</span></span><br><span class="line"></span><br><span class="line">    AMD::float4 m_VSP;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> g_ResetPositions;</span><br><span class="line">    <span class="type">float</span> g_ClampPositionDelta;</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> g_pad1;</span><br><span class="line">    <span class="type">float</span> g_pad2;</span><br><span class="line"></span><br><span class="line">    AMD::float4x4 m_BoneSkinningMatrix[AMD_TRESSFX_MAX_NUM_BONES]; <span class="comment">// #define AMD_TRESSFX_MAX_NUM_BONES 512</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>再来看一下这几个buffer，它们将跟随我们后面几乎所有的passes（可以对照RenderPass总览图），TressFX将用它们存储所有的发丝顶点数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// UAVs</span><br><span class="line">[[vk::binding(0, 1)]] RWStructuredBuffer&lt;float4&gt; g_HairVertexPositions         : register(u0, space1);  // 对应RenderPass图中的资源&lt;08&gt;</span><br><span class="line">[[vk::binding(1, 1)]] RWStructuredBuffer&lt;float4&gt; g_HairVertexPositionsPrev     : register(u1, space1);  // 对应RenderPass图中的资源&lt;09&gt;</span><br><span class="line">[[vk::binding(2, 1)]] RWStructuredBuffer&lt;float4&gt; g_HairVertexPositionsPrevPrev : register(u2, space1);  // 对应RenderPass图中的资源&lt;10&gt;</span><br><span class="line">[[vk::binding(3, 1)]] RWStructuredBuffer&lt;float4&gt; g_HairVertexTangents          : register(u3, space1);  // 对应RenderPass图中的资源&lt;13&gt;</span><br><span class="line">// SRVs</span><br><span class="line">[[vk::binding(4, 0)]] StructuredBuffer&lt;float4&gt; g_InitialHairPositions          : register(t4, space0);  // 对应RenderPass图中的资源&lt;06&gt;</span><br><span class="line">[[vk::binding(12, 0)]] StructuredBuffer&lt;BoneSkinningData&gt; g_BoneSkinningData   : register(t12, space0); // 对应RenderPass图中的资源&lt;07&gt;</span><br></pre></td></tr></table></figure>
+
+<p>下面开始正式进入这一节的正题，TressFX的重力计算使用带阻尼的Verlet自由落体运动公式：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_02.png" alt="带阻尼的Verlet自由落体运动公式"></p>
+<p>其中：DampingCoeff为阻尼系数（取值范围[0, 1]，默认值0.035），Gravity为重力加速度（方向锁定为-y轴，默认值9.8），TimeStep为时间步长（即一帧的时间间隔，单位为秒，60帧时步长约是0.01666667），在公式中是积分微元；NewPos对应的是当前计算帧的位置，CurPos是上一帧的位置，OldPos是上上帧的位置。</p>
+<p>根据实际物理现象，TressFX限制发丝根部的两个质点与附着体保持相对固定，即发丝根部的两个质点不计算重力。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_03.png" alt="发丝根部的两个质点"></p>
+<p>TressFX的全局形状约束约束的是发丝根部之后的若干个质点，由于头发有一定的刚度，它们需要保持一个基本的弯曲形状，形成类似定型的效果。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_04.png" alt="全局形状约束与范围"></p>
+<p>该约束在量化实现上为：在计算重力给质点带来的影响后，补偿性地加上一个抵抗变化的位置改变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Formula_03.jpg" alt="全局形状约束公式"></p>
+<p>其中，GlobalConstraintStiffiness是全局形状约束的刚度值（取值范围[0, 1]，默认值0.01），这个值越大，刚度越高，抵抗变化的补偿值就越大，于是表现上就是发丝越不容易弯曲，越靠近InitialPos；InitialPos是发丝建模时的初始位置，CurrentPos是经过前面的重力计算后得出的位置，NewPos是经过全局形状约束后的输出位置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_05.png" alt="InitialPos和CurrentPos"></p>
+<p>由于全局形状约束仅作用于发丝根部之后的若干个质点，TressFX引入一个系数GlobalConstraintRange来量化“若干”的范围（该系数取值[0, 1]，默认值0.3），用来表示需要全局形状约束的质点个数的占比，对应于“全局形状约束与范围”图(上上图)中的红色方框部分的质点。</p>
+<p>综上，重力与全局形状约束的pass将使用以下的参数：</p>
+<ul>
+<li>float4 g_Shape<br>g_Shape.x: DampingCoeff<br>g_Shape.z: GlobalConstraintStiffness<br>g_Shape.w: GlobalConstraintRange</li>
+<li>float4 g_GravTimeTip<br>g_GravTimeTip.x -&gt; g_GravityMagnitude: Gravity<br>g_GravTimeTip.y -&gt; g_TimeStep: TimeStep</li>
+<li>int4 g_Counts<br>g_Counts.x -&gt; g_NumOfStrandsPerThreadGroup: num strands per thread group<br>g_Counts.y -&gt; g_NumFollowHairsPerGuideHair: num follow hairs per guid hair</li>
+<li>float g_ResetPositions：如果非0.0f将会重置currentPos和oldPos为initialPos<br>（TressFX用的float，使用int或许好看些，盲猜TressFX原先想的是重置为该值，后来重置为initialPos后，没改掉这个值的类型）</li>
+<li>float4x4 g_BoneSkinningMatrix数组：骨骼反向绑定矩阵</li>
+</ul>
+<p>重力与全局形状约束的着色器入口点是IntegrationAndGlobalShapeConstraints，它针对发丝的质点（顶点）并行计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">//  IntegrationAndGlobalShapeConstraints</span><br><span class="line">//</span><br><span class="line">//  Compute shader to simulate the gravitational force with integration and to maintain the</span><br><span class="line">//  global shape constraints.</span><br><span class="line">//</span><br><span class="line">// One thread computes one vertex.</span><br><span class="line">//</span><br><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void IntegrationAndGlobalShapeConstraints(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    uint globalStrandIndex, localStrandIndex, globalVertexIndex, localVertexIndex; // 作为CalcIndicesInVertexLevelMaster的输出</span><br><span class="line">    uint numVerticesInTheStrand, indexForSharedMem, strandType;                    // 作为CalcIndicesInVertexLevelMaster的输出</span><br><span class="line">    CalcIndicesInVertexLevelMaster(GIndex, GId.x,</span><br><span class="line">        globalStrandIndex, localStrandIndex,</span><br><span class="line">        globalVertexIndex, localVertexIndex,</span><br><span class="line">        numVerticesInTheStrand, indexForSharedMem, strandType);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上代码中的CalcIndicesInVertexLevelMaster函数计算每一根发丝（仅针对guide hair，之后的物理计算pass直到UpdateFollowHairVertices前，都是仅针对guide hair做计算，UpdateFollowHairVertices会根据guide hair通过偏移来生成follow hair）的每一个顶点的索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">void CalcIndicesInVertexLevelMaster(</span><br><span class="line">    uint local_id, // 当前线程在线程组内的索引</span><br><span class="line">    uint group_id, // 当前线程所在的线程组在整个分发的线程组中的索引</span><br><span class="line">    inout uint globalStrandIndex, inout uint localStrandIndex,</span><br><span class="line">    inout uint globalVertexIndex, inout uint localVertexIndex,</span><br><span class="line">    inout uint numVerticesInTheStrand, inout uint indexForSharedMem, inout uint strandType)</span><br><span class="line">&#123;</span><br><span class="line">    // indexForSharedMem意义：以[当前线程在线程组内的索引值]作为[线程组内共享内存的索引]</span><br><span class="line">    // 该索引所指向的共享内存的位置为当前线程所持有的内存，即当前的发丝顶点所持有的内存</span><br><span class="line">    indexForSharedMem = local_id;</span><br><span class="line"></span><br><span class="line">    // numVerticesInTheStrand意义：一根发丝的顶点数</span><br><span class="line">    // 由于限制了THREAD_GROUP_SIZE为64，所以一根发丝最多只能有64个顶点</span><br><span class="line">    // 为了线程个数凑整对齐，一根发丝上的顶点数限制取值为2的幂次方，即有效值为2、4、8、16、32、64</span><br><span class="line">    numVerticesInTheStrand = (THREAD_GROUP_SIZE / g_NumOfStrandsPerThreadGroup); // g_NumOfStrandsPerThreadGroup即g_Counts.x，参见上文本pass使用的参数</span><br><span class="line"></span><br><span class="line">    // localStrandIndex意义：当前顶点所属的局部发丝索引，局部范围为线程组内</span><br><span class="line">    // 假设：一根发丝有16个顶点，那么传下来的g_NumOfStrandsPerThreadGroup即为4，前一行代码算出一根发丝上的顶点数：numVerticesInTheStrand=64/4=16</span><br><span class="line">    // 那么：当前线程组内的每一个线程（代表一个顶点）所属的局部头发索引值为localStrandIndex</span><br><span class="line">    //                   +---------------------------------------------------------+</span><br><span class="line">    // localStrandIndex: |00|01|02|03|00|01|02|03|00|01|02|03|00|01|02|03|...|02|03|</span><br><span class="line">    //                   |---------------------------------------------------------|</span><br><span class="line">    // local_id:         |00|01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|...|62|63|</span><br><span class="line">    //                   +---------------------------------------------------------+</span><br><span class="line">    // 一根头发上的16个顶点不是连续的线程在处理，该线程组内的第一根头发上的顶点分别由第00号、04号、08号、12号、……、60号线程在处理</span><br><span class="line">    localStrandIndex = local_id % g_NumOfStrandsPerThreadGroup;</span><br><span class="line"></span><br><span class="line">    // globalStrandIndex意义：发丝全局唯一索引 = (线程组索引 * 每个线程组的发丝数量 + 当前发丝在线程组内的局部索引) * 跳过从属发丝</span><br><span class="line">    globalStrandIndex = group_id * g_NumOfStrandsPerThreadGroup + localStrandIndex;</span><br><span class="line">    globalStrandIndex *= (g_NumFollowHairsPerGuideHair+1);</span><br><span class="line"></span><br><span class="line">    // localVertexIndex意义：局部顶点索引，按上表（localStrandIndex与local_id对照表）可推出</span><br><span class="line">    localVertexIndex = (local_id - localStrandIndex) / g_NumOfStrandsPerThreadGroup;</span><br><span class="line"></span><br><span class="line">    // globalVertexIndex意义：全局顶点索引，类似globalStrandIndex可推出</span><br><span class="line">    globalVertexIndex = globalStrandIndex * numVerticesInTheStrand + localVertexIndex;</span><br><span class="line"></span><br><span class="line">    // GetStrandType始终返回0，目前没有使用strandType</span><br><span class="line">    // 盲猜TressFX原先想在每根头发上加上头发类型，根据类型可以选择不同的头发参数进行计算，但是目前tressfxSimParameters只会传一份头发参数进来</span><br><span class="line">    // 这个功能估计是想实现出一个hair object可以有多种配置参数，实现出刘海部分和头发主体部分分别使用不同的参数，当然这样也会带来新的问题，</span><br><span class="line">    // 比如Editor上不好设计出简洁的UI给技美调参，增大使用难度，又如在Editor上选定了一个hair object后（一般作为某个entity的一个component），</span><br><span class="line">    // 需要针对不同的配置参数影响到的发丝给出一个可视化的呈现，这才能让技美感知到它正在调整的参数对应的发丝是哪些。另外，如果要给定StrandType</span><br><span class="line">    // 还需要美术在制作发丝模型时还需要另外给出发丝的类型，TressFX还要实现出相应的工具链上的解决方案。</span><br><span class="line">    strandType = GetStrandType(globalStrandIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在CalcIndicesInVertexLevelMaster中出参有一个indexForSharedMem，用它来访问的共享内存如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 线程组内共享变量，整个线程组内的所有线程共享</span><br><span class="line">groupshared float4 sharedPos[THREAD_GROUP_SIZE];</span><br><span class="line">groupshared float4 sharedTangent[THREAD_GROUP_SIZE];</span><br><span class="line">groupshared float  sharedLength[THREAD_GROUP_SIZE];</span><br></pre></td></tr></table></figure>
+
+<p>接下来进入正题，开始重力的积分计算。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&#123;   // IntegrationAndGlobalShapeConstraints</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    float4 initialPos = g_InitialHairPositions[globalVertexIndex];</span><br><span class="line">    // Apply bone skinning to initial position</span><br><span class="line">    float4 bone_quat;</span><br><span class="line">    BoneSkinningData skinningData = g_BoneSkinningData[globalStrandIndex]; // g_BoneSkinningData数据存储了所有发丝的骨骼蒙皮数据</span><br><span class="line">    initialPos.xyz = ApplyVertexBoneSkinning(initialPos.xyz, skinningData, bone_quat);</span><br><span class="line">    // g_BoneSkinningData是对应于每一根发丝的，包括guide hair和follow hair</span><br><span class="line">    // 由于我们的follow hair实际上不需要这些骨骼相关的数据，它们是在UpdateFollowHairVertices中直接偏移生成的，因此follow hair位置上的BoneSkinningData全为0（可见下方图）</span><br><span class="line">    // 事实上，这里可以只把guide hair使用的骨骼相关的数据传下来，而不需要传follow hair的，这样可以节省一些带宽，然后用globalStrandIndex/(g_NumFollowHairsPerGuideHair+1)替换globalStrandIndex来得到索引</span><br><span class="line">    // ApplyVertexBoneSkinning函数，骨骼蒙皮相关的内容，略，详见：https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXSimulation.hlsl#L549-L571</span><br><span class="line">    // === 到此，我们准备好了：InitialPos ===</span><br><span class="line"></span><br><span class="line">    // position when this step starts. In other words, a position from the last step.</span><br><span class="line">    float4 currentPos = sharedPos[indexForSharedMem] = g_HairVertexPositions[globalVertexIndex]; // currentPos来自于前一帧的数据</span><br><span class="line">    // === 到此，我们准备好了：InitialPos、CurrentPos ===</span><br><span class="line"></span><br><span class="line">    GroupMemoryBarrierWithGroupSync(); // 由于我们对sharedPos共享区内的变量有写入操作，这里同步等待整个线程组内的线程都走到该语句后，才继续往下执行</span><br><span class="line"></span><br><span class="line">    float4 oldPos;</span><br><span class="line">    oldPos = g_HairVertexPositionsPrev[globalVertexIndex]; // oldPos来自于前一帧中保存的再前一帧的数据</span><br><span class="line">    // === 到此，我们准备好了：InitialPos、CurrentPos、OldPos ===</span><br><span class="line"></span><br><span class="line">    // 获取阻尼系数，StrandType尚未使用，GetDamping始终返回g_Shape.x</span><br><span class="line">    float dampingCoeff = GetDamping(strandType);</span><br><span class="line"></span><br><span class="line">    // reset if we got teleported</span><br><span class="line">    if (g_ResetPositions != 0.0f)</span><br><span class="line">    &#123;</span><br><span class="line">        currentPos = initialPos;</span><br><span class="line">        oldPos = initialPos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 发丝根部的两个质点不移动，currentPos的w分量为0.0或1.0，发丝根部的两个质点该分量为0.0</span><br><span class="line">    // 该值通过从g_InitialHairPositions给定的顶点的position.w给定，在C++上传递过来时就配置好了</span><br><span class="line">    // bool IsMovable(float4 particle)</span><br><span class="line">    // &#123;</span><br><span class="line">    //     if ( particle.w &gt; 0 )</span><br><span class="line">    //         return true;</span><br><span class="line">    //     return false;</span><br><span class="line">    // &#125;</span><br><span class="line">    // 这里TressFX的实现，其实不需要专门做个w分量去存它，我们前面已经在GPU侧算出来是否是发丝根部的两个质点了：</span><br><span class="line">    // if (localVertexIndex == 0 || localVertexIndex == 1) &#123; 发丝根部 &#125; else &#123; 非发丝根部 &#125;</span><br><span class="line">    // Integrate根据带阻尼的Verlet自由落体运动公式计算出新位置</span><br><span class="line">    if ( IsMovable(currentPos) )</span><br><span class="line">        sharedPos[indexForSharedMem].xyz = Integrate(currentPos.xyz, oldPos.xyz, initialPos.xyz, dampingCoeff);</span><br><span class="line">    else</span><br><span class="line">        sharedPos[indexForSharedMem] = initialPos;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Others_BoneSkinningData.jpg" alt="从RenderDoc抓帧数据中也能看出，follow hair不需要bone data数据"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 重力积分，即前面给出的：带阻尼的Verlet自由落体运动公式</span><br><span class="line">float3 Integrate(float3 curPosition, float3 oldPosition, float3 initialPos, float dampingCoeff = 1.0f)</span><br><span class="line">&#123;</span><br><span class="line">    float3 force = g_GravityMagnitude * float3(0, -1.0f, 0);</span><br><span class="line">    float decay = exp(-dampingCoeff * g_TimeStep * 60.0f);</span><br><span class="line">    return curPosition + decay * (curPosition - oldPosition) + force * g_TimeStep * g_TimeStep;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来是全局形状约束的实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;   // IntegrationAndGlobalShapeConstraints</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    // Global Shape Constraints</span><br><span class="line">    float stiffnessForGlobalShapeMatching = GetGlobalStiffness(strandType); // 全局形状约束的刚度值，g_Shape.z</span><br><span class="line">    float globalShapeMatchingEffectiveRange = GetGlobalRange(strandType);   // 全局形状约束的影响范围，g_Shape.w</span><br><span class="line"></span><br><span class="line">    if ( stiffnessForGlobalShapeMatching &gt; 0 &amp;&amp; globalShapeMatchingEffectiveRange )</span><br><span class="line">    &#123;</span><br><span class="line">        // 这句可以用它替换：if (localVertexIndex != 0 &amp;&amp; localVertexIndex != 1)，这样就可以不使用position的w分量去存一个是否是发丝根的数据</span><br><span class="line">        if ( IsMovable(sharedPos[indexForSharedMem]) )</span><br><span class="line">        &#123;</span><br><span class="line">            // 判断localVertexIndex是否在影响范围(Range*numVerticesInTheStrand)内，即Range是个[0, 1]的比例值</span><br><span class="line">            if ( (float)localVertexIndex &lt; globalShapeMatchingEffectiveRange * (float)numVerticesInTheStrand )</span><br><span class="line">            &#123;</span><br><span class="line">                float factor = stiffnessForGlobalShapeMatching;</span><br><span class="line">                float3 del = factor * (initialPos - sharedPos[indexForSharedMem]).xyz;</span><br><span class="line">                sharedPos[indexForSharedMem].xyz += del; // 对应前面给出的全局形状约束补偿公式，CurrentPos位置加上一个到InitialPos的补偿值</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 更新顶点数据，包括上一帧和上上帧的数据</span><br><span class="line">    UpdateFinalVertexPositions(currentPos, sharedPos[indexForSharedMem], globalVertexIndex, localVertexIndex, numVerticesInTheStrand);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void UpdateFinalVertexPositions(float4 oldPosition, float4 newPosition, int globalVertexIndex, int localVertexIndex, int numVerticesInTheStrand)</span><br><span class="line">&#123;</span><br><span class="line">    g_HairVertexPositionsPrevPrev[globalVertexIndex] = g_HairVertexPositionsPrev[globalVertexIndex];</span><br><span class="line">    g_HairVertexPositionsPrev[globalVertexIndex] = oldPosition;</span><br><span class="line">    g_HairVertexPositions[globalVertexIndex] = newPosition;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，TressFX将数据刷到了g_HairVertexPositions、g_HairVertexPositionsPrev、g_HairVertexPositionsPrevPrev上，这些数据又会作为后续pass的输入数据。</p>
+<h3 id="速度震动传播"><a href="#速度震动传播" class="headerlink" title="速度震动传播"></a>速度震动传播</h3><p>速度震动传播（直接翻译自TressFX的叫法：propagate velocity shock (VSP)）的主要描述是，当头发附着体有一个加速度的改变时，会有牵引加速度，因此会带来力的作用，头发即会因此而产生飘动。比如长头发的玩家角色突然往前加速跑动，头发会因此而被扬起，该玩家在抖头，头发也会因此而抖动。头发附着体的速度改变（震动）会从头皮传播到头发上。该过程针对每个头发模型需要2个pass来进行计算。</p>
+<p>第一个pass用来计算头发附着体的变化量与瞬时加速度，由于发丝根部的两个顶点默认不可与角色相对移动，因此正好可用来计算整根发丝的整体变换，因而该pass仅需要针对每根guide hair发丝进行处理。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_05.png" alt="VSP的Pass图1"></p>
+<p>第二个pass用来将效果作用到每根头发的每个顶点上。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_06.png" alt="VSP的Pass图2"></p>
+<p>第一个pass将计算出的整体变换数据存储到g_StrandLevelData中，供第二个pass中使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct StrandLevelData</span><br><span class="line">&#123;</span><br><span class="line">    // Quat = Quaternion</span><br><span class="line">    float4 skinningQuat;   // 骨骼变换旋转量</span><br><span class="line">    float4 vspQuat;        // 头发附着体的旋转变化量</span><br><span class="line">    float4 vspTranslation; // 头发附着体的平移变化量，其中w分量用来存储加速度影响因子</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">[[vk::binding(4, 1)]] RWStructuredBuffer&lt;StrandLevelData&gt; g_StrandLevelData : register(u4, space1);</span><br></pre></td></tr></table></figure>
+
+<p>我们先来看第一个pass，shader的入口点是CalculateStrandLevelData。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">//  Calculate Strand Level Data</span><br><span class="line">//</span><br><span class="line">//  Propagate velocity shock resulted by attached based mesh</span><br><span class="line">//</span><br><span class="line">// One thread computes one strand.</span><br><span class="line">//</span><br><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void CalculateStrandLevelData(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    uint local_id, group_id, globalStrandIndex, numVerticesInTheStrand, globalRootVertexIndex, strandType;</span><br><span class="line">    CalcIndicesInStrandLevelMaster(GIndex, GId.x, globalStrandIndex, numVerticesInTheStrand, globalRootVertexIndex, strandType);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前面提到，该pass仅需要针对每根guide hair发丝进行处理，因此此处调用的是CalcIndicesIn<strong>Strand</strong>LevelMaster（前一小节中，我们研究过了针对每根发丝上每个顶点计算索引的CalcIndicesIn<strong>Vertex</strong>LevelMaster函数）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">void CalcIndicesInStrandLevelMaster(uint local_id, uint group_id,</span><br><span class="line">    inout uint globalStrandIndex, inout uint numVerticesInTheStrand, inout uint globalRootVertexIndex, inout uint strandType)</span><br><span class="line">&#123;</span><br><span class="line">    // 发丝全局唯一索引，同CalcIndicesInVertexLevelMaster中的计算方法</span><br><span class="line">    globalStrandIndex = THREAD_GROUP_SIZE * group_id + local_id;</span><br><span class="line">    globalStrandIndex *= (g_NumFollowHairsPerGuideHair+1);</span><br><span class="line"></span><br><span class="line">    // 每根发丝上的顶点数，同CalcIndicesInVertexLevelMaster中的计算方法</span><br><span class="line">    numVerticesInTheStrand = (THREAD_GROUP_SIZE / g_NumOfStrandsPerThreadGroup);</span><br><span class="line"></span><br><span class="line">    // 得到当前的发丝最根部处的顶点的全局唯一索引</span><br><span class="line">    // 注意，我们在CalcIndicesInVertexLevelMaster函数中曾提到过，一根发丝上的顶点的处理线程不是连续的（见上文CalcIndicesInVertexLevelMaster函数中的注释），</span><br><span class="line">    // 这里千万不要搞混了，只是处理线程（的索引）是不连续的，但是同一根发丝上的顶点数据在存储的GPU内存中是连续的！</span><br><span class="line">    // 那么g_HairVertexPositions[globalRootVertexIndex]是当前发丝根部的第一个顶点位置数据，</span><br><span class="line">    // 而g_HairVertexPositions[globalRootVertexIndex+1]是当前发丝根部的第二个顶点位置数据。</span><br><span class="line">    globalRootVertexIndex = globalStrandIndex * numVerticesInTheStrand;</span><br><span class="line"></span><br><span class="line">    // 未使用，始终返回0</span><br><span class="line">    strandType = GetStrandType(globalStrandIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来要计算出头发附着体的整体变换与瞬时加速度。</p>
+<p>整体变换如下图所示，假设上一帧角色在t1时刻的位置，当前帧变换到了t2时刻的位置。针对图中所标示的发丝，发丝根部与角色头皮相连接处的两个顶点位置始终与角色保持相对固定，因此使发丝根部第一个顶点指向第二个顶点的方向构建向量，那么，t1时刻该向量为u，t2时刻该向量为v。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Formula_01.jpg" alt="整体变换"></p>
+<p>由此：发丝根部顶点的位移为平移变化量(vspTranslation)，向量u到向量v的改变量为旋转变化量(vspQuaternion)，旋转变化量可以用一个四元数来记录。</p>
+<p>有了前两帧和当前帧的平移变化量，我们可以计算出一个瞬时加速度。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Formula_02.jpg" alt="瞬时加速度公式"></p>
+<p>TimeStep在重力计算时也出现过，帧间间隔的时间足够小，该公式可以等效为瞬时加速度的计算公式。</p>
+<p>接下来，来看一看TressFX中的shader代码实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&#123;   // CalculateStrandLevelData</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    float4 pos_old_old[2]; // previous previous positions for vertex 0 (root) and vertex 1.</span><br><span class="line">    float4 pos_old[2]; // previous positions for vertex 0 (root) and vertex 1.</span><br><span class="line">    float4 pos_new[2]; // current positions for vertex 0 (root) and vertex 1.</span><br><span class="line"></span><br><span class="line">    pos_old_old[0] = g_HairVertexPositionsPrevPrev[globalRootVertexIndex];</span><br><span class="line">    pos_old_old[1] = g_HairVertexPositionsPrevPrev[globalRootVertexIndex + 1];</span><br><span class="line"></span><br><span class="line">    pos_old[0] = g_HairVertexPositionsPrev[globalRootVertexIndex];</span><br><span class="line">    pos_old[1] = g_HairVertexPositionsPrev[globalRootVertexIndex + 1];</span><br><span class="line"></span><br><span class="line">    pos_new[0] = g_HairVertexPositions[globalRootVertexIndex];</span><br><span class="line">    pos_new[1] = g_HairVertexPositions[globalRootVertexIndex + 1];</span><br><span class="line"></span><br><span class="line">    float3 u = normalize(pos_old[1].xyz - pos_old[0].xyz); // t1时刻（上一帧）时的u向量</span><br><span class="line">    float3 v = normalize(pos_new[1].xyz - pos_new[0].xyz); // t2时刻（当前帧）时的v向量</span><br><span class="line"></span><br><span class="line">    // Compute rotation and translation which transform pos_old to pos_new.</span><br><span class="line">    // Since the first two vertices are immovable, we can assume that there is no scaling during tranform.</span><br><span class="line">    float4 rot = QuatFromTwoUnitVectors(u, v);                                    // 根据u&amp;v向量算出旋转变化量</span><br><span class="line">    float3 trans = pos_new[0].xyz - MultQuaternionAndVector(rot, pos_old[0].xyz); // 因为有旋转的缘故，先把上一帧顶点的位置带上旋转的影响，再和当前帧顶点的位置计算出一个平移变化量</span><br><span class="line"></span><br><span class="line">    float vspCoeff = GetVelocityShockPropogation();    // TressFX的注释直译叫速度传播系数，或称“加速度影响因子”更合适，默认值从g_VSP.x中取得，该值从CPU侧送下来</span><br><span class="line">    float vspAccelThreshold  = GetVSPAccelThreshold(); // 加速度阈值，从g_VSP.y中取得，该值从CPU侧送下来</span><br><span class="line"></span><br><span class="line">    // Increate the VSP coefficient by checking pseudo-acceleration to handle over-stretching when the character moves very fast</span><br><span class="line">    float accel = length(pos_new[1] - 2.0 * pos_old[1] + pos_old_old[1]); // 应用瞬时加速度公式算出瞬时加速度</span><br><span class="line"></span><br><span class="line">    // 这里，TressFX限制当计算出的加速度过大，超过了给定的加速度阈值后，设置加速度影响因子为1.0f，即完全不影响（不计算头发的加速度影响）</span><br><span class="line">    // 我认为，这里这么设计的考虑是，假设场景中有一个传送的机关，玩家通过该机关会被传送到地图的另外一个位置上，此时会有一个非常大的位置变化，</span><br><span class="line">    // 由以上公式算出来的加速度会非常大，这会导致毛发系统此时的计算结果不可信，限制为1.0f用来规避这样的场景。</span><br><span class="line">    if (accel &gt; vspAccelThreshold) // expose this value?</span><br><span class="line">        vspCoeff = 1.0f;</span><br><span class="line"></span><br><span class="line">    // 此处的加速度和加速度影响因子也能算得上是一个小的效果优化突破口吧，当前TressFX的实现里，是一个要么1.0f，要么技美调参传下</span><br><span class="line">    // 的GetVelocityShockPropogation()给定值，我们在此处是能够细化加速度所产生的影响，进而动态调整加速度影响因子值的。</span><br><span class="line">    // 在TressFX官方给出的一篇文章里，还加上了一个低阈值：</span><br><span class="line">    // if (accel &lt; vspAccelThresholdMin) &#123; vspCoeff = 0.9f; &#125;</span><br><span class="line">    // 这是具体的项目场景限制了技美能调整的vspCoeff取值在0.0f到0.9f之间，当加速度过小时，即角色的运动状态是在匀速或者速度变化很小地移动，那么</span><br><span class="line">    // 头发不应该有过于明显的飘起效果，此时将该值设置为一个较大值，让头发的飘起效果不明显些。这个具体的判断条件之类就可以根据具体的项目需求自定义了。</span><br><span class="line"></span><br><span class="line">    // 写到g_StrandLevelData中供下一个pass用</span><br><span class="line">    g_StrandLevelData[globalStrandIndex].vspQuat = rot;</span><br><span class="line">    g_StrandLevelData[globalStrandIndex].vspTranslation = float4(trans, vspCoeff);</span><br><span class="line"></span><br><span class="line">    // 以下部分是骨骼变换带来的旋转量，也计算出来存在g_StrandLevelData中</span><br><span class="line"></span><br><span class="line">    // skinning</span><br><span class="line"></span><br><span class="line">    // Copy data into shared memory</span><br><span class="line">    float4 initialPos = g_InitialHairPositions[globalRootVertexIndex]; // rest position</span><br><span class="line"></span><br><span class="line">    // Apply bone skinning to initial position</span><br><span class="line">    BoneSkinningData skinningData = g_BoneSkinningData[globalStrandIndex];</span><br><span class="line"></span><br><span class="line">    float4 bone_quat;</span><br><span class="line">    initialPos.xyz = ApplyVertexBoneSkinning(initialPos.xyz, skinningData, bone_quat);</span><br><span class="line"></span><br><span class="line">    g_StrandLevelData[globalStrandIndex].skinningQuat = bone_quat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到此，我们也能知道该pass需要使用到的constant buffer中的参数了。</p>
+<ul>
+<li>float4 g_VSP<br>g_VSP.x: 速度传播系数&#x2F;加速度影响因子<br>g_VSP.y: 加速度阈值</li>
+<li>int4 g_Counts<br>g_Counts.x -&gt; g_NumOfStrandsPerThreadGroup: num strands per thread group<br>g_Counts.y -&gt; g_NumFollowHairsPerGuideHair: num follow hairs per guid hair</li>
+<li>float4x4 g_BoneSkinningMatrix数组：骨骼反向绑定矩阵</li>
+</ul>
+<p>其中，加速度影响因子的值TressFX默认设置为0.8f。在当前pass的shader的最后，它被一同存进了<code>g_StrandLevelData[globalStrandIndex].vspTranslation.w</code>，在下一个pass中，我们能看到，它的值越大发丝就越不容易飘起来。</p>
+<p>第二个pass将头发附着体的变换带来的影响作用到每根头发的每个顶点上，该pass的shader入口点是VelocityShockPropagation。这个pass除了在CalcIndicesInVertexLevelMaster时用到了g_Counts这个参数，其他地方都没有再用到多的constant buffer，参数来自于上一个pass的g_StrandLevelData。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">//  VelocityShockPropagation</span><br><span class="line">//</span><br><span class="line">//  Propagate velocity shock resulted by attached based mesh</span><br><span class="line">//</span><br><span class="line">// One thread computes one vetex.</span><br><span class="line">//</span><br><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void VelocityShockPropagation(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    uint globalStrandIndex, localStrandIndex, globalVertexIndex, localVertexIndex;</span><br><span class="line">    uint numVerticesInTheStrand, indexForSharedMem, strandType;</span><br><span class="line">    CalcIndicesInVertexLevelMaster(GIndex, GId.x,</span><br><span class="line">        globalStrandIndex, localStrandIndex,</span><br><span class="line">        globalVertexIndex, localVertexIndex,</span><br><span class="line">        numVerticesInTheStrand, indexForSharedMem, strandType);</span><br><span class="line"></span><br><span class="line">    if (localVertexIndex &lt; 2)</span><br><span class="line">        return;</span><br><span class="line"></span><br><span class="line">    float4 vspQuat = g_StrandLevelData[globalStrandIndex].vspQuat;</span><br><span class="line">    float4 vspTrans = g_StrandLevelData[globalStrandIndex].vspTranslation;</span><br><span class="line">    float vspCoeff = vspTrans.w;</span><br><span class="line"></span><br><span class="line">    // 在此行之上的代码就不详细注解了。这里拿到当前处理的顶点的当前帧位置和上一帧位置。</span><br><span class="line">    float4 pos_new_n = g_HairVertexPositions[globalVertexIndex];</span><br><span class="line">    float4 pos_old_n = g_HairVertexPositionsPrev[globalVertexIndex];</span><br><span class="line"></span><br><span class="line">    // 这里我们可以看到，每根头发上除了根部的两个顶点外的其他顶点，新的位置由两部分决定：</span><br><span class="line">    // 一部分是：(pos_new_n.xyz)</span><br><span class="line">    //  这一部分即当前头发顶点经过重力和全局形状约束的计算后本应该在的位置，假设该位置为P</span><br><span class="line">    // 另一部分是：(MultQuaternionAndVector(vspQuat, pos_new_n.xyz) + vspTrans.xyz)</span><br><span class="line">    //  这一部分将P带上头发附着体本身旋转和平移的位置变换，假设该位置为Q</span><br><span class="line">    // 最后，用(1.f-vspCoeff)和(vspCoeff)在这两个位置中插值作为最终值</span><br><span class="line">    pos_new_n.xyz = (1.f - vspCoeff) * pos_new_n.xyz + vspCoeff * (MultQuaternionAndVector(vspQuat, pos_new_n.xyz) + vspTrans.xyz);</span><br><span class="line">    pos_old_n.xyz = (1.f - vspCoeff) * pos_old_n.xyz + vspCoeff * (MultQuaternionAndVector(vspQuat, pos_old_n.xyz) + vspTrans.xyz);</span><br><span class="line"></span><br><span class="line">    g_HairVertexPositions[globalVertexIndex].xyz = pos_new_n.xyz;</span><br><span class="line">    g_HairVertexPositionsPrev[globalVertexIndex].xyz = pos_old_n.xyz;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上代码片段中的注释，那么经过该pass的计算后，最新的位置应为：(1.0f-vspCoeff) * P + vspCoeff * Q</p>
+<p>其中，P位置为发丝完全不受头发附着体的变换所影响时的位置，Q位置为把发丝与附着体间的连接当成完全的刚性连接，完全受到头发附着体的变换所影响时的位置。那么，当加速度影响因子vspCoeff越大时，发丝与附着体间的连接刚性越大，也就越不容易飘动了。当vspCoeff&#x3D;1.0f时，前面重力和全局形状约束计算的结果所乘以的系数(1.0f-vspCoeff)&#x3D;0（重力和全局形状约束不起作用），此时发丝变成了刚体，与头发附着体是完全的刚性连接（注意，虽然将vspCoeff设为1.0f时会使得重力和全局形状约束不影响发丝，发丝会跟随附着体发生刚性变换进行平移或旋转，但后续的局部形状约束、长度约束、风场模拟等仍然对发丝生效，因此，若从最终引擎呈现的效果上看，将vspCoeff设为1.0f并不会使头发完全不飘动）。</p>
+<p>看完VSP的实现，我们其实能够知道，TressFX在处理速度变化带来的影响时，最终参与计算改变头发顶点位置的其实只有位置变化量，这种计算方式是物理不正确的，它会导致发丝拉长，后续的长度约束能在一定程度上缓解这一问题，但当头发的刚度和阻尼较小，而加速度过大，速度突变过大时，还是会有比较明显的拉长现象。</p>
+<h3 id="局部形状约束"><a href="#局部形状约束" class="headerlink" title="局部形状约束"></a>局部形状约束</h3><p>局部形状约束计算出的是一根发丝上某个顶点（即：质点）受前后质点影响后的新位置，每根发丝都遵循弹簧质点模型，由于角色的移动带来了发丝的长度的变化，这个变化在大多数情况下使得发丝处于拉伸的状态，因此我们以拉伸状态下进行分析，可以推广到压缩时的场景。</p>
+<p>在计算局部形状约束时我们不考虑重力作用产生的影响（重力作用已经在重力约束中计算了），且假设发丝上的每个顶点的质量都相等，我们以发根前5个顶点进行分析，后续顶点的计算可以依次推广得到。</p>
+<p>发丝处于原长状态时，发丝根部前2个顶点为O1和O2，后3个顶点为A、B、C，发丝根部前两个顶点始终保持与角色刚性固连。当角色移动，发丝拉长，O1O2长度不变，O2A、AB、BC变长。O1、O2是固连端，我们先站在O2上分析O2A的伸长变化，当O2A的长度变化确定后，再逐段分析自由端的AB、BC的伸长变化，如下图所示，依此类推直到发尾。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220622231518.jpg" alt="发丝顶点变化及约束前后展示图"></p>
+<p>由图，O2A的伸长量为x1，由于O2和A的质量假设相同，则站在O2上看，由于O2端固连，O2顶点不会移动，但O2端和A端的弹簧伸长量应均为二分之一的x1，A点移动量应为x1，TressFX在计算时O2点保持不动，而A点仅和自由端一样移动了二分之一的x1；接下来分析自由端AB，AB的伸长量为x2，A端和B端的伸长量均为二分之一的x2，A点和B点的移动量均为二分之一的x2；在往后的BC段，B点和C点的移动量均为二分之一的x3；依此类推直至发尾。</p>
+<p>TressFX用一个Pass来计算局部形状约束，同时会使用在计算VSP时输出的整体变换数据g_StrandLevelData。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_07.png" alt="局部形状约束的Pass图"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">//  LocalShapeConstraints</span><br><span class="line">//</span><br><span class="line">//  Compute shader to maintain the local shape constraints.</span><br><span class="line">//</span><br><span class="line">// One thread computes one strand.</span><br><span class="line">//</span><br><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void LocalShapeConstraints(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    // 每根发丝一个线程并行计算，因为发丝的后段对前段有计算上的依赖关系，无法做顶点级别的并行</span><br><span class="line">    uint local_id, group_id, globalStrandIndex, numVerticesInTheStrand, globalRootVertexIndex, strandType;</span><br><span class="line">    CalcIndicesInStrandLevelMaster(GIndex, GId.x, globalStrandIndex, numVerticesInTheStrand, globalRootVertexIndex, strandType);</span><br><span class="line"></span><br><span class="line">    // stiffness for local shape constraints</span><br><span class="line">    float stiffnessForLocalShapeMatching = GetLocalStiffness(strandType); // GetLocalStiffness返回g_Shape.y</span><br><span class="line"></span><br><span class="line">    //1.0 for stiffness makes things unstable sometimes.</span><br><span class="line">    stiffnessForLocalShapeMatching = 0.5f*min(stiffnessForLocalShapeMatching, 0.95f); // 这里的0.5是当弹簧两端的质点质量一样时，弹簧两端的伸长量一样，均为该段总伸长量的一半</span><br><span class="line"></span><br><span class="line">    //--------------------------------------------</span><br><span class="line">    // Local shape constraint for bending/twisting</span><br><span class="line">    //--------------------------------------------</span><br><span class="line">    &#123;</span><br><span class="line">        float4 boneQuat = g_StrandLevelData[globalStrandIndex].skinningQuat; // 骨骼变换</span><br><span class="line"></span><br><span class="line">        // vertex 1 through n-1</span><br><span class="line">        // 处理的是发丝上的第2到n个顶点</span><br><span class="line">        for (uint localVertexIndex = 1; localVertexIndex &lt; numVerticesInTheStrand - 1; localVertexIndex++)</span><br><span class="line">        &#123;</span><br><span class="line">            uint globalVertexIndex = globalRootVertexIndex + localVertexIndex;</span><br><span class="line"></span><br><span class="line">            float4 pos = g_HairVertexPositions[globalVertexIndex];               // 当前顶点的位置</span><br><span class="line">            float4 pos_plus_one = g_HairVertexPositions[globalVertexIndex + 1];  // 朝发尾方向下一个顶点的位置</span><br><span class="line">            float4 pos_minus_one = g_HairVertexPositions[globalVertexIndex - 1]; // 朝发根方向上一个顶点的位置</span><br><span class="line"></span><br><span class="line">            // 当前顶点、下一个、上一个顶点的初始的世界坐标系下的位置（即带上骨骼变换）</span><br><span class="line">            float3 bindPos = MultQuaternionAndVector(boneQuat, g_InitialHairPositions[globalVertexIndex].xyz);</span><br><span class="line">            float3 bindPos_plus_one = MultQuaternionAndVector(boneQuat, g_InitialHairPositions[globalVertexIndex + 1].xyz);</span><br><span class="line">            float3 bindPos_minus_one = MultQuaternionAndVector(boneQuat, g_InitialHairPositions[globalVertexIndex - 1].xyz);</span><br><span class="line"></span><br><span class="line">            float3 lastVec = pos.xyz - pos_minus_one.xyz; // 朝发根方向上一个顶点位置至当前顶点位置的向量，上一个顶点位置处的发丝切线方向</span><br><span class="line"></span><br><span class="line">            float4 invBone = InverseQuaternion(boneQuat); // 这个变量没有用</span><br><span class="line">            float3 vecBindPose = bindPos_plus_one - bindPos;      // 当前位置处的发丝初始切线方向向量</span><br><span class="line">            float3 lastVecBindPose = bindPos - bindPos_minus_one; // 上一个顶点位置处的发丝初始切线方向向量</span><br><span class="line">            // 由上一个顶点位置处的初始切线方向向量和当前位置处的发丝初始切线方向向量计算出初始状态时的发丝旋转/扭转量</span><br><span class="line">            float4 rotGlobal = QuatFromTwoUnitVectors(normalize(lastVecBindPose), normalize(lastVec));</span><br><span class="line"></span><br><span class="line">            // vecBindPose是有大小和方向的向量，此行即：MultQuaternionAndVector(rotGlobal, (bindPos_plus_one - bindPos)) + pos.xyz</span><br><span class="line">            // 计算出的orgPos_i_plus_1_InGlobalFrame是下一个顶点在没有受到重力与全局形状约束、速度震动传播时应所在的位置</span><br><span class="line">            float3 orgPos_i_plus_1_InGlobalFrame = MultQuaternionAndVector(rotGlobal, vecBindPose) + pos.xyz;</span><br><span class="line">            // 计算(orgPos_i_plus_1_InGlobalFrame - pos_plus_one.xyz)就得到了没有受到上述约束和受到上述约束的变化量delta</span><br><span class="line">            // 乘上刚度系数就得到了局部形状约束的作用量，由于假设了发丝上各顶点的质量一致，前面已经乘过0.5了</span><br><span class="line">            float3 del = stiffnessForLocalShapeMatching * (orgPos_i_plus_1_InGlobalFrame - pos_plus_one.xyz);</span><br><span class="line"></span><br><span class="line">            if (IsMovable(pos))</span><br><span class="line">                pos.xyz -= del.xyz; // 应用到自由端的当前顶点的位置</span><br><span class="line"></span><br><span class="line">            if (IsMovable(pos_plus_one))</span><br><span class="line">                pos_plus_one.xyz += del.xyz; // 应用到自由端的下一个顶点的位置</span><br><span class="line"></span><br><span class="line">            g_HairVertexPositions[globalVertexIndex].xyz = pos.xyz;</span><br><span class="line">            g_HairVertexPositions[globalVertexIndex + 1].xyz = pos_plus_one.xyz;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_06.png" alt="局部形状约束参考图（向量vec由pos指向pos_plus_one，向量lastVec由pos_minus_one指向pos，均为骨骼变化前的，vecBindPose和lastVecBindPose是带上骨骼变换计算后的）"></p>
+<p>从代码中我们也能知道该pass需要使用到的constant buffer中的参数了。</p>
+<ul>
+<li>float4 g_Shape<br>g_Shape.y: LocalConstraintStiffness，局部形状约束的刚度值，默认为0.8f</li>
+<li>int4 g_Counts<br>g_Counts.x -&gt; g_NumOfStrandsPerThreadGroup: num strands per thread group<br>g_Counts.y -&gt; g_NumFollowHairsPerGuideHair: num follow hairs per guid hair</li>
+</ul>
+<h3 id="长度约束（和风场计算）"><a href="#长度约束（和风场计算）" class="headerlink" title="长度约束（和风场计算）"></a>长度约束（和风场计算）</h3><p>从物理现象上来说，发丝的长度是定长的（肉眼感知不到），但是在前面的物理计算过程中，会导致我们的发丝长度发生改变，这种改变是非预期的，是TressFX物理计算模型的副作用，我们通过长度约束来缓解这一问题。</p>
+<p>该过程针对每个头发模型使用1个pass进行迭代计算，分为CPU迭代和GPU迭代，CPU迭代会多次Dispatch，GPU迭代会在shader中循环重复计算。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_08.png" alt="长度约束的Pass图"></p>
+<p>TressFX采用的长度约束算法如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220622232655.png" alt="长度约束算法"></p>
+<p>由于假设了发丝每个顶点的质量一致，因此w均相同，约简即：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220629231520.png" alt="长度约束公式"></p>
+<p>其中li为发丝当前的长度，li0为发丝原长。</p>
+<p>此即shader代码中ApplyDistanceConstraint函数做的事情。</p>
+<p>我们看该算法，能够发现每次最小的约束单元计算时会改变两个顶点的位置，因此我们只能分离出奇偶部分，分别做并行处理，计算出其中一对后，先同步线程再算另一对。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220622231548.jpg" alt="长度约束并行方法"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">//</span><br><span class="line">//  LengthConstriantsWindAndCollision</span><br><span class="line">//</span><br><span class="line">//  Compute shader to move the vertex position based on wind, maintain the lenght constraints</span><br><span class="line">//  and handles collisions.</span><br><span class="line">//  注意！TressFX这里的碰撞处理的计算，是头发和胶囊体的碰撞计算，是一个非常简单粗糙的碰撞矫正，和基于SDF建场方法的碰撞矫正不是同一个！</span><br><span class="line">//</span><br><span class="line">// One thread computes one vertex.</span><br><span class="line">//</span><br><span class="line">//--------------------------------------------------------------------------------------</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void LengthConstriantsWindAndCollision(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    uint globalStrandIndex, localStrandIndex, globalVertexIndex, localVertexIndex, numVerticesInTheStrand, indexForSharedMem, strandType;</span><br><span class="line">    CalcIndicesInVertexLevelMaster(GIndex, GId.x, globalStrandIndex, localStrandIndex, globalVertexIndex, localVertexIndex, numVerticesInTheStrand, indexForSharedMem, strandType);</span><br><span class="line"></span><br><span class="line">    uint numOfStrandsPerThreadGroup = g_NumOfStrandsPerThreadGroup;</span><br><span class="line"></span><br><span class="line">    //------------------------------</span><br><span class="line">    // Copy data into shared memory</span><br><span class="line">    //------------------------------</span><br><span class="line">    sharedPos[indexForSharedMem] = g_HairVertexPositions[globalVertexIndex];</span><br><span class="line">    sharedLength[indexForSharedMem] = g_HairRestLengthSRV[globalVertexIndex]; // 每根发丝上两两顶点间的长度，在CPU中计算，详见后文中的列出的cpp代码。该长度也能够在GPU中通过发丝的初始顶点位置计算出来。</span><br><span class="line">    GroupMemoryBarrierWithGroupSync();</span><br><span class="line"></span><br><span class="line">    //------------</span><br><span class="line">    // Wind</span><br><span class="line">    //------------</span><br><span class="line">    // 风场计算部分放在下一节中再详细展开，这里简单看看就好</span><br><span class="line">    if ( g_Wind.x != 0 || g_Wind.y != 0 || g_Wind.z != 0 )</span><br><span class="line">    &#123;</span><br><span class="line">        float4 force = float4(0, 0, 0, 0);</span><br><span class="line"></span><br><span class="line">        float frame = g_Wind.w;</span><br><span class="line"></span><br><span class="line">        if ( localVertexIndex &gt;= 2 &amp;&amp; localVertexIndex &lt; numVerticesInTheStrand-1 )</span><br><span class="line">        &#123;</span><br><span class="line">            // combining four winds.</span><br><span class="line">            float a = ((float)(globalStrandIndex % 20))/20.0f;</span><br><span class="line">            float3  w = a*g_Wind.xyz + (1.0f-a)*g_Wind1.xyz + a*g_Wind2.xyz + (1.0f-a)*g_Wind3.xyz;</span><br><span class="line"></span><br><span class="line">            uint sharedIndex = localVertexIndex * numOfStrandsPerThreadGroup + localStrandIndex;</span><br><span class="line"></span><br><span class="line">            float3 v = sharedPos[sharedIndex].xyz - sharedPos[sharedIndex+numOfStrandsPerThreadGroup].xyz;</span><br><span class="line">            float3 force = -cross(cross(v, w), v);</span><br><span class="line">            sharedPos[sharedIndex].xyz += force*g_TimeStep*g_TimeStep;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    GroupMemoryBarrierWithGroupSync();</span><br><span class="line"></span><br><span class="line">    //----------------------------</span><br><span class="line">    // Enforce length constraints</span><br><span class="line">    //----------------------------</span><br><span class="line">    uint a = floor(numVerticesInTheStrand/2.0f);     // 发丝中间偏尾部的顶点，假设一根发丝32个顶点，则a=16</span><br><span class="line">    uint b = floor((numVerticesInTheStrand-1)/2.0f); // 发丝中部偏根部的顶点，假设一根发丝32个顶点，则a=15</span><br><span class="line"></span><br><span class="line">    // 返回g_SimInts.x，GPU中的循环迭代次数</span><br><span class="line">    int nLengthContraintIterations = GetLengthConstraintIterations();</span><br><span class="line"></span><br><span class="line">    for ( int iterationE=0; iterationE &lt; nLengthContraintIterations; iterationE++ )</span><br><span class="line">    &#123;</span><br><span class="line">        uint sharedIndex = 2*localVertexIndex * numOfStrandsPerThreadGroup + localStrandIndex;</span><br><span class="line">        // TressFX默认采用的一个THREAD_GROUP是64个线程，假设按上面的一根发丝32个顶点，那么numOfStrandsPerThreadGroup即为64/32=2</span><br><span class="line"></span><br><span class="line">        // 这儿的sharedIndex的计算和风场计算中的不同，前面多乘了一个2。</span><br><span class="line">        // 后面的代码中的两个if判断localVertexIndex&lt;a和localVertexIndex&lt;b会把后半段的发丝的顶点过滤掉，shader中只有前半段发丝顶点</span><br><span class="line">        // 所处理的线程工作（执行if中的代码），后半段发丝顶点的线程直接跳过了。</span><br><span class="line">        // 而前面多乘的一个2，会导致这些只有前半段发丝顶点会执行if中的内容的线程，实际上处理的是一根发丝上连续的奇偶两对顶点，有点绕。</span><br><span class="line"></span><br><span class="line">        // 还是按前面的假设来举个例子理解一下，一根发丝的32个顶点对应32个线程，其中只有发根的前16个顶点所对应的线程会走if里面的代码，</span><br><span class="line">        // 而这16个会走if里面的代码的线程，分别处理的是连续的奇偶两对顶点，如下：</span><br><span class="line">        // 顶点对应的线程：    t0         t1         t2         t3      ...       t13            t14        t15</span><br><span class="line">        // 处理的顶点线段： v0v1&amp;v1v2  v2v3&amp;v3v4  v4v5&amp;v5v6  v6v7&amp;v7v8  ...  v26v27&amp;v27v28  v28v29&amp;v29v30  v30v31</span><br><span class="line"></span><br><span class="line">        if( localVertexIndex &lt; a )</span><br><span class="line">            ApplyDistanceConstraint( // 对当前的顶点（偶顶点对，例如v0v1）计算长度约束，ApplyDistanceConstraint函数实现的分析见下方</span><br><span class="line">                sharedPos[sharedIndex],                            // 当前顶点</span><br><span class="line">                sharedPos[sharedIndex+numOfStrandsPerThreadGroup], // 当前顶点的下一个顶点（朝发尾方向）</span><br><span class="line">                sharedLength[sharedIndex].x);                      // 这一段的原始长度</span><br><span class="line"></span><br><span class="line">        GroupMemoryBarrierWithGroupSync(); // 务必要等同步</span><br><span class="line"></span><br><span class="line">        if( localVertexIndex &lt; b )</span><br><span class="line">            ApplyDistanceConstraint( // 对当前顶点的下一个顶点（奇顶点对，例如v1v2）计算长度约束</span><br><span class="line">                sharedPos[sharedIndex+numOfStrandsPerThreadGroup],</span><br><span class="line">                sharedPos[sharedIndex+numOfStrandsPerThreadGroup*2],</span><br><span class="line">                sharedLength[sharedIndex+numOfStrandsPerThreadGroup].x);</span><br><span class="line"></span><br><span class="line">        GroupMemoryBarrierWithGroupSync(); // 务必要等同步</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //------------------------------------------</span><br><span class="line">    // Collision handling with capsule objects</span><br><span class="line">    //------------------------------------------</span><br><span class="line">    float4 oldPos = g_HairVertexPositionsPrev[globalVertexIndex];</span><br><span class="line">    // 简单粗糙的一个与胶囊体的碰撞矫正，用基于SDF的碰撞矫正后其实不需要它的，略，对ResolveCapsuleCollisions感兴趣可以详见：</span><br><span class="line">    // https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/Shaders/TressFXSimulation.hlsl#L831-L863</span><br><span class="line">    bool bAnyColDetected = ResolveCapsuleCollisions(sharedPos[indexForSharedMem], oldPos);</span><br><span class="line">    GroupMemoryBarrierWithGroupSync();</span><br><span class="line"></span><br><span class="line">    //-------------------</span><br><span class="line">    // Compute tangent</span><br><span class="line">    //-------------------</span><br><span class="line">    // If this is the last vertex in the strand, we can&#x27;t get tangent from subtracting from the next vertex, need to use last vertex to current</span><br><span class="line">    // 计算发丝顶点的切线方向，这个切线方向会作为后面头发渲染时所使用的顶点切线。计算过程也很简单，就是用下一个顶点位置减去当前的顶点位置然后</span><br><span class="line">    // normalize后得到的单位向量。对于发丝末尾的最后一个顶点，它没有下一个顶点了，就让这个末尾顶点的切线方向和倒数第二个的顶点的切线向量保持一致。</span><br><span class="line">    uint indexForTangent = (localVertexIndex == numVerticesInTheStrand - 1) ? indexForSharedMem - numOfStrandsPerThreadGroup : indexForSharedMem;</span><br><span class="line">    float3 tangent = sharedPos[indexForTangent + numOfStrandsPerThreadGroup].xyz - sharedPos[indexForTangent].xyz;</span><br><span class="line">    g_HairVertexTangents[globalVertexIndex].xyz = normalize(tangent);</span><br><span class="line"></span><br><span class="line">    //---------------------------------------</span><br><span class="line">    // clamp velocities, rewrite history</span><br><span class="line">    //---------------------------------------</span><br><span class="line">    float3 positionDelta = sharedPos[indexForSharedMem].xyz - oldPos;</span><br><span class="line">    float speedSqr = dot(positionDelta, positionDelta);</span><br><span class="line">    if (speedSqr &gt; g_ClampPositionDelta * g_ClampPositionDelta) &#123;</span><br><span class="line">        positionDelta *= g_ClampPositionDelta * g_ClampPositionDelta / speedSqr;</span><br><span class="line">        g_HairVertexPositionsPrev[globalVertexIndex].xyz = sharedPos[indexForSharedMem].xyz - positionDelta; // 处理的是上一帧的顶点位置</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //---------------------------------------</span><br><span class="line">    // update global position buffers</span><br><span class="line">    //---------------------------------------</span><br><span class="line">    g_HairVertexPositions[globalVertexIndex] = sharedPos[indexForSharedMem];</span><br><span class="line"></span><br><span class="line">    if (bAnyColDetected)</span><br><span class="line">        g_HairVertexPositionsPrev[globalVertexIndex] = sharedPos[indexForSharedMem];</span><br><span class="line"></span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ApplyDistanceConstraint(inout float4 pos0, inout float4 pos1, float targetDistance, float stiffness = 1.0)</span><br><span class="line">                                                                                        // TressFX没有放开stiffness的调整，始终是1.0</span><br><span class="line">&#123;   // 应用长度约束的算法，对照的就是前面的算法公式实现</span><br><span class="line">    float3 delta = pos1.xyz - pos0.xyz;</span><br><span class="line">    float distance = max(length(delta), 1e-7);</span><br><span class="line">    float stretching = 1 - targetDistance / distance;</span><br><span class="line">    delta = stretching * delta;</span><br><span class="line"></span><br><span class="line">    float2 multiplier = ConstraintMultiplier(pos0, pos1); // 见下方，很容易理解</span><br><span class="line"></span><br><span class="line">    pos0.xyz += multiplier[0] * delta * stiffness;</span><br><span class="line">    pos1.xyz -= multiplier[1] * delta * stiffness;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float2 ConstraintMultiplier(float4 particle0, float4 particle1)</span><br><span class="line">&#123;</span><br><span class="line">    if (IsMovable(particle0))</span><br><span class="line">    &#123;</span><br><span class="line">        if (IsMovable(particle1))</span><br><span class="line">            return float2(0.5, 0.5); // 如果两端顶点都可以移动，就均分约束带来的调整量</span><br><span class="line">        else</span><br><span class="line">            return float2(1, 0);     // 如果只有一端顶点可以移动，就把调整量全部算在这个顶点上</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        if (IsMovable(particle1))</span><br><span class="line">            return float2(0, 1);     // 理论上来说，不会走到这个分支</span><br><span class="line">        else</span><br><span class="line">            return float2(0, 0);     // 两端顶点都不可动，不调整了</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ComputeRestLengths函数在CPU中计算的每根发丝上两两顶点间的长度，这个长度也能够在GPU中通过发丝的初始顶点位置数据计算出来的，但是TressFX还是在CPU上预先计算好了，下发给GPU中直接使用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">TressFXAsset::ComputeRestLengths</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector3* pos = (Vector3*)m_positions.<span class="built_in">data</span>();</span><br><span class="line">    <span class="type">float</span>* restLen = (<span class="type">float</span>*)m_restLengths.<span class="built_in">data</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Calculate rest lengths</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m_numTotalStrands; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> indexRootVert = i * m_numVerticesPerStrand;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m_numVerticesPerStrand - <span class="number">1</span>; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            restLen[index++] = (pos[indexRootVert + j] - pos[indexRootVert + j + <span class="number">1</span>]).<span class="built_in">Length</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Since number of edges are one less than number of vertices in hair strand, below</span></span><br><span class="line">        <span class="comment">// line acts as a placeholder.</span></span><br><span class="line">        restLen[index++] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该pass只用到的一个新的constant buffer中的参数g_SimInts.x：</p>
+<ul>
+<li>float4 g_SimInts<br>g_SimInts.x: GPU中的循环迭代次数</li>
+<li>int4 g_Counts<br>g_Counts.x -&gt; g_NumOfStrandsPerThreadGroup: num strands per thread group<br>g_Counts.y -&gt; g_NumFollowHairsPerGuideHair: num follow hairs per guid hair</li>
+</ul>
+<h2 id="风场计算"><a href="#风场计算" class="headerlink" title="风场计算"></a>风场计算</h2><p>风场计算处理的是毛发在有风的环境下的效果，如自然风、吹风机等影响下毛发的表现。风场采用的是如下所示的四棱锥风场，TressFX称它为pyramid wind（金字塔风）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_07.png" alt="四棱锥风场"></p>
+<p>风场计算的Shader代码在前一节中我们已经看到过了，这里再单独拿出来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">if ( localVertexIndex &gt;= 2 &amp;&amp; localVertexIndex &lt; numVerticesInTheStrand-1 )</span><br><span class="line">&#123;</span><br><span class="line">    // combining four winds.</span><br><span class="line">    float a = ((float)(globalStrandIndex % 20))/20.0f;</span><br><span class="line">    float3  w = a*g_Wind.xyz + (1.0f-a)*g_Wind1.xyz + a*g_Wind2.xyz + (1.0f-a)*g_Wind3.xyz;</span><br><span class="line"></span><br><span class="line">    uint sharedIndex = localVertexIndex * numOfStrandsPerThreadGroup + localStrandIndex;</span><br><span class="line"></span><br><span class="line">    float3 v = sharedPos[sharedIndex].xyz - sharedPos[sharedIndex+numOfStrandsPerThreadGroup].xyz;</span><br><span class="line">    float3 force = -cross(cross(v, w), v);</span><br><span class="line">    sharedPos[sharedIndex].xyz += force*g_TimeStep*g_TimeStep;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>对应的算法方程如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220622233448.png" alt="风场算法"></p>
+<p>TressFX为了在这个风场的四棱锥中“随机均匀”地生成一个风的方向，引入了一个a，并且用求20的余数的方式（发丝上顶点数量不会是20的倍数）生成一个极其简单的假随机数，然后与四棱锥的四条边方向做blend，得到一个在四棱锥风场范围内的一个风向，用这个融合风向作为当前顶点的风场计算时的风向。</p>
+<p>TressFX把风的计算放在了和长度约束共同的一个Pass中，这个合并到一个Pass中的做法我没有想明白是为什么，长度约束有迭代次数，会根据迭代次数多次Dispatch这一个Pass，而风场计算放在这个Pass中会导致风场的计算也被计算了多次，然而g_TimeStep并不会除以迭代次数，这样就会造成风场计算跳帧了。我认为应该将风场计算单独成一个Pass进行处理。</p>
+<p>另外，在计算在风的作用下引起的毛发顶点的位移量时，用了毛发的切线方向向量v与风的方向向量w做叉积，再与毛发的切线方向v做叉积，得到最终的位移方向，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220622231542.jpg" alt="计算风场影响下的发丝顶点位移方向"></p>
+<p>这个方向计算出来是对的，但是TressFX把这个向量的xyz大小直接作为了风力影响的大小，而叉积计算结果的xyz大小值（注意这不是模）是没有实际的物理意义的，这就导致了TressFX中的风场是坏的，没有效果，我们得将它分离开，风力大小和方向得分别计算，然后再叠加。该问题已向开源仓反馈：<a target="_blank" rel="noopener" href="https://github.com/GPUOpen-Effects/TressFX/issues/47">https://github.com/GPUOpen-Effects/TressFX/issues/47</a>。修改完后的Shader如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">if ( localVertexIndex &gt;= 2 &amp;&amp; localVertexIndex &lt; numVerticesInTheStrand-1 )</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    float3 v = sharedPos[sharedIndex].xyz - sharedPos[sharedIndex+numOfStrandsPerThreadGroup].xyz;</span><br><span class="line">    float force_mul = length(v) * length(w); // FIXBUG!! 分离出大小</span><br><span class="line">    v = normalize(v); // FIXBUG!! 用normalize的向量计算</span><br><span class="line">    w = normalize(w); // FIXBUG!! 用normalize的向量计算</span><br><span class="line"></span><br><span class="line">    float3 force = -cross(cross(v, w), v);</span><br><span class="line">    force *= force_mul; // FIXBUG!! 把大小和方向再组合</span><br><span class="line">    sharedPos[sharedIndex].xyz += force*g_TimeStep*g_TimeStep; // 简单地用风力乘以时间间隔片的平方作为最终的移动量大小，我理解这不是物理正确的</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>在Shader中，我们直接使用了W1~W4四个向量（Shader中为g_Wind、g_Wind1、g_Wind2、g_Wind3），对应于四棱锥风场的四个边，而最外层给技美调整的接口只有风的大小方向和范围角度，这四个向量将在CPU侧通过风的方向和范围角度来生成，如下代码所示。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//////////////////// Quaternion.cpp ////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置当前的四元数的值为：绕axis轴旋转angle_radian弧度的四元数改变量</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Quaternion::SetRotation</span><span class="params">(<span class="type">const</span> Vector3&amp; axis, <span class="type">float</span> angle_radian)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// This function assumes that the axis vector has been normalized.</span></span><br><span class="line">    <span class="type">float</span> halfAng = <span class="number">0.5f</span> * angle_radian;</span><br><span class="line">    <span class="type">float</span> sinHalf = <span class="built_in">sin</span>(halfAng);</span><br><span class="line">    w             = <span class="built_in">cos</span>(halfAng);</span><br><span class="line">    x = sinHalf * axis.x;</span><br><span class="line">    y = sinHalf * axis.y;</span><br><span class="line">    z = sinHalf * axis.z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//////////////////// TressFXHairObject.cpp ////////////////////</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">TressFXHairObject::SetWind</span><span class="params">(<span class="type">const</span> Vector3&amp; windDir, <span class="type">float</span> windMag, <span class="type">int</span> frame)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> wM = windMag * (<span class="built_in">pow</span>(<span class="built_in">sin</span>(frame * <span class="number">0.01f</span>), <span class="number">2.0f</span>) + <span class="number">0.5f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector3 <span class="title">windDirN</span><span class="params">(windDir)</span></span>;</span><br><span class="line">    windDirN.<span class="built_in">Normalize</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function">Vector3 <span class="title">XAxis</span><span class="params">(<span class="number">1.0f</span>, <span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    Vector3 xCrossW = XAxis.<span class="built_in">Cross</span>(windDirN);</span><br><span class="line"></span><br><span class="line">    Quaternion rotFromXAxisToWindDir;</span><br><span class="line">    rotFromXAxisToWindDir.<span class="built_in">SetIdentity</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> angle = <span class="built_in">asin</span>(xCrossW.<span class="built_in">Length</span>());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (angle &gt; <span class="number">0.001</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 计算出从X轴方向XAxis旋转到风的方向windDirN所需要的旋转改变量并存到rotFromXAxisToWindDir中</span></span><br><span class="line">        rotFromXAxisToWindDir.<span class="built_in">SetRotation</span>(xCrossW.<span class="built_in">Normalize</span>(), angle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意：风的范围角度，决定了四棱锥风场的张角，应该暴露出去给技美调参的，但是这一项TressFX的Demo写死了</span></span><br><span class="line">    <span class="type">float</span> angleToWideWindCone = <span class="built_in">DEG_TO_RAD2</span>(<span class="number">40.f</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算出并更新四棱锥风场的四条棱到constant buffer，SetWindCorner函数详见下方，TressFX的计算思想是：</span></span><br><span class="line">    <span class="comment">// 以X轴的方向先应用风的范围角度，得到相对于X轴的四条棱向量，再将四条棱向量旋转到风的方向</span></span><br><span class="line">    <span class="built_in">SetWindCorner</span>(rotFromXAxisToWindDir,</span><br><span class="line">        <span class="built_in">Vector3</span>(<span class="number">0</span>, <span class="number">1.0</span>, <span class="number">0</span>),</span><br><span class="line">        angleToWideWindCone,</span><br><span class="line">        wM,</span><br><span class="line">        m_SimCB[m_SimulationFrame % <span class="number">2</span>]-&gt;m_Wind);</span><br><span class="line">    <span class="built_in">SetWindCorner</span>(rotFromXAxisToWindDir,</span><br><span class="line">        <span class="built_in">Vector3</span>(<span class="number">0</span>, <span class="number">-1.0</span>, <span class="number">0</span>),</span><br><span class="line">        angleToWideWindCone,</span><br><span class="line">        wM,</span><br><span class="line">        m_SimCB[m_SimulationFrame % <span class="number">2</span>]-&gt;m_Wind1);</span><br><span class="line">    <span class="built_in">SetWindCorner</span>(rotFromXAxisToWindDir,</span><br><span class="line">        <span class="built_in">Vector3</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">1.0</span>),</span><br><span class="line">        angleToWideWindCone,</span><br><span class="line">        wM,</span><br><span class="line">        m_SimCB[m_SimulationFrame % <span class="number">2</span>]-&gt;m_Wind2);</span><br><span class="line">    <span class="built_in">SetWindCorner</span>(rotFromXAxisToWindDir,</span><br><span class="line">        <span class="built_in">Vector3</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">-1.0</span>),</span><br><span class="line">        angleToWideWindCone,</span><br><span class="line">        wM,</span><br><span class="line">        m_SimCB[m_SimulationFrame % <span class="number">2</span>]-&gt;m_Wind3);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// fourth component unused. (used to store frame number, but no longer used).</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wind is in a pyramid around the main wind direction.</span></span><br><span class="line"><span class="comment">// To add a random appearance, the shader will sample some direction</span></span><br><span class="line"><span class="comment">// within this cone based on the strand index.</span></span><br><span class="line"><span class="comment">// This function computes the vector for each edge of the pyramid.</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">SetWindCorner</span><span class="params">(Quaternion rotFromXAxisToWindDir,</span></span></span><br><span class="line"><span class="params"><span class="function">                          Vector3 rotAxis,</span></span></span><br><span class="line"><span class="params"><span class="function">                          <span class="type">float</span> angleToWideWindCone,</span></span></span><br><span class="line"><span class="params"><span class="function">                          <span class="type">float</span> wM,</span></span></span><br><span class="line"><span class="params"><span class="function">                          AMD::float4&amp; outVec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">const</span> Vector3 <span class="title">XAxis</span><span class="params">(<span class="number">1.0f</span>, <span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="function">Quaternion <span class="title">rot</span><span class="params">(rotAxis, angleToWideWindCone)</span></span>;</span><br><span class="line">    Vector3    newWindDir = rotFromXAxisToWindDir * rot * XAxis;</span><br><span class="line">    outVec.x = newWindDir.x * wM;</span><br><span class="line">    outVec.y = newWindDir.y * wM;</span><br><span class="line">    outVec.z = newWindDir.z * wM;</span><br><span class="line">    outVec.w = <span class="number">0</span>;  <span class="comment">// unused.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外，TressFX还在风的大小上做了点手脚，通过当前的帧数来计算一个sin函数，使得给定大小的风在一定的强度范围内有一个小波动，用来增强真实感，如下代码所示。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">TressFXHairObject::SetWind</span><span class="params">(<span class="type">const</span> Vector3&amp; windDir, <span class="type">float</span> windMag, <span class="type">int</span> frame)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> wM = windMag * (<span class="built_in">pow</span>(<span class="built_in">sin</span>(frame * <span class="number">0.01f</span>), <span class="number">2.0f</span>) + <span class="number">0.5f</span>); <span class="comment">// sin的平方，0~1 --&gt; windMag * (0.5~1.5)范围内波动</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看了风场计算的算法，我们其实能知道，这种做法其实不是物理正确的，只是一种简单的替代实现方案。正常来说，力的解算一般在物理计算中靠前的位置，我理解在这里应该是放在重力解算之后就做风力的解算，但正是因为这只是个简单的方案，可以不用考虑这个问题。</p>
+<h2 id="引导发丝生成从属发丝"><a href="#引导发丝生成从属发丝" class="headerlink" title="引导发丝生成从属发丝"></a>引导发丝生成从属发丝</h2><p>这一步很简单了，单纯地由引导发丝生成从属发丝，增多发丝的数量。前面的计算仅针对了引导发丝，这一步通过加一个偏移来生成更多的从属发丝。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Doc_08.jpg" alt="由guide hair(粗线)生成follow hair(细线)"></p>
+<p>TressFX用一个Pass来做这个生成动作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_09.png" alt="引导发丝生成从属发丝的Pass图"></p>
+<p>每个线程处理一根引导发丝上的一个顶点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// One thread computes one vertex.</span><br><span class="line">[numthreads(THREAD_GROUP_SIZE, 1, 1)]</span><br><span class="line">void UpdateFollowHairVertices(uint GIndex : SV_GroupIndex,</span><br><span class="line">    uint3 GId : SV_GroupID, uint3 DTid : SV_DispatchThreadID)</span><br><span class="line">&#123;</span><br><span class="line">    uint globalStrandIndex, localStrandIndex, globalVertexIndex, localVertexIndex;</span><br><span class="line">    uint numVerticesInTheStrand, indexForSharedMem, strandType;</span><br><span class="line">    CalcIndicesInVertexLevelMaster(GIndex, GId.x,</span><br><span class="line">        globalStrandIndex, localStrandIndex,</span><br><span class="line">        globalVertexIndex, localVertexIndex,</span><br><span class="line">        numVerticesInTheStrand, indexForSharedMem, strandType);</span><br><span class="line"></span><br><span class="line">    sharedPos[indexForSharedMem] = g_HairVertexPositions[globalVertexIndex];    // 引导发丝的position</span><br><span class="line">    sharedTangent[indexForSharedMem] = g_HairVertexTangents[globalVertexIndex]; // 引导发丝的tangent</span><br><span class="line">    GroupMemoryBarrierWithGroupSync();</span><br><span class="line"></span><br><span class="line">    for ( uint i = 0; i &lt; g_NumFollowHairsPerGuideHair; i++ ) // 每根从属发丝遍历</span><br><span class="line">    &#123;</span><br><span class="line">        int globalFollowVertexIndex = globalVertexIndex + numVerticesInTheStrand * (i + 1);</span><br><span class="line">        int globalFollowStrandIndex = globalStrandIndex + i + 1;</span><br><span class="line"></span><br><span class="line">        // g_TipSeparationFactor是技美给定的头发尾端的间隔影响因子，</span><br><span class="line">        // 由(localVertexIndex / numVerticesInTheStrand)的计算我们可知，越靠近发丝的根部，影响越小，发根第一个顶点一般在附着体上，</span><br><span class="line">        // localVertexIndex为0，不受影响，越靠近发丝的尾部，影响越大。这个效果类似于一个毛囊里一般生有多根毛发（人头1个毛囊一般2~3根头发）</span><br><span class="line">        // 加了个1.0，确保比1.0大，TipSeparationFactor一般在(0.0f, 1.0f)范围内调整，较浓密的毛发一般取值0.1f左右即可，稀疏的毛发可以增大该值</span><br><span class="line">        float factor = g_TipSeparationFactor*((float)localVertexIndex / (float)numVerticesInTheStrand) + 1.0f;</span><br><span class="line">        // g_FollowHairRootOffset是在CPU上生成的随机均匀的偏移量，该偏移量乘以上一行计算出的影响因子，得到该发丝上的该顶点的最终偏移量</span><br><span class="line">        float3 followPos = sharedPos[indexForSharedMem].xyz + factor*g_FollowHairRootOffset[globalFollowStrandIndex].xyz;</span><br><span class="line">        g_HairVertexPositions[globalFollowVertexIndex].xyz = followPos;</span><br><span class="line"></span><br><span class="line">        g_HairVertexTangents[globalFollowVertexIndex] = sharedTangent[indexForSharedMem];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在Shader中我们需要g_FollowHairRootOffset这个在CPU上生成的针对每根发丝每个顶点的随机均匀偏移量。由引导发丝生成的从属发丝，它们所在的位置一定是与引导发丝近似平行的。因此，我们需要计算出引导发丝的上的每个顶点的切线方向，用来指导生成对应的从属发丝的顶点。</p>
+<p>如下代码所示，g_FollowHairRootOffset的生成在TressFXAsset::GenerateFollowHairs函数中进行。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">TressFXAsset::GenerateFollowHairs</span><span class="params">(<span class="type">int</span> numFollowHairsPerGuideHair, <span class="type">float</span> tipSeparationFactor, <span class="type">float</span> maxRadiusAroundGuideHair)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    m_followRootOffsets.<span class="built_in">resize</span>(m_numTotalStrands);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// type-cast to Vector3 to handle data easily. </span></span><br><span class="line">    Vector3* pos = m_positions.<span class="built_in">data</span>();</span><br><span class="line">    Vector3* followOffset = m_followRootOffsets.<span class="built_in">data</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Generate follow hairs</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m_numGuideStrands; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> indexGuideStrand = i * (m_numFollowStrandsPerGuide + <span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> indexRootVertMaster = indexGuideStrand * m_numVerticesPerStrand;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">memcpy</span>(&amp;pos[indexRootVertMaster], &amp;positionsGuide[i*m_numVerticesPerStrand], <span class="built_in">sizeof</span>(Vector3)*m_numVerticesPerStrand);</span><br><span class="line">        m_strandUV[indexGuideStrand] = strandUVGuide[i];</span><br><span class="line"></span><br><span class="line">        followOffset[indexGuideStrand].<span class="built_in">Set</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);                <span class="comment">// guide hair不需要偏移</span></span><br><span class="line">        followOffset[indexGuideStrand].w = (<span class="type">float</span>)indexGuideStrand; <span class="comment">// 当前的followRootOffset所属的发丝id</span></span><br><span class="line"></span><br><span class="line">        Vector3 v01 = pos[indexRootVertMaster + <span class="number">1</span>] - pos[indexRootVertMaster]; <span class="comment">// 切线方向</span></span><br><span class="line">        v01.<span class="built_in">Normalize</span>();                                                       <span class="comment">// normalize后得到切线方向单位向量</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Find two orthogonal unit tangent vectors to v01</span></span><br><span class="line">        Vector3 t0, t1;</span><br><span class="line">        <span class="built_in">GetTangentVectors</span>(v01, t0, t1);</span><br><span class="line">        <span class="comment">// GetTangentVectors将发丝顶点处的切线方向单位向量转成正交系下的两个分量，GetTangentVectors函数详见：</span></span><br><span class="line">        <span class="comment">// https://github.com/GPUOpen-Effects/TressFX/blob/v4.1.0/src/TressFX/TressFXAsset.cpp#L37-L63</span></span><br><span class="line">        <span class="comment">// 我们只有在正交系下才能表征和计算出平行于切线方向的偏移量</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m_numFollowStrandsPerGuide; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> indexStrandFollow = indexGuideStrand + j + <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> indexRootVertFollow = indexStrandFollow * m_numVerticesPerStrand;</span><br><span class="line"></span><br><span class="line">            m_strandUV[indexStrandFollow] = m_strandUV[indexGuideStrand];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// offset vector from the guide strand&#x27;s root vertex position</span></span><br><span class="line">            Vector3 offset = <span class="built_in">GetRandom</span>(-maxRadiusAroundGuideHair, maxRadiusAroundGuideHair) * t0 +</span><br><span class="line">            <span class="built_in">GetRandom</span>(-maxRadiusAroundGuideHair, maxRadiusAroundGuideHair) * t1;</span><br><span class="line">                             <span class="comment">// GetRandom函数：static float GetRandom(float Min, float Max) &#123; </span></span><br><span class="line">                             <span class="comment">//                 return ((float(rand()) / float(RAND_MAX)) * (Max - Min)) + Min; &#125;</span></span><br><span class="line">            <span class="comment">// 分解成正交系下的u(t0)、v(t1)，就可以分别对uv方向取随机的偏移了，偏移值的范围在正负maxRadiusAroundGuideHair之间，</span></span><br><span class="line">            <span class="comment">// 这样就能保证生成出的从属发丝在极差maxRadiusAroundGuideHair范围内平行于引导发丝</span></span><br><span class="line">            followOffset[indexStrandFollow] = offset;</span><br><span class="line">            followOffset[indexStrandFollow].w = (<span class="type">float</span>)indexGuideStrand; <span class="comment">// 当前的followRootOffset所属的发丝id</span></span><br><span class="line"></span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>在写这篇文章的时候，发现TressFX 5.0版本在5月底的时候发布了，但是它不再作为单独的项目仓发布了，而是做成了UE4的patch，直接打到UE4的源码里，开源在<a target="_blank" rel="noopener" href="https://github.com/GPUOpenSoftware/UnrealEngine/tree/TressFX5-4.27">https://github.com/GPUOpenSoftware/UnrealEngine/tree/TressFX5-4.27</a>。</p>
+<p>TressFX的这次更新最主要的看点在支持了Marschner光照模型、增加了TAA时间抗锯齿、做了阴影的优化。</p>
+<p>有时间和机会我们再去扒一扒他们新的实现，看看都做了啥:-)</p>
+
+      
+       
+    </div>
+</article>
+
+
+<div class="article_copyright">
+    <!-- 
+    <p><span class="copy-title">文章标题:</span>保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">12.7k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="HUA Blog">HUA Blog</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-06-03, 23:18:22</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-04, 11:53:39</p>
+    -->
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/blog/kongdeyou/hair_simulation_and_rendering_2/" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">https://blog.kdyx.net/blog/kongdeyou/hair_simulation_and_rendering_2/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="CC BY-NC-ND 4.0 International" target = "_blank">&#34;CC BY-NC-ND 4.0&#34; 署名-不可商用-禁止演绎</a> 转载请注明原文链接及作者信息，侵权必究。
+    </p>
+</div>
+
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+    <div id="comments">
+<script>
+{
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', "ninetalesfox/ninetalesfox.github.io");
+    script.setAttribute('issue-term', "title");
+    script.setAttribute('theme', "github-light");
+    script.setAttribute('label', "utteranc");
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    comments.appendChild(script)
+}
+</script>
+</div>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2020069368号-1</a>
+        </span>
+    
+    ©2020-2024 HUA Blog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏[快捷键(s)]"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢或有帮助？赞赏下作者呗！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>

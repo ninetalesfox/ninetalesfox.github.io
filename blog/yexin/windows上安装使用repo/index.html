@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Windows上安装使用repo | HUA Blog</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Windows上安装使用repo | HUA Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 (Not Found) - 该页面无法显示">
+<meta property="og:url" content="https://blog.kdyx.net/404.html">
+<meta property="og:site_name" content="HUA Blog">
+<meta property="og:description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T03:53:39.528Z">
+<meta property="article:author" content="HUA Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="HUA Blog" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>HUA Blog</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="email"
+               href="mailto:ti.studio@foxmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ninetalesfox"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(50)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发杂记">
+            <i class="fold iconfont icon-right"></i>
+            开发杂记
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发杂记&lt;---&gt;CV/CG">
+            
+            CV/CG
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具杂记">
+            
+            工具杂记
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="50">
+<input type="hidden" id="yelog_site_word_count" value="96.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.kindem.xyz/">Kindem</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索[快捷键(i)]"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图[快捷键(w)]"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hair</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TressFX</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>发丝</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>忘记密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数字人</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>毛发渲染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理模拟</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_3/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</span>
+            <span class="post-date" title="2022-06-22 23:33:58">2022/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_2/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</span>
+            <span class="post-date" title="2022-06-03 23:18:22">2022/06/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</span>
+            <span class="post-date" title="2022-05-29 21:40:12">2022/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/find_forget_sql_password/"
+           data-tag="MySQL,数据库,忘记密码"
+           data-author="kongdeyou" >
+            <span class="post-title" title="忘记MySQL数据库密码解决方案">忘记MySQL数据库密码解决方案</span>
+            <span class="post-date" title="2022-03-20 17:45:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/make_picture_bed_by_picgo_and_github/"
+           data-tag="图床,PicGo"
+           data-author="kongdeyou" >
+            <span class="post-title" title="超香之PicGo+Github搭建免费图床">超香之PicGo+Github搭建免费图床</span>
+            <span class="post-date" title="2022-03-20 16:12:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/3d_rendering_farplane_zfighting/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="3D渲染中远处物体Z-Fighting(闪烁)问题">3D渲染中远处物体Z-Fighting(闪烁)问题</span>
+            <span class="post-date" title="2021-11-28 22:39:00">2021/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/commandqueue_commandlist_commandallocator/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理">渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理</span>
+            <span class="post-date" title="2021-11-19 19:27:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_01/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程01-管理线程">C++并发编程01-管理线程</span>
+            <span class="post-date" title="2021-11-19 00:22:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_00/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程00-并发世界">C++并发编程00-并发世界</span>
+            <span class="post-date" title="2021-11-19 00:11:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%BD%AC%E6%88%98%E9%80%BC%E4%B9%8E%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="转战逼乎声明 :-)">转战逼乎声明 :-)</span>
+            <span class="post-date" title="2021-11-18 23:26:00">2021/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/why_lock_avoids_deadlock/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="为什么std::lock能避免死锁">为什么std::lock能避免死锁</span>
+            <span class="post-date" title="2021-09-15 22:35:00">2021/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/static_warning_in_cpp/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个C++的static_warning">实现一个C++的static_warning</span>
+            <span class="post-date" title="2021-09-01 23:35:00">2021/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/cross_compile_cunit_and_ctest_on_qnx/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="QNX交叉编译CUnit+CTest">QNX交叉编译CUnit+CTest</span>
+            <span class="post-date" title="2021-08-25 20:14:00">2021/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/auto_disk_copier/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="一个倾注灵魂的U盘小偷">一个倾注灵魂的U盘小偷</span>
+            <span class="post-date" title="2021-08-21 17:28:00">2021/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/speed_up_the_download_of_vscode_and_git/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="解决vscode和git国内下载速度太慢">解决vscode和git国内下载速度太慢</span>
+            <span class="post-date" title="2021-08-10 12:58:00">2021/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows_essentials_software_recommendations_for_developers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows开发机装机利器安利存档（持续更新）">Windows开发机装机利器安利存档（持续更新）</span>
+            <span class="post-date" title="2021-07-29 23:29:00">2021/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/action_executor/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="我撸了一个函数执行包装器后发现……">我撸了一个函数执行包装器后发现……</span>
+            <span class="post-date" title="2021-07-25 23:55:00">2021/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/head_only_singleton_implementation/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个head-only库中能用的singleton和静态成员变量模板">实现一个head-only库中能用的singleton和静态成员变量模板</span>
+            <span class="post-date" title="2021-07-23 21:57:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_relationship_of_cryengine_lumberyard_o3de/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="CryEngine、Lumberyard、O3DE的关系">CryEngine、Lumberyard、O3DE的关系</span>
+            <span class="post-date" title="2021-07-23 19:23:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_error_of_future_is_destructible/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录">未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录</span>
+            <span class="post-date" title="2021-07-21 23:04:00">2021/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/new_experience_of_drawing_with_drawio/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="drawio画图新体验">drawio画图新体验</span>
+            <span class="post-date" title="2021-07-19 11:30:00">2021/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/gitlab%E7%9A%84pipeline%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Gitlab的Pipeline执行机制">Gitlab的Pipeline执行机制</span>
+            <span class="post-date" title="2021-07-05 20:53:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Windows上安装使用repo">Windows上安装使用repo</span>
+            <span class="post-date" title="2021-07-05 19:18:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_framework_cpp_and_python/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器框架之C++使用Python脚本">游戏服务器框架之C++使用Python脚本</span>
+            <span class="post-date" title="2021-06-20 12:18:00">2021/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/database_of_kbe/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器数据库及kbEngine中的数据库">游戏服务器数据库及kbEngine中的数据库</span>
+            <span class="post-date" title="2021-06-10 22:10:00">2021/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/lumberyard_gridmate/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Lumberyard通讯组件GridMate浅析">Lumberyard通讯组件GridMate浅析</span>
+            <span class="post-date" title="2021-05-30 22:04:00">2021/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/vs_performance_profiler/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="使用Visual Studio性能探查器定位性能瓶颈">使用Visual Studio性能探查器定位性能瓶颈</span>
+            <span class="post-date" title="2021-05-23 22:25:00">2021/05/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/github_action/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="体验GitHub的CI构建工具Action">体验GitHub的CI构建工具Action</span>
+            <span class="post-date" title="2021-05-22 23:03:00">2021/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/format_msi/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="从msi安装包文件中获取属性数据实现安装包的重命名">从msi安装包文件中获取属性数据实现安装包的重命名</span>
+            <span class="post-date" title="2021-05-09 12:30:00">2021/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_history/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器发展历程">游戏服务器发展历程</span>
+            <span class="post-date" title="2021-04-25 23:51:00">2021/04/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/google_sitemap_cannot_fetch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Google站长平台设置Sitemap显示“无法获取”的问题">Google站长平台设置Sitemap显示“无法获取”的问题</span>
+            <span class="post-date" title="2021-04-10 00:39:00">2021/04/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/research_of_game_team/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="全功能游戏团队协作流程">全功能游戏团队协作流程</span>
+            <span class="post-date" title="2021-04-03 00:42:00">2021/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/about_my_drawing_in_the_blog/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="关于在博客中的画图">关于在博客中的画图</span>
+            <span class="post-date" title="2021-04-02 20:37:00">2021/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/smash/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</span>
+            <span class="post-date" title="2021-03-31 20:40:00">2021/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/technical_research_of_roblox/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Roblox技术调研总结">Roblox技术调研总结</span>
+            <span class="post-date" title="2021-03-28 22:48:00">2021/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/hlslcc_unreal_simple/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Unreal-HLSLCC概览">Unreal-HLSLCC概览</span>
+            <span class="post-date" title="2021-03-21 21:06:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/use_cmake_to_generate_constant_string/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="利用CMake生成代码中的常量字符串">利用CMake生成代码中的常量字符串</span>
+            <span class="post-date" title="2021-03-21 18:39:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9D%8E%E5%9D%B7%E7%9A%84%E7%BB%8F%E5%8E%86-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-net3-5/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="记录一次坎坷的经历——离线安装.net3.5">记录一次坎坷的经历——离线安装.net3.5</span>
+            <span class="post-date" title="2021-03-16 12:05:00">2021/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/comment_on_how_to_avoid_getting_into_involution_for_programmers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="评《程序员该怎么避免陷入内卷》">评《程序员该怎么避免陷入内卷》</span>
+            <span class="post-date" title="2021-03-08 22:19:00">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_mssc/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：MS-SC">Shader跨平台编译：MS-SC</span>
+            <span class="post-date" title="2021-02-17 22:40:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unity/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unity">Shader跨平台编译：Unity</span>
+            <span class="post-date" title="2021-02-17 20:59:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unreal/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unreal">Shader跨平台编译：Unreal</span>
+            <span class="post-date" title="2021-02-17 17:12:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译">Shader跨平台编译</span>
+            <span class="post-date" title="2021-02-16 18:58:00">2021/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/apache_server_donot_list_directories/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Apache服务器配置禁止列出目录">Apache服务器配置禁止列出目录</span>
+            <span class="post-date" title="2021-01-30 15:45:00">2021/01/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/imagewatch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="开发调试工具ImageWatch-查看内存中的图像">开发调试工具ImageWatch-查看内存中的图像</span>
+            <span class="post-date" title="2021-01-25 17:40:00">2021/01/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7%E6%A7%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E6%8E%A2%E8%AE%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="观察者模式与信号槽机制的探讨">观察者模式与信号槽机制的探讨</span>
+            <span class="post-date" title="2021-01-02 11:17:00">2021/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E7%9A%84settergetter_qt%E7%89%88/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现自动生成变量的Setter&amp;Getter(Qt版)">实现自动生成变量的Setter&amp;Getter(Qt版)</span>
+            <span class="post-date" title="2020-12-19 22:28:00">2020/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%9E%E5%BD%95/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows服务器博客搭建实录">Windows服务器博客搭建实录</span>
+            <span class="post-date" title="2020-12-13 14:30:00">2020/12/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/msvc%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%91%E5%B8%83%E5%8C%85%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="MSVC运行时发布包下载链接">MSVC运行时发布包下载链接</span>
+            <span class="post-date" title="2020-12-01 23:30:00">2020/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="动态链接库加载器">动态链接库加载器</span>
+            <span class="post-date" title="2020-11-28 17:00:00">2020/11/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏[快捷键(s)]">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-blog/yexin/windows上安装使用repo" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Windows上安装使用repo</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a>yexin</a></span>
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 11:53:39'>2021-07-05 19:18</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:1.7k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Manifest和Repo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">Windows10上安装repo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">安装python3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">在线安装repo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">下载repo配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">下载最新的repo工具源码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">修改REPO_URL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">建立manifest</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">remote部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">default部分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">project部分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">repo命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">repo help</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">repo init</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">repo sync</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">repo start</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">repo测试实例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text">在gitlab上新建manifest项目</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 class="md-end-block md-heading"><span class="md-plain md-expand">Manifest和Repo</span></h2>
+
+<p class="md-end-block md-p"><span class="md-plain">当一个项目的体量发展庞大时，单个git仓显然已经满足不了开发人员的需求，这时需要将项目划分为多个git仓库进行管理。最先这么做并且取得成功的当属Android项目。</span><span class="md-pair-s "><strong><span class="md-plain">Android开发了 repo 命令行工具来管理多个git项目。</span></strong></span><span class="md-plain">repo实际上使用了<span class="md-pair-s" spellcheck="false"><code>python</code></span> </span><span class="md-plain">指令对 </span><span class="md-pair-s" spellcheck="false"><code>git</code></span><span class="md-plain"> 命令进行封装，将百多个git</span><span class="md-plain">库有效的进行组织管理。当源码仓库数量庞大时，使用</span><span class="md-pair-s" spellcheck="false"><code>git</code></span><span class="md-plain">进行管理会带来很多不便，这里</span><span class="md-pair-s" spellcheck="false"><code>repo</code></span><span class="md-plain">就体现了其优越性。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">repo需要一个manifest XML文件来指示这些git项目的属性。</span></p>
+
+<h2 class="md-end-block md-heading"><span class="md-plain">Windows10上安装repo</span></h2>
+
+<h3 class="md-end-block md-heading"><span class="md-plain">安装git</span></h3>
+
+<p class="md-end-block md-p"><span class="md-meta-i-c md-link"><a target="_blank" rel="noopener" href="https://git-scm.com/download/win"><span class="md-plain">官网下载</span></a></span><span class="md-plain">安装最新的git for windows，笔者安装的是Git-2.32.0-64-bit.exe。配置环境变量。一般安装完成会自动配置环境变量。</span></p>
+
+<h3 class="md-end-block md-heading"><span class="md-plain">安装python3</span></h3>
+
+<p class="md-end-block md-p"><span class="md-meta-i-c md-link"><a target="_blank" rel="noopener" href="https://www.python.org/downloads/"><span class="md-plain">官网下载</span></a></span><span class="md-plain">python3进行安装。Python 3在安装的时候勾选</span><span class="md-pair-s "><strong><span class="md-plain">Add path</span></strong></span><span class="md-plain">会自动配置环境变量。笔者安装的是python-3.9.5-amd64.exe。</span></p>
+
+<h3 class="md-end-block md-heading"><span class="md-plain">在线安装repo</span></h3>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">下载repo配置文件</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">在任意位置打开git-bash，逐条输入如下指令：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sh" spellcheck="false"><span role="presentation"><span class="cm-builtin">mkdir</span> ~/bin     <span class="cm-comment">#进入C:Userusename目录</span></span>
+<span role="presentation"><span class="cm-builtin">curl</span> https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</span>
+<span role="presentation"><span class="cm-builtin">chmod</span> a<span class="cm-operator">+</span>rx ~/bin/repo</span></pre>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">下载最新的repo工具源码</span></h4>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sh" spellcheck="false"><span role="presentation"><span class="cm-comment"># 先随便新建源码目录</span></span>
+<span role="presentation"><span class="cm-builtin">mkdir</span> <span class="cm-attribute">-p</span> ~/AOSP/.repo</span>
+<span role="presentation"><span class="cm-builtin">cd</span> ~/AOSP/.repo</span>
+<span role="presentation"><span class="cm-comment"># clone工具集</span></span>
+<span role="presentation"><span class="cm-builtin">git</span> clone https://gerrit.googlesource.com/git-repo</span>
+<span role="presentation"><span class="cm-comment"># 改文件夹名</span></span>
+<span role="presentation"><span class="cm-builtin">mv</span> git-repo repo</span>
+<span role="presentation"><span class="cm-comment"># 回到AOSP源码目录</span></span>
+<span role="presentation"><span class="cm-builtin">cd</span> ..</span>
+<span role="presentation"><span class="cm-comment"># 需要使用管理员身份运行：初始化repo仓，成功</span></span>
+<span role="presentation">repo init <span class="cm-attribute">-u</span> https://aosp.tuna.tsinghua.edu.cn/platform/manifest <span class="cm-attribute">-b</span> android-10.0.0_r25 <span class="cm-attribute">--worktree</span></span></pre>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">修改REPO_URL</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">由于墙的原因，有的仓库会在repo init时失败，这时就需要改变REPO_URL为清华镜像源。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">打开~/bin/repo文件：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation"># repo default configuration</span>
+<span role="presentation">#</span>
+<span role="presentation">REPO_URL = os.environ.get('REPO_URL', None)</span>
+<span role="presentation">if not REPO_URL:</span>
+<span role="presentation">  #REPO_URL = 'https://gerrit.googlesource.com/git-repo'</span>
+<span role="presentation">  REPO_URL = 'https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'   #修改为清华镜像源</span>
+<span role="presentation">REPO_REV = os.environ.get('REPO_REV')</span></pre>
+
+<h2 class="md-end-block md-heading"><span class="md-plain">建立manifest</span></h2>
+
+<p class="md-end-block md-p"><span class="md-plain">一般地，在gitlab的一个组下会有一个manifest项目，该项目下可以存放不同的XML文件来指示这些git项目的属性。默认的XML文件为default.xml。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">一个简单的manifest XML文件可以如下所示：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="xml" spellcheck="false"><span role="presentation"><span class="cm-meta">&lt;?xml</span> <span class="cm-meta">version="1.0" encoding="UTF-8"?&gt;</span></span>
+<span role="presentation"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">manifest</span><span class="cm-tag cm-bracket">&gt;</span></span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">remote</span> <span class="cm-attribute">fetch</span>=<span class="cm-string">"https://gitlab.com/autocore_publish/mpu/"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"origin"</span> <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">default</span> <span class="cm-attribute">remote</span>=<span class="cm-string">"origin"</span> <span class="cm-attribute">revision</span>=<span class="cm-string">"master"</span> <span class="cm-attribute">sync-j</span>=<span class="cm-string">"4"</span> <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">​</span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">remote</span>  <span class="cm-attribute">name</span>=<span class="cm-string">"github"</span>  <span class="cm-attribute">fetch</span>=<span class="cm-string">"https://github.com/"</span>    <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">​</span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">project</span> <span class="cm-attribute">name</span>=<span class="cm-string">"flexbuild"</span> <span class="cm-attribute">path</span>=<span class="cm-string">"flexbuild"</span><span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">​</span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">project</span> <span class="cm-attribute">name</span>=<span class="cm-string">"ramdiskrfs"</span> <span class="cm-attribute">path</span>=<span class="cm-string">"flexbuild/packages/rfs/ramdiskrfs"</span>  <span class="cm-attribute">revision</span>=<span class="cm-string">"master"</span> <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">    </span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">project</span> <span class="cm-attribute">name</span>=<span class="cm-string">"krb5/krb5"</span> <span class="cm-attribute">path</span>=<span class="cm-string">"flexbuild/packages/apps/openssl/krb5"</span>       <span class="cm-attribute">remote</span>=<span class="cm-string">"github"</span>  <span class="cm-attribute">revision</span>=<span class="cm-string">"b9ad6c49505c96a088326b62a52568e3484f2168"</span> <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span role="presentation">​</span>
+<span role="presentation"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">manifest</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">remote部分</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">fetch：远端仓库器地址，一般是manifest仓库所在的地址下；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">name：默认的remote name，就是git push origin里面那个origin。</span></p>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">default部分</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">default部分定义了默认的remote和revision，当project中未定义remote和revision时，就使用default中定义的默认remote和revision。</span></p>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">project部分</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">name：git仓库在服务器上的相对于manifest文件夹的路径；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">path：把代码下载下来后在本地的相对路径，如果省略那么就认为path和name一样；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">revision：下载下来的代码要checkout到哪个revision上，这里的revision可以是commit id、branch name、tag name，反正本质上都是commit id（因为branch name实际上也是该分支上HEAD的commit id）。</span></p>
+
+<h2 class="md-end-block md-heading"><span class="md-plain">repo命令</span></h2>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">repo help</span></h4>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">#repo help command  #获取指令的帮助</span>
+<span role="presentation">repo help sync      #获取repo sync命令的帮助</span></pre>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">repo init</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">在当前目录中安装repo。</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sh" spellcheck="false"><span role="presentation">repo init <span class="cm-attribute">-u</span> URL [options]</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">-u：必选，</span><span class="md-pair-s"><strong><span class="md-plain">manifest仓库的URL</span></strong></span><span class="md-plain">；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-b：指定init manifest仓库的哪个分支；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-m：选择manifest仓库中的XML文件，默认为default.xml。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">如：</span><span class="md-pair-s" spellcheck="false"><code>repo init -u https://gitlab.com/XXX/manifest -b mani-test</code></span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">指初始化</span><span class="md-link md-pair-s" spellcheck="false"><a target="_blank" rel="noopener" href="https://gitlab.com/XXX/manifest">https://gitlab.com/XXX/manifest</a></span><span class="md-plain">仓库中mani-test分支下的default.xml。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">这一步执行成功的话，会在执行路径下生成一个.repo文件夹，此时还没有拉下代码，.repo文件夹目录如下：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="text" spellcheck="false"><span role="presentation">- .repo</span>
+<span role="presentation"> - manifests   #这个就是下载的manifest仓库</span>
+<span role="presentation">  - .git</span>
+<span role="presentation">  - default.xml</span>
+<span role="presentation"> - manifests.git</span>
+<span role="presentation"> - repo</span>
+<span role="presentation"> - manifest.xml</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">如果执行失败，则不会有</span><span class="md-pair-s"><strong><span class="md-plain">manifest.xml</span></strong></span><span class="md-plain">。manifest.xml是一个指向.repo/manifests/目录中所选XML的链接。只有存在manifest.xml才能够执行repo sync。</span></p>
+
+<p class="md-end-block md-p"><span class="md-pair-s"><strong><span class="md-plain">用户可以修改default.xml，控制同步代码时同步或者不同步哪些仓库。</span></strong></span></p>
+
+<p class="md-end-block md-p"><span class="md-pair-s "><strong><span class="md-plain">注意：对于其他的repo命令，当前工作目录必须是.repo/的父目录或其父目录的子目录。</span></strong></span></p>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">repo sync</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">与远端代码同步，</span><span class="md-pair-s"><strong><span class="md-plain">在未使用任何参数的情况下运行</span><span class="md-pair-s" spellcheck="false"><code>repo sync</code></span><span class="md-plain">，会同步所有项目的文件。</span></strong></span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">repo sync [project-list]</span></pre>
+
+<ul class="ul-list" data-mark="-">
+    <li class="md-list-item">
+<p class="md-end-block md-p"><span class="md-plain">如果项目从未同步过，则</span><span class="md-pair-s" spellcheck="false"><code>repo sync</code></span><span class="md-plain">相当于</span><span class="md-pair-s" spellcheck="false"><code>git clone</code></span></p>
+</li>
+    <li class="md-list-item">
+<p class="md-end-block md-p"><span class="md-plain">如果项目不是第一次同步，则repo sync相当于：</span></p>
+</li>
+</ul>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sh" spellcheck="false"><span role="presentation"><span class="cm-def">$ git</span> remote update</span>
+<span role="presentation"><span class="cm-def">$ git</span> rebase origin branch</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">这就意味着，repo sync有可能会出现冲突。当出现冲突时，就按照git rebase解冲突的步骤操作即可。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">以下是一些比较常用的命令选项：</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-c：仅获取选定的manifest XML中规定要更新的分支；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-d：将指定项目切换回选定的manifest XML修订版本；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-f：即使某个项目同步失败，也继续同步其他项目；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-jthreadcount：-j后面紧跟一个线程数量（没有空格），将同步操作拆分成多个线程，以更快完成同步；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">-q：安静模式。</span></p>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">repo start</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">从manifest XML文件中指定的revision为基础，批量为多个仓库创建本地分支。</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="sh" spellcheck="false"><span role="presentation">repo <span class="cm-builtin">start</span> branch_name project_list</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">为project_list中罗列的项目统一创建本地分支branch_name。项目名称以空格隔开。</span></p>
+
+<h2 class="md-end-block md-heading"><span class="md-plain">repo测试实例</span></h2>
+
+<h4 class="md-end-block md-heading"><span class="md-plain">在gitlab上新建manifest项目</span></h4>
+
+<p class="md-end-block md-p"><span class="md-plain">在gitlab上的一个群组下，新建manifest项目，用于repo管理这个群组下的若干个git仓库。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">该示例为manifest管理父目录pilot群组下的所有git仓库——drivers和common。</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">- pilot</span>
+<span role="presentation"> - drivers</span>
+<span role="presentation">    - camera</span>
+<span role="presentation">    - lidar</span>
+<span role="presentation"> - manifest</span>
+<span role="presentation">    -default.xml</span>
+<span role="presentation"> - common</span>
+<span role="presentation">    - msgs</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">克隆仓库，切换到自己的分支，新建一个default.xml：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">git clone https://gitlab.com/XXX/pilot/manifest </span>
+<span role="presentation">git checkout -b yx</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">default.xml的代码如下：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="xml" spellcheck="false"><span role="presentation"><span class="cm-meta">&lt;?xml</span> <span class="cm-meta">version="1.0" encoding="UTF-8"?&gt;</span></span>
+<span role="presentation"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">manifest</span><span class="cm-tag cm-bracket">&gt;</span></span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">remote</span> <span class="cm-attribute">fetch</span>=<span class="cm-string">"https://gitlab.com/XXX/pilot"</span> <span class="cm-attribute">name</span>=<span class="cm-string">"origin"</span> <span class="cm-tag cm-bracket">/&gt;</span></span>
+<span class="cm-tab-wrap-hack" role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">default</span> <span class="cm-attribute">remote</span>=<span class="cm-string">"origin"</span> <span class="cm-attribute">revision</span>=<span class="cm-string">"main"</span> <span class="cm-attribute">sync-j</span>=<span class="cm-string">"4"</span> <span class="cm-tag cm-bracket">/&gt;</span>  </span>
+    
+<span role="presentation">    <span class="cm-comment">&lt;!-- drivers --&gt;</span></span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">project</span> <span class="cm-attribute">name</span>=<span class="cm-string">"drivers"</span> <span class="cm-attribute">path</span>=<span class="cm-string">"drivers"</span><span class="cm-tag cm-bracket">/&gt;</span></span>
+    
+<span role="presentation">    <span class="cm-comment">&lt;!-- common --&gt;</span></span>
+<span role="presentation">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">project</span> <span class="cm-attribute">name</span>=<span class="cm-string">"common"</span> <span class="cm-attribute">path</span>=<span class="cm-string">"common"</span><span class="cm-tag cm-bracket">/&gt;</span></span>
+    
+<span role="presentation"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">manifest</span><span class="cm-tag cm-bracket">&gt;</span></span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">在提交XML之前，最好先在在线XML格式验证网站上验证一下XML格式是否有误，否则repo init的时候会报错default.xml格式有误：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">$ repo init -u https://gitlab.com/XXX/pilot/manifest -b yx</span>
+<span role="presentation">Downloading manifest from https://gitlab.com/autocore/odd/acpilot/manifest</span>
+<span role="presentation">fatal: manifest 'default.xml' not available</span>
+<span role="presentation">fatal: error parsing manifest E:/code/pilottest/.repo/manifestsdefault.xml: not well-formed (invalid token): line 56, column 79</span>
+<span role="presentation">Downloading Repo source from https://gerrit.googlesource.com/git-repo</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">提交代码git push origin yx；</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">然后测试是否能够repo init和repo sync，测试步骤如下：</span></p>
+
+<pre class="md-fences md-end-block ty-contain-cm modeLoaded" lang="" spellcheck="false"><span role="presentation">#以管理员身份打开git-bash</span>
+<span role="presentation">mkdir /e/test</span>
+<span role="presentation">cd /e/test</span>
+<span role="presentation">repo init -u https://gitlab.com/XXX/manifest -b yx</span>
+<span role="presentation">repo sync -j8 -c</span></pre>
+
+<p class="md-end-block md-p"><span class="md-plain">成功的话就可以成功拿到所有代码啦。</span></p>
+
+<p class="md-end-block md-p"><span class="md-plain">参考：</span><span class="md-meta-i-c md-link"><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904057421742094"><span class="md-plain">Windows安装repo的真正解决方案 (juejin.cn)</span></a></span></p>
+
+<!-- ADD COPYRIGHT -->
+      
+       
+    </div>
+</article>
+
+
+<div class="article_copyright">
+    <!-- 
+    <p><span class="copy-title">文章标题:</span>Windows上安装使用repo</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">1.7k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="HUA Blog">HUA Blog</a></p>
+    <p><span class="copy-title">发布时间:</span>2021-07-05, 19:18:00</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-04, 11:53:39</p>
+    -->
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/" title="Windows上安装使用repo">https://blog.kdyx.net/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="CC BY-NC-ND 4.0 International" target = "_blank">&#34;CC BY-NC-ND 4.0&#34; 署名-不可商用-禁止演绎</a> 转载请注明原文链接及作者信息，侵权必究。
+    </p>
+</div>
+
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+    <div id="comments">
+<script>
+{
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', "ninetalesfox/ninetalesfox.github.io");
+    script.setAttribute('issue-term', "title");
+    script.setAttribute('theme', "github-light");
+    script.setAttribute('label', "utteranc");
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    comments.appendChild(script)
+}
+</script>
+</div>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2020069368号-1</a>
+        </span>
+    
+    ©2020-2024 HUA Blog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏[快捷键(s)]"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢或有帮助？赞赏下作者呗！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>

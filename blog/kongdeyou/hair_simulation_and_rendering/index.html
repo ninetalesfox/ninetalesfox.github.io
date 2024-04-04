@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>保姆级毛发算法调研分析，十万长文带你深入TressFX（一） | HUA Blog</title>
+  <meta name="keywords" content=" Hair , 毛发渲染 , 物理模拟 , 数字人 , 发丝 , TressFX ">
+  <meta name="description" content="保姆级毛发算法调研分析，十万长文带你深入TressFX（一） | HUA Blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 (Not Found) - 该页面无法显示">
+<meta property="og:url" content="https://blog.kdyx.net/404.html">
+<meta property="og:site_name" content="HUA Blog">
+<meta property="og:description" content="很抱歉，您访问的页面不存在，看看其他的文章呢？ 如果您对出现该页面有疑惑，或之前该网址链接有内容，可以反馈到邮箱：&#x74;&#x69;&#115;&#x2e;&#x61;&#x63;&#x2e;&#x63;&#110;&#64;&#111;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#109;。 访问主页  访问关于">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-30T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-04T03:53:39.528Z">
+<meta property="article:author" content="HUA Blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="HUA Blog" type="application/atom+xml">
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>HUA Blog</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="email"
+               href="mailto:ti.studio@foxmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/ninetalesfox"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(50)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="开发杂记">
+            <i class="fold iconfont icon-right"></i>
+            开发杂记
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="开发杂记&lt;---&gt;CV/CG">
+            
+            CV/CG
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="工具杂记">
+            
+            工具杂记
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="50">
+<input type="hidden" id="yelog_site_word_count" value="96.3k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="https://www.kindem.xyz/">Kindem</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索[快捷键(i)]"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图[快捷键(w)]"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Hair</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MySQL</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PicGo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TressFX</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>发丝</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图床</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>忘记密码</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数字人</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数据库</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>毛发渲染</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理模拟</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_3/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（三）">保姆级毛发算法调研分析，十万长文带你深入TressFX（三）</span>
+            <span class="post-date" title="2022-06-22 23:33:58">2022/06/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering_2/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（二）">保姆级毛发算法调研分析，十万长文带你深入TressFX（二）</span>
+            <span class="post-date" title="2022-06-03 23:18:22">2022/06/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 开发杂记 CV/CG "
+           href="/blog/kongdeyou/hair_simulation_and_rendering/"
+           data-tag="Hair,毛发渲染,物理模拟,数字人,发丝,TressFX"
+           data-author="kongdeyou" >
+            <span class="post-title" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</span>
+            <span class="post-date" title="2022-05-29 21:40:12">2022/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/find_forget_sql_password/"
+           data-tag="MySQL,数据库,忘记密码"
+           data-author="kongdeyou" >
+            <span class="post-title" title="忘记MySQL数据库密码解决方案">忘记MySQL数据库密码解决方案</span>
+            <span class="post-date" title="2022-03-20 17:45:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 工具杂记 "
+           href="/blog/kongdeyou/make_picture_bed_by_picgo_and_github/"
+           data-tag="图床,PicGo"
+           data-author="kongdeyou" >
+            <span class="post-title" title="超香之PicGo+Github搭建免费图床">超香之PicGo+Github搭建免费图床</span>
+            <span class="post-date" title="2022-03-20 16:12:00">2022/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/3d_rendering_farplane_zfighting/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="3D渲染中远处物体Z-Fighting(闪烁)问题">3D渲染中远处物体Z-Fighting(闪烁)问题</span>
+            <span class="post-date" title="2021-11-28 22:39:00">2021/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/commandqueue_commandlist_commandallocator/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理">渲染三大金刚——CommandQueue、CommandList、CommandAllocator之间的关系梳理</span>
+            <span class="post-date" title="2021-11-19 19:27:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_01/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程01-管理线程">C++并发编程01-管理线程</span>
+            <span class="post-date" title="2021-11-19 00:22:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/cpp_concurrency_00/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="C++并发编程00-并发世界">C++并发编程00-并发世界</span>
+            <span class="post-date" title="2021-11-19 00:11:00">2021/11/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%BD%AC%E6%88%98%E9%80%BC%E4%B9%8E%E5%A3%B0%E6%98%8E/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="转战逼乎声明 :-)">转战逼乎声明 :-)</span>
+            <span class="post-date" title="2021-11-18 23:26:00">2021/11/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/why_lock_avoids_deadlock/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="为什么std::lock能避免死锁">为什么std::lock能避免死锁</span>
+            <span class="post-date" title="2021-09-15 22:35:00">2021/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/static_warning_in_cpp/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个C++的static_warning">实现一个C++的static_warning</span>
+            <span class="post-date" title="2021-09-01 23:35:00">2021/09/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/cross_compile_cunit_and_ctest_on_qnx/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="QNX交叉编译CUnit+CTest">QNX交叉编译CUnit+CTest</span>
+            <span class="post-date" title="2021-08-25 20:14:00">2021/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/auto_disk_copier/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="一个倾注灵魂的U盘小偷">一个倾注灵魂的U盘小偷</span>
+            <span class="post-date" title="2021-08-21 17:28:00">2021/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/speed_up_the_download_of_vscode_and_git/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="解决vscode和git国内下载速度太慢">解决vscode和git国内下载速度太慢</span>
+            <span class="post-date" title="2021-08-10 12:58:00">2021/08/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows_essentials_software_recommendations_for_developers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows开发机装机利器安利存档（持续更新）">Windows开发机装机利器安利存档（持续更新）</span>
+            <span class="post-date" title="2021-07-29 23:29:00">2021/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/action_executor/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="我撸了一个函数执行包装器后发现……">我撸了一个函数执行包装器后发现……</span>
+            <span class="post-date" title="2021-07-25 23:55:00">2021/07/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/head_only_singleton_implementation/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现一个head-only库中能用的singleton和静态成员变量模板">实现一个head-only库中能用的singleton和静态成员变量模板</span>
+            <span class="post-date" title="2021-07-23 21:57:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_relationship_of_cryengine_lumberyard_o3de/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="CryEngine、Lumberyard、O3DE的关系">CryEngine、Lumberyard、O3DE的关系</span>
+            <span class="post-date" title="2021-07-23 19:23:00">2021/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/the_error_of_future_is_destructible/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录">未定义的类不允许作为编译器内部类型特征“__is_destructible”的参数--问题解决记录</span>
+            <span class="post-date" title="2021-07-21 23:04:00">2021/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/new_experience_of_drawing_with_drawio/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="drawio画图新体验">drawio画图新体验</span>
+            <span class="post-date" title="2021-07-19 11:30:00">2021/07/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/gitlab%E7%9A%84pipeline%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Gitlab的Pipeline执行机制">Gitlab的Pipeline执行机制</span>
+            <span class="post-date" title="2021-07-05 20:53:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/windows%E4%B8%8A%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8repo/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="Windows上安装使用repo">Windows上安装使用repo</span>
+            <span class="post-date" title="2021-07-05 19:18:00">2021/07/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_framework_cpp_and_python/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器框架之C++使用Python脚本">游戏服务器框架之C++使用Python脚本</span>
+            <span class="post-date" title="2021-06-20 12:18:00">2021/06/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/database_of_kbe/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器数据库及kbEngine中的数据库">游戏服务器数据库及kbEngine中的数据库</span>
+            <span class="post-date" title="2021-06-10 22:10:00">2021/06/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/lumberyard_gridmate/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Lumberyard通讯组件GridMate浅析">Lumberyard通讯组件GridMate浅析</span>
+            <span class="post-date" title="2021-05-30 22:04:00">2021/05/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/vs_performance_profiler/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="使用Visual Studio性能探查器定位性能瓶颈">使用Visual Studio性能探查器定位性能瓶颈</span>
+            <span class="post-date" title="2021-05-23 22:25:00">2021/05/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/github_action/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="体验GitHub的CI构建工具Action">体验GitHub的CI构建工具Action</span>
+            <span class="post-date" title="2021-05-22 23:03:00">2021/05/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/format_msi/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="从msi安装包文件中获取属性数据实现安装包的重命名">从msi安装包文件中获取属性数据实现安装包的重命名</span>
+            <span class="post-date" title="2021-05-09 12:30:00">2021/05/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/game_server_history/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="游戏服务器发展历程">游戏服务器发展历程</span>
+            <span class="post-date" title="2021-04-25 23:51:00">2021/04/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/google_sitemap_cannot_fetch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Google站长平台设置Sitemap显示“无法获取”的问题">Google站长平台设置Sitemap显示“无法获取”的问题</span>
+            <span class="post-date" title="2021-04-10 00:39:00">2021/04/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/research_of_game_team/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="全功能游戏团队协作流程">全功能游戏团队协作流程</span>
+            <span class="post-date" title="2021-04-03 00:42:00">2021/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/about_my_drawing_in_the_blog/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="关于在博客中的画图">关于在博客中的画图</span>
+            <span class="post-date" title="2021-04-02 20:37:00">2021/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/smash/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）">论文翻译：Palazzi-engine-iscc16（SMASH：分布式游戏引擎体系结构）</span>
+            <span class="post-date" title="2021-03-31 20:40:00">2021/03/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/technical_research_of_roblox/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Roblox技术调研总结">Roblox技术调研总结</span>
+            <span class="post-date" title="2021-03-28 22:48:00">2021/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/hlslcc_unreal_simple/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Unreal-HLSLCC概览">Unreal-HLSLCC概览</span>
+            <span class="post-date" title="2021-03-21 21:06:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/use_cmake_to_generate_constant_string/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="利用CMake生成代码中的常量字符串">利用CMake生成代码中的常量字符串</span>
+            <span class="post-date" title="2021-03-21 18:39:00">2021/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/yexin/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E5%9D%8E%E5%9D%B7%E7%9A%84%E7%BB%8F%E5%8E%86-%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85-net3-5/"
+           data-tag=""
+           data-author="yexin" >
+            <span class="post-title" title="记录一次坎坷的经历——离线安装.net3.5">记录一次坎坷的经历——离线安装.net3.5</span>
+            <span class="post-date" title="2021-03-16 12:05:00">2021/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/comment_on_how_to_avoid_getting_into_involution_for_programmers/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="评《程序员该怎么避免陷入内卷》">评《程序员该怎么避免陷入内卷》</span>
+            <span class="post-date" title="2021-03-08 22:19:00">2021/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_mssc/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：MS-SC">Shader跨平台编译：MS-SC</span>
+            <span class="post-date" title="2021-02-17 22:40:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unity/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unity">Shader跨平台编译：Unity</span>
+            <span class="post-date" title="2021-02-17 20:59:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile_unreal/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译：Unreal">Shader跨平台编译：Unreal</span>
+            <span class="post-date" title="2021-02-17 17:12:00">2021/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/shader_cross_platform_compile/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Shader跨平台编译">Shader跨平台编译</span>
+            <span class="post-date" title="2021-02-16 18:58:00">2021/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/apache_server_donot_list_directories/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Apache服务器配置禁止列出目录">Apache服务器配置禁止列出目录</span>
+            <span class="post-date" title="2021-01-30 15:45:00">2021/01/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/imagewatch/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="开发调试工具ImageWatch-查看内存中的图像">开发调试工具ImageWatch-查看内存中的图像</span>
+            <span class="post-date" title="2021-01-25 17:40:00">2021/01/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%A1%E5%8F%B7%E6%A7%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E6%8E%A2%E8%AE%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="观察者模式与信号槽机制的探讨">观察者模式与信号槽机制的探讨</span>
+            <span class="post-date" title="2021-01-02 11:17:00">2021/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E5%8F%98%E9%87%8F%E7%9A%84settergetter_qt%E7%89%88/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="实现自动生成变量的Setter&amp;Getter(Qt版)">实现自动生成变量的Setter&amp;Getter(Qt版)</span>
+            <span class="post-date" title="2020-12-19 22:28:00">2020/12/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/windows%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%AE%9E%E5%BD%95/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="Windows服务器博客搭建实录">Windows服务器博客搭建实录</span>
+            <span class="post-date" title="2020-12-13 14:30:00">2020/12/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/msvc%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%91%E5%B8%83%E5%8C%85%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="MSVC运行时发布包下载链接">MSVC运行时发布包下载链接</span>
+            <span class="post-date" title="2020-12-01 23:30:00">2020/12/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 "
+           href="/blog/kongdeyou/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E5%8A%A0%E8%BD%BD%E5%99%A8/"
+           data-tag=""
+           data-author="kongdeyou" >
+            <span class="post-title" title="动态链接库加载器">动态链接库加载器</span>
+            <span class="post-date" title="2020-11-28 17:00:00">2020/11/28</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏[快捷键(s)]">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-blog/kongdeyou/hair_simulation_and_rendering" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</h1>
+    
+    <div class="article-meta">
+        
+        
+        <span class="author"><a>kongdeyou</a></span>
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="开发杂记">开发杂记</a> > 
+            
+            <a  data-rel="开发杂记&lt;---&gt;CV/CG">CV/CG</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Hair</a>
+            
+            <a class="color5">毛发渲染</a>
+            
+            <a class="color5">物理模拟</a>
+            
+            <a class="color4">数字人</a>
+            
+            <a class="color3">发丝</a>
+            
+            <a class="color3">TressFX</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 11:53:39'>2022-05-29 21:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:5.8k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%88%86%E6%9E%90"><span class="toc-text">毛发算法调研分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-text">技术选型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%B3%BB%E7%BB%9F"><span class="toc-text">毛发系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">毛发模型发展史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%AE%97%E6%B3%95%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">毛发算法发展史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%89%A9%E7%90%86%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">毛发物理算法简析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E6%B8%B2%E6%9F%93%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">毛发渲染算法简析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%B2%E6%9C%89%E7%9A%84%E5%95%86%E4%B8%9A%E6%96%B9%E6%A1%88"><span class="toc-text">已有的商业方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E8%AF%A5%E6%80%8E%E4%B9%88%E8%B5%B0"><span class="toc-text">路该怎么走</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">整体流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%8A%9F%E8%83%BD%E4%B8%80%E8%A7%88"><span class="toc-text">子功能一览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RenderPass%E4%B8%80%E8%A7%88"><span class="toc-text">RenderPass一览</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="毛发算法调研分析"><a href="#毛发算法调研分析" class="headerlink" title="毛发算法调研分析"></a>毛发算法调研分析</h1><p><strong>开篇</strong></p>
+<p>该系列的文章主要记录我在研究和实现毛发算法的历程。</p>
+<p>本文仅在个人博客及个人知乎上采用”CC BY-NC-ND 4.0”(署名-不可商用-禁止演绎)协议发布，转载请注明个人博客的原文链接及作者信息，侵权必究。</p>
+<p>博客链接：<a target="_blank" rel="noopener" href="https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering/">https://tis.ac.cn/blog/kongdeyou/hair_simulation_and_rendering/</a></p>
+<p>知乎链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/517553643/">https://zhuanlan.zhihu.com/p/517553643/</a></p>
+<p><strong>目录</strong></p>
+<p>本文的目录结构如下：</p>
+<p><div class='inner-toc'><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%AE%97%E6%B3%95%E8%B0%83%E7%A0%94%E5%88%86%E6%9E%90"><span class="toc-text">毛发算法调研分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="toc-text">技术选型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%B3%BB%E7%BB%9F"><span class="toc-text">毛发系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">毛发模型发展史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%AE%97%E6%B3%95%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="toc-text">毛发算法发展史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E7%89%A9%E7%90%86%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">毛发物理算法简析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%9B%E5%8F%91%E6%B8%B2%E6%9F%93%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">毛发渲染算法简析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%B2%E6%9C%89%E7%9A%84%E5%95%86%E4%B8%9A%E6%96%B9%E6%A1%88"><span class="toc-text">已有的商业方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E8%AF%A5%E6%80%8E%E4%B9%88%E8%B5%B0"><span class="toc-text">路该怎么走</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-text">整体流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E5%8A%9F%E8%83%BD%E4%B8%80%E8%A7%88"><span class="toc-text">子功能一览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RenderPass%E4%B8%80%E8%A7%88"><span class="toc-text">RenderPass一览</span></a></li></ol></li></ol></li></ol></div></p>
+<p>本系列后续文章中会陆续记录算法细节。</p>
+<p>看完这一系列文章后，我们能够：</p>
+<ul>
+<li>对毛发系统有一个完整的概念</li>
+<li>深入毛发系统的核心实现算法</li>
+<li>在自己的引擎中实现毛发系统</li>
+</ul>
+<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><p>2022年春节回来后，我就一直在做毛发的调研分析和集成实现的工作，前前后后捣鼓了有三四个月，自己都快没有头发了（大概是<del>极限一换一，我和模型只能有一个有头发了</del>（我没有、我不是，我头发很浓密的！））。言归正传，此次调研的目的是沿着前人的足迹，走出一条落地的通路，然后再把路一点点拓宽:-)</p>
+<h3 id="毛发系统"><a href="#毛发系统" class="headerlink" title="毛发系统"></a>毛发系统</h3><p>毛发系统由<strong>毛发渲染</strong>和<strong>物理模拟</strong>组成。</p>
+<p>早期的毛发系统仅负责毛发的渲染，毛发的物理模拟通过物理引擎中的绳子模型或刚体的弹簧质点约束进行简单的等效。</p>
+<p>后来逐渐发展出发丝模型后，毛发系统开始有了自己独立的毛发物理模拟算法，毛发的物理模拟不再借用通用的物理引擎中。</p>
+<p>按我的<del>理解</del>（其实就是技术洁癖），毛发的物理模拟最终最优雅的形态还是放在物理引擎中的，这样物理引擎内场景能够归一，比如物理场景中有风场，那么如果按照当前的架构形态，毛发系统接管了毛发的物理模拟，那么就得在物理引擎中和毛发系统的物理模拟中分别加上这个风场的影响，一个风场得改两处，其他的功能也得两边分别处理，对引擎来说不便于维护。当然，我针对的是物理引擎是纯自研的情景，如果本身已经是“缝合怪”，物理引擎是引用的开源组件，那么还是不要侵入式修改加上毛发的物理模拟功能为好，把它老老实实放在毛发系统中吧。</p>
+<h3 id="毛发模型发展史"><a href="#毛发模型发展史" class="headerlink" title="毛发模型发展史"></a>毛发模型发展史</h3><p>头发模型的发展过程主要经过了三个阶段：</p>
+<ol>
+<li>整头头发模型<br><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/HairModel_01.png" alt="整头模型图-图源来自网络"><br>这是最早的头发模型，整头头发部分是一个大的Mesh，直接盖在角色的头部模型之上。这种方式的头发模型制作简单，渲染也简单，实现不了精细的毛发渲染，也无法做物理模拟。</li>
+<li>发片模型<br><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/HairModel_02.png" alt="发片模型图-图源来自网络"><br>算力的提升带来了新的头发建模方法，发片模型是基于一撮撮头发进行建模的，头发由一系列的Triangle List组成，每撮头发是一个Triangle List，然后在这个Triangle List上贴上头发的Albedo贴图，用alpha blend来将Triangle List上有头发的地方透出来，实现最终的头发渲染。<br>发片模型制作难度适中，能够进行头发材质的渲染，但是这种模型的问题在于难以进行精细的物理模拟。</li>
+<li>发丝模型<br><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/HairModel_03.png" alt="发丝模型图-图源来自网络"><br>发丝模型即只制作每根头发的引导线，在交给引擎进行头发渲染时再由引擎根据发丝的引导线生成每根头发的Triangle List。发丝模型的出现是为了解决头发物理模拟的问题的，从渲染角度上看，发片和发丝都可以让技美“精细化作业”来实现渲染出类似的效果，但发丝模型能很好地做物理计算，实现头发的海飞丝效果。<br>发丝模型制作复杂，需要美工针对头部模型上对每根头发进行种植，在没有物理计算时会成“爆炸头”，有特别的头发形状的，还得要求美工种植的发丝模型每根都是已经做好弯曲定型的，加大美工的操作难度。</li>
+</ol>
+<p>目前大多数的场景下还是以发片模型为主，一是手游市场上的手机平台性能有限，基于每根发丝的头发物理模拟和运行时每帧生成头发的三角形面片手机吃不消，而发丝的主要优势在物理模拟上，渲染上发片和发丝都能做出比较好的效果，二是目前除了数字人的场景，大多数的场景对人物模型的要求都不高，非3A级大作的核心是玩法足够吸引玩家，投资方能够尽快产生收益，非写实风的人物也不需要在头发上深挖物理模拟的细节，简单使用物理引擎进行粗粒度的等效即可。</p>
+<h3 id="毛发算法发展史"><a href="#毛发算法发展史" class="headerlink" title="毛发算法发展史"></a>毛发算法发展史</h3><p><strong>物理算法</strong></p>
+<p>毛发的物理算法没有一条清晰的发展脉络线，各家算法本质上都是基于弹簧质点系统的不断细化和改进。由于头发物理模拟的巨大计算量，实现完全物理正确的头发模拟的开销十分巨大且没有必要，因此在毛发的物理计算中常常采用简化的建模模型（所谓“简化”相对于其他的物理模拟来说还是复杂的）。</p>
+<p><strong>渲染算法</strong></p>
+<ol>
+<li>Kajiya-Kay Model<br>相关文章：<a target="_blank" rel="noopener" href="https://www.cs.drexel.edu/~david/Classes/CS586/Papers/p271-kajiya.pdf">https://www.cs.drexel.edu/~david/Classes/CS586/Papers/p271-kajiya.pdf</a></li>
+<li>Marschner Model<br>相关文章：<a target="_blank" rel="noopener" href="https://graphics.stanford.edu/papers/hair/hair-sg03final.pdf">https://graphics.stanford.edu/papers/hair/hair-sg03final.pdf</a></li>
+<li>Scheuermann Model（结合了Marschner的结论，在Kajiya的基础之上为实时渲染而设计，又称kajiya+）<br>相关文章1(相似文章)：<a target="_blank" rel="noopener" href="https://developer.amd.com/wordpress/media/2012/10/Scheuermann_HairRendering.pdf">https://developer.amd.com/wordpress/media/2012/10/Scheuermann_HairRendering.pdf</a><br>相关文章2(相似文章)：<a target="_blank" rel="noopener" href="https://developer.amd.com/wordpress/media/2012/10/Scheuermann_HairSketchSlides.pdf">https://developer.amd.com/wordpress/media/2012/10/Scheuermann_HairSketchSlides.pdf</a></li>
+<li>d’Eon Model（在Marschner上进一步考虑把头发分成两层，内部再次计算一次散射，效果提升不大，又称Marschner+）<br>相关文章：<a target="_blank" rel="noopener" href="http://www.eugenedeon.com/wp-content/uploads/2014/04/egsrhair.pdf">http://www.eugenedeon.com/wp-content/uploads/2014/04/egsrhair.pdf</a></li>
+</ol>
+<p>后续的算法基本都是基于Kajiya和Marschner的改进和补充。Kajiya光照模型给我们提供了一套物理不正确、但计算速度快的廉价方案，而Marschner是基于真实的发丝物理结构，进行测算后建模形成的光照模型，物理真实性更高，但计算量相比起来也会大些。</p>
+<h3 id="毛发物理算法简析"><a href="#毛发物理算法简析" class="headerlink" title="毛发物理算法简析"></a>毛发物理算法简析</h3><p>针对低性能手机端或者要求低功耗、毛发物理计算的精确度需求非常低的场景，有一种极简廉价的等效替代方案。该方案的毛发物理计算方法既不是基于每一根发丝的，也不是基于每一小缕、每一小撮、每一小束的，而是类似于在这一大把毛发上加上一些骨骼，然后把这一大把毛发等效成一系列刚体球，然后在这些球间添加弹簧质点约束，采用通用物理引擎直接进行计算，计算结果驱动毛发的骨骼动画。这种极简的替代方案，可以将一个角色的披头的长发等效成几个刚体球，如下图所示，计算时实际上只有几个刚体球的计算，开销非常小。弊端也非常明显，只能模拟简单的发型，而且物理模拟效果不理想。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529140000.png" alt="简单廉价的等效替代方案，红色圆圈为等效的刚体球"></p>
+<p>另一种方案是基于发丝的等效，将发丝等效成一个弹簧质点模型，这种等效方案下的毛发模拟与布料模拟是类似的。一根发丝是一条curve曲线，在曲线上选取一系列的点作为质点，在质点间添加上弹簧约束，如下图所示。与布料模拟不同，布料是面状的结构，其中之一的质点与其周围的质点间都有相互作用，而发丝是线状结构，更容易做并行计算（基于每根发丝）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529110119.png" alt="发丝的弹簧质点模型-图源来自miloyip博客"></p>
+<p>但是这种过于简化的弹簧质点模型模拟的毛发会使得发丝像锁链一般，因为该模型的约束只有一个，发丝会像绳子一样过分柔软，而生物的毛发往往具有一定的刚度。MiloYip大佬在《爱丽丝惊魂记：疯狂再临》的爱丽丝头发制作中遇到了同样的问题，于是提出了改进的模型，在该模型中再加入一类约束，在发丝中一个质点的前后两个质点间再加上一个弹簧约束，如下图所示。我们可以参考大佬的文章<a target="_blank" rel="noopener" href="https://www.cnblogs.com/miloyip/archive/2011/06/14/alice_madness_returns_hair.html">《爱丽丝的发丝——《爱丽丝惊魂记：疯狂再临》制作点滴》</a>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529110231.png" alt="发丝的改进版弹簧质点模型-图源来自miloyip博客"></p>
+<p>这一改进模型解决了发丝过分柔软的问题，但是仍然有弊端，它只能处理披头的头发，发丝不能有弯曲和扭曲，然而众所周知，有的人的头发是自然卷，有的人的头发烫了个大波浪……</p>
+<p>TressFX瞄准了这个方向建立了自己的一套新的改进模型。要模拟带有弯曲和扭曲的塑型头发，可以使用刚性弹簧，但是刚性弹簧目前难用于实时的物理模拟，因为强弹簧力的积分很容易使得质量弹簧阻尼系统不稳定，除非使用复杂的如implicit backward integrator的积分方案，另外，在GPU中同一求解器很难同时处理拉伸、弯曲和扭曲弹簧。基于此，TressFX提出了简化的全局形状约束和局部形状约束来等效。</p>
+<p>TressFX新的改进模型已经相对比较完善了，即使不是物理正确的。但是这个模型还是仍然有些小的弊端，比如没有考虑马尾的处理，真实的一根头发是一条曲线，如果技美在做马尾的建模时，把这根头发的马尾辫和前面的部分分别建模，做成了两根曲线时，这个算法模型就懵逼了，会当成两根头发来处理，就会出现“后地中海式秃”的现象，算法会把前面部分的曲线的尾部当成了发丝尾，但实际上这个尾部有一个发圈的固定约束。另外TressFX的发丝长度约束是一个迭代缩短的过程，如果角色加速度非常大且保持非常大的加速度在变化，长度约束就比较难收敛，就会出现比较明显的头发拉长现象。</p>
+<p>但是我们在看古墓丽影中的劳拉时，会发现她是个马尾，并且拉长现象并不明显，有理由猜测古墓丽影的团队有可能对算法做了更多的优化，另外马尾的建模是一根发丝一体建模的。</p>
+<h3 id="毛发渲染算法简析"><a href="#毛发渲染算法简析" class="headerlink" title="毛发渲染算法简析"></a>毛发渲染算法简析</h3><p>毛发渲染部分，除了光照模型对毛发的效果产生主要的光照效果影响外，发丝的半透明混合和抗锯齿也非常值得关注。</p>
+<p>发丝数量动辄上万根，用传统的针对半透明物体的先排序再按从后往前依次渲染的方法是走不通的，这里的方法基本上是借鉴的OIT的处理思路。</p>
+<p>要实现完全的渲染正确，需要使用PPLL(Per-Pixel Linked Lists)的方法，针对RenderTarget的每个像素维护一个GPU并行链表，链表按深度顺序连接，绘制时根据当前发丝在占据的像素的深度在链表中插入，全部发丝绘制结束后最后一个Pass对每个像素的链表进行颜色混合，这种方法对硬件有要求，且显存的消耗不可控。TressFX的PPLL方案不是一个真正的链表结构，它针对每个像素预开了一定大小的空间用来存储深度和颜色信息（TressFX实现上每个像素能存16组深度和颜色信息，即最大链表节点数为16个，这个空间写死了，可详见代码TressFXPPLL.cpp中的TressFXPPLL::Create函数实现），这种方式不受限于硬件，但是当一个像素上的发丝数量过多时，不够存储的部分会丢弃，而当一个像素上的发丝数量过少时，剩余的空间就浪费了。而TressFX的ShortCut方案是借鉴的PPLL思想简化的处理过程，用一个3Layers的图存储不同深度下的颜色，最终只叠加这三层颜色，这种做法比PPLL占用的内存空间和计算量都更小很多，但是是渲染不完全正确的。另外，Intel曾提出<a target="_blank" rel="noopener" href="https://www.intel.com/content/www/us/en/developer/articles/technical/oit-approximation-with-pixel-synchronization.html">Adaptive Transparency的OIT方案</a>，是用来改进PPLL的内存和性能问题的简化方法，它的思想是修改经典的混合公式，引入一个能见度函数（transmittance&#x3D;visible_function(depth)），近似出一个能见度函数后，就可以不再要求链表按深度顺序连接了，但是同样地，渲染也不完全正确了，混合精度也会有所下降，<a target="_blank" rel="noopener" href="http://www.klayge.org/2013/02/18/%E7%BB%A7%E7%BB%AD%E6%8E%A2%E7%B4%A2oit%EF%BC%9Aadaptive-transparency/">KlayGE在引擎中实现了该方案</a>可以给我们参考。</p>
+<p>另外，由于发丝非常的细，拓展出来的三角形面片非常的小，很容易出现锯齿和空洞，我们需要对发丝渲染结果做抗锯齿处理和补空洞。抗锯齿用一些常用的抗锯齿方法就可以处理。空洞出现的原因大多是因为毛发过细，三角形面片都不足以达到一个像素的大小，在毛发发丝数量稀疏的地方，就会导致空洞的出现，TressFX会在发丝三角形面片不足一个像素时扩展到一个像素，以缓解空洞的问题。</p>
+<p>发丝的生物结构主要由纤维构成，可以分为中心的发髓（Medulla）、内部的皮质（Cortex）和表皮的角质层（Cuticle），如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529110643.png" alt="发丝的生物结构图"></p>
+<p>电子显微镜下我们还可以看到角质层呈现出倾斜的鳞片状，这是头发造成高光和反射的主要介质。由于角质层的鳞片状具有指向性，由发根指向发尾，如下图所示，这个现象可以用发丝的切线方向和毛发材质的各向异性来描述。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529110734.png" alt="发丝的角质层电镜图-图源来自网络"></p>
+<p>而毛发一般足够细，厚度非常的薄，光穿过头发还会发生<em>透射</em>和<em>次反射&#x2F;散射</em>。</p>
+<p>毛发光照模型中的Kajiya算法，是一个简单的不符合物理真实的光照模型，但它也足够简单、计算量小。它首先假设了发丝是一个光滑的圆柱体，然后再应用上各项异性（对入射光进行一定角度的偏移）来模拟角质层的鳞片样状带来的影响。Kajiya算法只考虑反射带来的影响，不考虑透射和散射的影响。如下图所示：在计算光的specular分量时，Kajiya算法类似于直接计算镜面反射，但为了加入各项异性的影响，引入了一个小角度的光偏移，该光偏移的角度值是一个正弦函数变化的值，这样我们就能模拟实现头发上的天使环；而在计算光的diffuse分量时，迎着光方向的发丝在0到180度范围内做积分，这样就得到了漫反射值。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529213928.png" alt="Kajiya光照模型"></p>
+<p>而Marschner算法，是一个基于测量头发光照属性得到相应的测算数据后建立的渲染模型，它将发丝视为半透明圆柱体，然后从物理的角度，将光照分成三条不同的路径：1.R项，代表光在头发表面发生的反射，该项产生毛发主要的高光，呈现出光色，受到毛发的切线和各向异性的影响；2.TRT项，代表光折射进入发丝，反射后再折射出发丝，该项产生次高光，呈现出带有发丝颜色的高光；3.TT项，代表光折射进入发丝，再由发丝的另一侧折射而出，该项产生透射的效果，在光打到毛发上，视角迎着毛发和光方向时，呈现出透光。基于这三条光照路径，将发丝继续分为横截面和纵切面分别进行计算，如下图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/20220529214626.png" alt="Marschner光照模型"></p>
+<p>这里我们仅简单介绍一下概念，在实现时再详细展开。</p>
+<h3 id="已有的商业方案"><a href="#已有的商业方案" class="headerlink" title="已有的商业方案"></a>已有的商业方案</h3><ul>
+<li>UE4(4.26前)：集成了NVIDIA HairWorks；</li>
+<li>UE4(4.26后)与UE5：毛发渲染采用自研的Groom，基于Marschner渲染模型，物理模拟借用的粒子的物理模拟器Niagara；</li>
+<li>O3DE：尝试集成的AMD TressFX，并整合进自己的RenderGraph中，但是没有实现完，发丝的碰撞矫正没有实现，会出现毛发穿模进模型中，渲染仅使用了GGX光照模型；</li>
+<li>网易《逆水寒》：使用的AMD TressFX；</li>
+<li>完美世界《笑傲江湖》：初期集成NVIDIA HairWorks，后转自研；</li>
+<li>腾讯手游《王者荣耀》：妲己的尾巴，基于Unity实现的FurShell（算法简单，叠多层的PBR）；</li>
+<li>《爱丽丝惊魂记：疯狂再临》：MiloYip大大最早在2009年做的头发，基于改良的弹簧质点模型的头发物理模拟和Kajiya光照模型的渲染；</li>
+<li>其他一些国外的游戏公司：《古墓丽影》集成了AMD TressFX、《巫师》集成了NVIDIA HairWorks……</li>
+<li>Frostbite：在SIGGRAPH2019上展示了一段效果很好的头发系统，但是目前仅有视频和PPT，没有项目，没有开源；</li>
+<li>Unity：未开源，无法一窥究竟；但Unity有文章说他们将TressFX集成到URP和HDRP管线中，其中URP管线还实现了在手机侧高通865的芯片上1w根发丝能跑到60帧。</li>
+</ul>
+<h3 id="路该怎么走"><a href="#路该怎么走" class="headerlink" title="路该怎么走"></a>路该怎么走</h3><p>回归到原始的调研目的，目前最快最有希望走通的路是，将NVIDIA HairWorks或AMD TressFX先集成到自己的引擎中，然后吸收消化它们的算法和思想，基于它们的基底再进行“改造升级”。</p>
+<p>讲毛发的文章真的是少之又少，在这些非常稀少的文章中，不少文章讲讲概念，然后分析了毛发的渲染算法，再然后直接上UE引擎上调效果去了，讲具体在引擎中的实现细节的几乎没有，那只好靠自己啦。</p>
+<p>我站在HairWorks和TressFX的岔路口踌躇，比对了一下两者的效果，TressFX实现出来的物理模拟效果更“海飞丝”一些，另外TressFX可供参考的文章和例子（例如O3DE、the-forge等开源引擎都集成过TressFX）更多一些，于是选择了TressFX（现在回过头来看，可能当初选错路了呢，粗看它们Hairworks的工具链更完整一些，HairWorks甚至做了一个完备的HairWorks Viewer，在Viewer里能够预览和简单编辑，可以方便地提供给技美做验证，而TressFX只有一个示例工程，但是既然已经沿着这条路走下去了，只能硬头皮上吧，说不准HairWorks也有其他的问题呢&#x3D;_&#x3D;）。</p>
+<h2 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h2><p>本小节往后与接下来的文章将着重分析TressFX的毛发实现，我将以TressFX中的demo程序进行分析。</p>
+<p>在开始之前，强烈建议先读一遍《GPU Pro 5: Advanced Rendering Techniques》中P407-417(TressFX Hair Simulation)&#x2F;P193-209(TressFX Hair Rendering)和<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/343741493">AMD官方的针对TressFX4.1的讲解文章</a>，虽然官方的这篇文章只是简单谈了一下采用的算法及列了部分的源代码（有些已经对不上开源仓中的代码了，而《GPU Pro 5》则是针对的TressFX的3.x版本的讲解），然后说明了一下各个参数的具体意义，方面使用者调参时参考。但是这也已经是全网少有的毛发讲解文章了。看完再上路，中途不尿裤。</p>
+<blockquote>
+<p>TressFX官方给出的集成方案是让开发者替换实现<code>EI_</code>开头的所有类（EI意为Engine-Interface），但是这种方案其实很hardcode，比如渲染引擎本身有场景类Scene，而TressFX中又有EI_Scene类，两者都要共存，会导致两份场景数据，EI_Scene中需要多存毛发需要的场景信息如灯光信息环境光信息等，否则无法带上光照的效果。另外，直接对接EI相关的类，在集成上虽然是方便了一些，但是往往不符合一个引擎正常的pipeline过程，比如引擎本身有RenderGraph，这样做会导致我们绕开了引擎的RenderGraph系统，直接通过RHI接口进行毛发物理模拟和渲染了，这对引擎的架构和维护都会带来很大的冲击。<br>因此，最佳实践方案应是将TressFX的算法理解吸收，然后遵照引擎的框架重新实现（抄）一遍。这里推荐参考<a target="_blank" rel="noopener" href="https://github.com/o3de/o3de">O3DE引擎</a>集成TressFX的方案，截至目前虽然它做的还不算非常的完善，比如基于SDF的碰撞矫正还没有加进来，光照算法也只有一个GGX能完全正常工作，但它的实现思路还是非常值得我们参考和借鉴的。</p>
+</blockquote>
+<h3 id="子功能一览"><a href="#子功能一览" class="headerlink" title="子功能一览"></a>子功能一览</h3><p>我们先简单看看TressFX的头发系统都有哪些子功能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_Others_HairSystemSubmodules.jpg" alt="毛发系统子功能图"></p>
+<h3 id="RenderPass一览"><a href="#RenderPass一览" class="headerlink" title="RenderPass一览"></a>RenderPass一览</h3><p>然后再从宏观角度来看看TressFX整体的RenderPass图，这张图费了我一点时间才整理出来，图中的所有Passes将对应头发系统中的所有子功能。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_01.png" alt="RenderPass总览图"></p>
+<p>这里我们不要求能够把整张图完全看懂，只需要从感官上有个大体的轮廓，后面将会针对每个Pass逐一展开，进行详细的分析，届时可以再回过头来对照着看。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/TiEngine/PictureBed@latest/kongdeyou/TressFX_02.png" alt="图例及统计信息"></p>
+<p>针对整个场景中只有1个头发模型和1个角色模型&#x2F;头发附着体模型的场景，头发的物理模拟需要9个Passes，渲染根据选择的半透明混合算法的不同，分别需要4个Passes或2个Passes，除此之外，场景中每个灯源产生的阴影要带上头发的影响，还需要独立的Pass给头发做全局阴影。假设一个最简单的头发场景，只有1个灯源且仅往地面这一个面的方向上投射阴影，加上一个简单的ForwardPBR和ToneMapping，一个带头发的最简单的场景至少需要17个Passes(ShortCut)或15个Passes(PPLL)（即：*9(物理模拟) + 4(渲染ShortCut) 或 2(渲染PPLL) + 1(普通模型阴影) + 1(头发模型阴影) + 1(PBR) + 1(ToneMapping)*）。</p>
+
+      
+       
+    </div>
+</article>
+
+
+<div class="article_copyright">
+    <!-- 
+    <p><span class="copy-title">文章标题:</span>保姆级毛发算法调研分析，十万长文带你深入TressFX（一）</p>
+    <p><span class="copy-title">字数:</span><span class="post-count">5.9k</span></p>
+    <p><span class="copy-title">本文作者:</span><a  title="HUA Blog">HUA Blog</a></p>
+    <p><span class="copy-title">发布时间:</span>2022-05-29, 21:40:12</p>
+    <p><span class="copy-title">最后更新:</span>2024-04-04, 11:53:39</p>
+    -->
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/blog/kongdeyou/hair_simulation_and_rendering/" title="保姆级毛发算法调研分析，十万长文带你深入TressFX（一）">https://blog.kdyx.net/blog/kongdeyou/hair_simulation_and_rendering/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="CC BY-NC-ND 4.0 International" target = "_blank">&#34;CC BY-NC-ND 4.0&#34; 署名-不可商用-禁止演绎</a> 转载请注明原文链接及作者信息，侵权必究。
+    </p>
+</div>
+
+
+
+<p>
+    <a class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+    <div id="comments">
+<script>
+{
+    const comments = document.getElementById('comments');
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', "ninetalesfox/ninetalesfox.github.io");
+    script.setAttribute('issue-term', "title");
+    script.setAttribute('theme', "github-light");
+    script.setAttribute('label', "utteranc");
+    script.setAttribute('crossorigin', 'anonymous');
+    script.setAttribute('async', '');
+    comments.appendChild(script)
+}
+</script>
+</div>
+
+
+
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry"><span class="miit">
+                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
+                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">苏ICP备2020069368号-1</a>
+        </span>
+    
+    ©2020-2024 HUA Blog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏[快捷键(s)]"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢或有帮助？赞赏下作者呗！</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+    #post .pjax article :not(pre) > code {
+        color: #24292e;
+        font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+        background-color: rgba(27,31,35,.05);
+        border-radius: 3px;
+        font-size: 85%;
+        margin: 0;
+        padding: .2em .4em;
+    }
+    
+</style>
+
+
+
+
+
+
+
+</html>
